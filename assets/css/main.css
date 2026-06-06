@@ -833,12 +833,15 @@ input, select, textarea {
 		}
 /* ဖုန်းဗားရှင်းတွင် ပုံနာမည်များ အမြဲပေါ်နေစေရန် */
 @media screen and (max-width: 736px) {
-    .item.thumb h2 {
+    #main .item.thumb h2 {
+        display: block !important; /* အပေါ်က ပိတ်ထားတာကို ပြန်ပွင့်အောင် အတင်းခိုင်းခြင်း */
         opacity: 1 !important;
-        background-color: rgba(0, 0, 0, 0.6) !important;
+        background-color: rgba(0, 0, 0, 0.75) !important; /* စာသား ပိုကြွလာအောင် အမည်းရောင်ကို နည်းနည်း ပိုရင့်လိုက်ပါတယ် */
         color: #ffffff !important;
         bottom: 0 !important;
         padding: 10px !important;
         font-size: 0.9em !important;
+        position: absolute !important;
+        width: 100% !important;
     }
 }
