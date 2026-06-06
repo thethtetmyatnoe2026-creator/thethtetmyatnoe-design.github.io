@@ -831,3 +831,14 @@ input, select, textarea {
 				}
 
 		}
+/* ဖုန်းဗားရှင်းတွင် ပုံနာမည်များ အမြဲပေါ်နေစေရန် */
+@media screen and (max-width: 736px) {
+    .item.thumb h2 {
+        opacity: 1 !important;
+        background-color: rgba(0, 0, 0, 0.6) !important;
+        color: #ffffff !important;
+        bottom: 0 !important;
+        padding: 10px !important;
+        font-size: 0.9em !important;
+    }
+}
