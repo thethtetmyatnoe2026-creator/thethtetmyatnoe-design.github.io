@@ -848,62 +848,69 @@ input, select, textarea {
     }
 }
 /* ==========================================================================
-   DESIGNER PROFILE & PREMIUM DARK THEME (PERFECT CIRCLE FIX)
+   DESIGNER PROFILE - CORNER PHOTO VERSION (NO CIRCLE)
    ========================================================================= */
 
-/* ၁။ မူရင်း ပန်းရောင် Intro Box ကို Premium Dark Theme ပြောင်းလဲခြင်း */
+/* ၁။ Intro Box ကို Premium Dark Theme ပြောင်းပြီး ပုံအတွက် ညာဘက်မှာ နေရာချန်ခြင်း */
 #main .item.intro {
     background-color: #12141a !important; /* Luxury Dark Matte */
     background-image: none !important;     /* မူရင်း overlay ဖျက်တာပါ */
-    position: relative;
-    overflow: hidden !important;           /* Box ထဲမှာတင် အချိုးကျနေစေရန် */
+    position: relative !important;
+    overflow: hidden !important;           /* ပုံကို ကတ်ပြားရဲ့ အောက်ခြေဘောင်အပြင် မလျှံထွက်စေရန် */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    align-items: center !important;
-    padding: 1.5em !important;
+    align-items: flex-start !important;    /* စာသားများကို ဘယ်ဘက်သို့ ကပ်ထုတ်မည် */
+    text-align: left !important;
+    padding: 2em 11em 2em 3em !important;  /* ညာဘက်မှာ ပုံထည့်ရန် 11em (Padding) နေရာလွတ် ချန်ထားခြင်း */
     z-index: 10;
 }
 
-/* ၂။ ဓာတ်ပုံအတွက် စက်ဝိုင်းပုံစံ Container (ဘဲဥပုံမဖြစ်အောင် ထိန်းညှိပြီးသား) */
+/* ၂။ ဓာတ်ပုံ Container ကို စက်ဝိုင်းဘောင်များဖြုတ်ပြီး ညာဘက်ဒေါင့်မှာ ကပ်ခြင်း */
 .profile-container {
-    position: relative !important;
-    width: 110px !important;              /* Box အမြင့်နဲ့ ကွက်တိဖြစ်အောင် Size နည်းနည်းလျှော့ထားပါတယ် */
-    height: 110px !important;
-    min-width: 110px !important;          /* ဘေးတိုက် မညှစ်မိစေရန် အရေးကြီး */
-    min-height: 110px !important;         /* အပေါ်အောက် မညှစ်မိစေရန် အရေးကြီး */
-    flex-shrink: 0 !important;            /* လုံးဝ ဘဲဥပုံ မဖြစ်စေရ စုန်းကဝေမန္တန် */
-    margin: 0 auto 1em auto !important;
-    border-radius: 50% !important;
-    background: linear-gradient(135deg, #1e222b, #2d323f);
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 4px 15px rgba(0,0,0,0.3);
-    border: 3px solid #3a4150 !important; /* စက်ဝိုင်းဘောင် လိုင်းအလှ */
-    overflow: hidden !important;          /* ပုံကို စက်ဝိုင်းဘောင်ထဲပဲ ကွက်တိဖြတ်ချရန် */
-    z-index: 12;
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    height: 100% !important;               /* ကတ်ပြားရဲ့ အမြင့်အပြည့် ယူမည် */
+    width: 40% !important;                 /* ကတ်ပြားရဲ့ ညာဘက်ခြမ်း နေရာကို ယူမည် */
+    margin: 0 !important;
+    border-radius: 0 !important;           /* စက်ဝိုင်းပုံစံများ လုံးဝဖြုတ်ပစ်ပါ */
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    z-index: 11;
 }
 
-/* ၃။ စက်ဝိုင်းဘောင်ထဲမှာ မျက်နှာကို ဗဟိုပြုပြီး ကွက်တိဖြတ်ပေးမယ့် စနစ် */
+/* ၃။ ပုံကို အောက်ခြေညာဘက်ဒေါင့်မှာ ကွက်တိအချိုးကျ ကပ်ပေးမည့် CSS */
 .profile-img {
     display: block !important;
-    position: static !important;          /* absolute position ဖြုတ်ချလိုက်တာပါ */
-    transform: none !important;           /* scale တွေ ဖြုတ်ပြီး standard အတိုင်းသွားမယ် */
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;         /* ပုံကို ပုံမပျက်ဘဲ စက်ဝိုင်းထဲ အလိုအလျောက် ဖြန့်ခင်းပေးစနစ် */
-    object-position: center 20% !important; /* ပုံရဲ့ မျက်နှာရှိတဲ့ အပေါ်ပိုင်းကို အဓိက ဗဟိုပြုပေးတာပါ */
-    z-index: 15;
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    height: 95% !important;                /* ကတ်ပြားအမြင့်ထက် နည်းနည်းလေးနိမ့်ပြီး အောက်ခြေမှာ ကပ်နေစေရန် */
+    width: auto !important;
+    object-fit: contain !important;        /* ပုံ ပုံသဏ္ဌာန် လုံးဝ မပျက်စေရ */
+    object-position: bottom right !important; /* အောက်ခြေညာဘက်ဒေါင့်ကို အခြေခံပြီး ကပ်ထားမည် */
+    z-index: 12;
+    pointer-events: none;
 }
 
-/* Responsive: မိုဘိုင်းဖုန်းဗားရှင်း */
+/* Responsive: မိုဘိုင်းဖုန်းဗားရှင်းမှာ စာသားနဲ့ပုံ မထပ်စေရန် အောက်ခြေသို့ ပို့ပေးခြင်း */
 @media screen and (max-width: 736px) {
     #main .item.intro {
-        height: auto !important;
-        padding: 3em 2em !important;
+        padding: 3em 2em 11em 2em !important; /* ဖုန်းမှာ ပုံကို အောက်ဘက် ပို့မှာမို့ အောက်ခြေ Padding ချန်မည် */
+        align-items: center !important;
+        text-align: center !important;
     }
     .profile-container {
-        width: 100px !important;
-        height: 100px !important;
-        min-width: 100px !important;
-        min-height: 100px !important;
+        width: 100% !important;
+        height: 140px !important;             /* ဖုန်းမှာ ပုံအမြင့်ကို ပုံသေ သတ်မှတ်ခြင်း */
+    }
+    .profile-img {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important; /* ဖုန်းမှာ ပုံကို အလယ်တည့်တည့် ကပ်မည် */
+        object-position: bottom center !important;
     }
 }
