@@ -848,7 +848,7 @@ input, select, textarea {
     }
 }
 /* ==========================================================================
-   DESIGNER PROFILE & PREMIUM DARK THEME (ORIGINAL SEPIA PHOTO VERSION)
+   DESIGNER PROFILE & PREMIUM DARK THEME (PERFECT CIRCLE FIX)
    ========================================================================= */
 
 /* ၁။ မူရင်း ပန်းရောင် Intro Box ကို Premium Dark Theme ပြောင်းလဲခြင်း */
@@ -861,35 +861,37 @@ input, select, textarea {
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 2em !important;
+    padding: 1.5em !important;
     z-index: 10;
 }
 
-/* ၂။ ဓာတ်ပုံအတွက် စက်ဝိုင်းပုံစံ Background Container */
+/* ၂။ ဓာတ်ပုံအတွက် စက်ဝိုင်းပုံစံ Container (ဘဲဥပုံမဖြစ်အောင် ထိန်းညှိပြီးသား) */
 .profile-container {
     position: relative !important;
-    width: 145px;
-    height: 145px;
-    margin: 0 auto 1em auto;
-    border-radius: 50%;
+    width: 110px !important;              /* Box အမြင့်နဲ့ ကွက်တိဖြစ်အောင် Size နည်းနည်းလျှော့ထားပါတယ် */
+    height: 110px !important;
+    min-width: 110px !important;          /* ဘေးတိုက် မညှစ်မိစေရန် အရေးကြီး */
+    min-height: 110px !important;         /* အပေါ်အောက် မညှစ်မိစေရန် အရေးကြီး */
+    flex-shrink: 0 !important;            /* လုံးဝ ဘဲဥပုံ မဖြစ်စေရ စုန်းကဝေမန္တန် */
+    margin: 0 auto 1em auto !important;
+    border-radius: 50% !important;
     background: linear-gradient(135deg, #1e222b, #2d323f);
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 4px 15px rgba(0,0,0,0.3);
-    border: 3px solid #3a4150;            /* စက်ဝိုင်းဘောင် လိုင်းအလှ */
+    border: 3px solid #3a4150 !important; /* စက်ဝိုင်းဘောင် လိုင်းအလှ */
     overflow: hidden !important;          /* ပုံကို စက်ဝိုင်းဘောင်ထဲပဲ ကွက်တိဖြတ်ချရန် */
     z-index: 12;
 }
 
-/* ၃။ စက်ဝိုင်းဘောင်ထဲမှာ ပုံကို အချိုးကျထည့်သွင်းခြင်း */
+/* ၃။ စက်ဝိုင်းဘောင်ထဲမှာ မျက်နှာကို ဗဟိုပြုပြီး ကွက်တိဖြတ်ပေးမယ့် စနစ် */
 .profile-img {
-    position: absolute;
-    bottom: -5px;                         /* အောက်ခြေလိုင်း ပြတ်မနေအောင် နည်းနည်း နှိမ့်ထားတာပါ */
-    left: 50%;
-    transform: translateX(-50%) scale(1.15); /* စက်ဝိုင်းထဲ ကွက်တိဝင်အောင် ချဲ့တာပါ */
-    transform-origin: bottom center;
-    width: 100%;
-    height: auto;
+    display: block !important;
+    position: static !important;          /* absolute position ဖြုတ်ချလိုက်တာပါ */
+    transform: none !important;           /* scale တွေ ဖြုတ်ပြီး standard အတိုင်းသွားမယ် */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;         /* ပုံကို ပုံမပျက်ဘဲ စက်ဝိုင်းထဲ အလိုအလျောက် ဖြန့်ခင်းပေးစနစ် */
+    object-position: center 20% !important; /* ပုံရဲ့ မျက်နှာရှိတဲ့ အပေါ်ပိုင်းကို အဓိက ဗဟိုပြုပေးတာပါ */
     z-index: 15;
-    pointer-events: none;
 }
 
 /* Responsive: မိုဘိုင်းဖုန်းဗားရှင်း */
@@ -899,7 +901,9 @@ input, select, textarea {
         padding: 3em 2em !important;
     }
     .profile-container {
-        width: 125px;
-        height: 125px;
+        width: 100px !important;
+        height: 100px !important;
+        min-width: 100px !important;
+        min-height: 100px !important;
     }
 }
