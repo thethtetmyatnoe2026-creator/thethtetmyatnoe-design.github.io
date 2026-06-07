@@ -52,20 +52,21 @@ table {
 }
 
 body {
-    /* 🚀 Template အငွေ့အသက်ဖျောက်မည့် Premium Dark Gradient */
+    /* 🚀 AI ကနေ Generate လုပ်ထားတဲ့ Background ပုံကို ချိတ်ဆက်ခြင်း */
     background-color: #0b0c10;
-    background-image: radial-gradient(circle at 50% 30%, #1a1d24 0%, #0b0c10 100%);
-    background-attachment: fixed;
-    background-size: cover;
+    background-image: url("../images/my-bg.jpg"); /* လမ်းကြောင်း မှန်ကန်စေရန် အစက်နှစ်စက် ခံရပါမယ် */
+    background-attachment: fixed;                 /* ပုံကို ငြိမ်နေစေပြီး စာသားတွေပဲ scroll ဖြစ်စေမယ့်စနစ် */
+    background-size: cover;                        /* Screen အပြည့် ကွက်တိ ဖြန့်ခင်းခြင်း */
+    background-position: center;                   /* ပုံရဲ့ ဗဟိုကို ယူခြင်း */
+    background-repeat: no-repeat;
     position: relative;
     
-    /* မူရင်း Layout Properties များ (မပြောင်းလဲပါ) */
+    /* မူရင်း properties များ */
     line-height: 1.75em;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-text-size-adjust: none;
 }
-
 mark {
 	background-color: transparent;
 	color: inherit;
