@@ -848,69 +848,82 @@ input, select, textarea {
     }
 }
 /* ==========================================================================
-   DESIGNER PROFILE - CORNER PHOTO VERSION (NO CIRCLE)
+   DESIGNER PROFILE - PREMIUM FLOATING CARD VERSION (PERFECT FIX)
    ========================================================================= */
 
-/* ၁။ Intro Box ကို Premium Dark Theme ပြောင်းပြီး ပုံအတွက် ညာဘက်မှာ နေရာချန်ခြင်း */
+/* ၁။ Intro Box ကို Premium Dark Theme ပြောင်းလဲခြင်း */
 #main .item.intro {
     background-color: #12141a !important; /* Luxury Dark Matte */
     background-image: none !important;     /* မူရင်း overlay ဖျက်တာပါ */
     position: relative !important;
-    overflow: hidden !important;           /* ပုံကို ကတ်ပြားရဲ့ အောက်ခြေဘောင်အပြင် မလျှံထွက်စေရန် */
+    overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: flex-start !important;    /* စာသားများကို ဘယ်ဘက်သို့ ကပ်ထုတ်မည် */
     text-align: left !important;
-    padding: 2em 11em 2em 3em !important;  /* ညာဘက်မှာ ပုံထည့်ရန် 11em (Padding) နေရာလွတ် ချန်ထားခြင်း */
+    padding: 2em 160px 2em 2.5em !important; /* ညာဘက်မှာ ပရိုဖိုင်ကတ်အတွက် 160px နေရာလွတ် အတိအကျချန်ခြင်း */
+    box-sizing: border-box !important;
     z-index: 10;
 }
 
-/* ၂။ ဓာတ်ပုံ Container ကို စက်ဝိုင်းဘောင်များဖြုတ်ပြီး ညာဘက်ဒေါင့်မှာ ကပ်ခြင်း */
-.profile-container {
-    position: absolute !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    height: 100% !important;               /* ကတ်ပြားရဲ့ အမြင့်အပြည့် ယူမည် */
-    width: 40% !important;                 /* ကတ်ပြားရဲ့ ညာဘက်ခြမ်း နေရာကို ယူမည် */
+/* စာသားများ ပိုမိုသပ်ရပ်ကျနစေရန် Font Size ညှိခြင်း */
+#main .item.intro h1 {
+    font-size: 2.2em !important;          /* စာသား ရှည်ရင် အောက်လိုင်းဆင်းတာ သပ်ရပ်စေရန် */
+    line-height: 1.2em !important;
+    margin-bottom: 0.3em !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+#main .item.intro p {
+    font-size: 1.05em !important;
+    line-height: 1.4em !important;
+    color: rgba(255, 255, 255, 0.6) !important;
     margin: 0 !important;
-    border-radius: 0 !important;           /* စက်ဝိုင်းပုံစံများ လုံးဝဖြုတ်ပစ်ပါ */
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    overflow: hidden !important;
-    z-index: 11;
 }
 
-/* ၃။ ပုံကို အောက်ခြေညာဘက်ဒေါင့်မှာ ကွက်တိအချိုးကျ ကပ်ပေးမည့် CSS */
+/* ၂။ ဓာတ်ပုံအတွက် အနားလုံး Floating Card (ပုံရဲ့ အဖြူရောင်နောက်ခံနဲ့ တစ်သားတည်းကျစေမည့်စနစ်) */
+.profile-container {
+    position: absolute !important;
+    top: 15px !important;                 /* အပေါ်ဘောင်မှ ၁၅ ပစ်ဇယ် အကွာ */
+    right: 15px !important;               /* ညာဘက်ဘောင်မှ ၁၅ ပစ်ဇယ် အကွာ */
+    bottom: 15px !important;              /* အောက်ခြေဘောင်မှ ၁၅ ပစ်ဇယ် အကွာ */
+    width: 115px !important;              /* သပ်ရပ်လှပသော ကတ်ပြားအကျယ် */
+    background-color: #ffffff !important; /* ပုံရဲ့ အဖြူရောင်နဲ့ တစ်သားတည်းဖြစ်အောင် လုပ်ခြင်း */
+    border-radius: 12px !important;       /* ခေတ်မီဆန်းသစ်သော အနားလုံး ပုံစံ */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important; /* Premium ဆန်သော အရိပ်လိုင်း အလှ */
+    overflow: hidden !important;          /* ပုံကို ကတ်ပြားဘောင်ထဲ ကွက်တိ ဖြတ်ချရန် */
+    margin: 0 !important;
+    border: none !important;
+    z-index: 12;
+}
+
+/* ၃။ ကတ်ပြားထဲတွင် ပုံကို အချိုးကျ ကွက်တိ ဖြန့်ခင်းခြင်း */
 .profile-img {
     display: block !important;
-    position: absolute !important;
-    bottom: 0 !important;
-    right: 0 !important;
-    height: 95% !important;                /* ကတ်ပြားအမြင့်ထက် နည်းနည်းလေးနိမ့်ပြီး အောက်ခြေမှာ ကပ်နေစေရန် */
-    width: auto !important;
-    object-fit: contain !important;        /* ပုံ ပုံသဏ္ဌာန် လုံးဝ မပျက်စေရ */
-    object-position: bottom right !important; /* အောက်ခြေညာဘက်ဒေါင့်ကို အခြေခံပြီး ကပ်ထားမည် */
-    z-index: 12;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;         /* ပုံကို ပုံသဏ္ဌာန်မပျက် ကတ်ပြားထဲ အပြည့်ဖြန့်ခြင်း */
+    object-position: center 15% !important; /* မျက်နှာနှင့် ပခုံးလိုင်းကို ကွက်တိ ဗဟိုပြုခြင်း */
+    z-index: 15;
     pointer-events: none;
 }
 
-/* Responsive: မိုဘိုင်းဖုန်းဗားရှင်းမှာ စာသားနဲ့ပုံ မထပ်စေရန် အောက်ခြေသို့ ပို့ပေးခြင်း */
+/* Responsive: မိုဘိုင်းဖုန်းဗားရှင်းတွင် အလယ်တည့်တည့်၌ ကတ်ပြားပုံစံ သပ်သပ်ရပ်ရပ် ပေါ်နေစေရန် */
 @media screen and (max-width: 736px) {
     #main .item.intro {
-        padding: 3em 2em 11em 2em !important; /* ဖုန်းမှာ ပုံကို အောက်ဘက် ပို့မှာမို့ အောက်ခြေ Padding ချန်မည် */
+        padding: 2.5em 1.5em !important;
         align-items: center !important;
         text-align: center !important;
+        height: auto !important;
     }
     .profile-container {
-        width: 100% !important;
-        height: 140px !important;             /* ဖုန်းမှာ ပုံအမြင့်ကို ပုံသေ သတ်မှတ်ခြင်း */
-    }
-    .profile-img {
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important; /* ဖုန်းမှာ ပုံကို အလယ်တည့်တည့် ကပ်မည် */
-        object-position: bottom center !important;
+        position: relative !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 120px !important;
+        height: 145px !important;
+        margin-bottom: 1.5em !important;
     }
 }
