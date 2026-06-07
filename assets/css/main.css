@@ -1,3 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600");
+@import url("fontawesome-all.min.css");
+
+/*
+	Parallelism by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+html, body, div, span, applet, object,
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite,
+code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+mark {
+	background-color: transparent;
+	color: inherit;
+}
+
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input, select, textarea {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+}
+
 /* Basic */
 
 	html {
@@ -8,10 +78,10 @@
 		box-sizing: inherit;
 	}
 
-	/* 🚀 ဒီနေရာက body ကုဒ်အဟောင်းကြီးကို ဒါလေးနဲ့ အစားထိုးပါ */
+	/* 🚀 AI နောက်ခံပုံကို စနစ်တကျ အချိုးကျ ချိတ်ဆက်ထားသည့် Body */
 	body {
 		background-color: #0b0c10;
-		background-image: url("../../images/my-bg.jpeg"); /* ကွက်တိ ချိတ်ဆက်မှု */
+		background-image: url("../../images/my-bg.jpeg");
 		background-attachment: fixed;
 		background-size: cover;
 		background-position: center;
@@ -33,14 +103,12 @@
 			transition: none !important;
 		}
 
-		/* လက်ပ်တော့ပ် နှင့် Tablet များအတွက် background ညှိခြင်း */
 		@media screen and (max-width: 1280px) {
 			body {
 				background-attachment: scroll;
 			}
 		}
 
-		/* 📱 မိုဘိုင်းဖုန်းများတွင်ပါ နောက်ခံပုံ ကွက်တိ လှပနေစေရန် တုံ့ပြန်မှုစနစ် */
 		@media screen and (max-width: 736px) {
 			body {
 				background-attachment: scroll;
@@ -49,3 +117,29 @@
 				background-repeat: no-repeat;
 			}
 		}
+
+	body, input, select, textarea {
+		font-family: 'Source Sans Pro';
+		font-weight: 400;
+		padding: 0;
+		font-size: 13pt;
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+		@media screen and (max-width: 1680px) {
+			body, input, select, textarea { font-size: 11pt; }
+		}
+
+		@media screen and (max-width: 1280px) {
+			body, input, select, textarea { font-size: 10pt; }
+		}
+
+		@media screen and (max-width: 980px) {
+			body, input, select, textarea { font-size: 11pt; }
+		}
+
+	a {
+		color: #fff;
+		color: rgba(255, 255, 255, 0.85);
+		text-decoration: none;
+		-moz
