@@ -119,9 +119,7 @@
 			popupCloserText: '',
 			popupLoaderText: '',
 			selector: '.item.thumb a.image',
-			caption: function($a) {
-				return $a.prev('h2').html();
-			},
+			caption: function($a) { return $a.next('h2').text(); },
 			usePopupDefaultStyling: false,
 			usePopupCloser: false,
 			usePopupCaption: true,
