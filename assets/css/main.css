@@ -52,7 +52,18 @@ table {
 }
 
 body {
-	-webkit-text-size-adjust: none;
+    /* 🚀 Template အငွေ့အသက်ဖျောက်မည့် Premium Dark Gradient */
+    background-color: #0b0c10;
+    background-image: radial-gradient(circle at 50% 30%, #1a1d24 0%, #0b0c10 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    
+    /* မူရင်း Layout Properties များ (မပြောင်းလဲပါ) */
+    line-height: 1.75em;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-text-size-adjust: none;
 }
 
 mark {
