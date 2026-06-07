@@ -848,8 +848,8 @@ input, select, textarea {
     }
 }
 /* ==========================================================================
-   DESIGNER PROFILE & PREMIUM DARK THEME MODIFICATIONS (BY BRO)
-   ========================================================================== */
+   DESIGNER PROFILE & PREMIUM DARK THEME MODIFICATIONS (FIXED VERSION)
+   ========================================================================= */
 
 /* ၁။ မူရင်း ပန်းရောင် Intro Box ကို Premium Dark Theme ပြောင်းလဲခြင်း */
 #main .item.intro {
@@ -857,28 +857,35 @@ input, select, textarea {
     background-image: none !important;     /* မူရင်း overlay ဖျက်တာပါ */
     position: relative;
     overflow: visible !important;          /* ခေါင်းအပြင်ထွက်နိုင်ရန် အရေးကြီးဆုံးအပိုင်း */
-    padding-top: 5em;                     /* ပုံအတွက် နေရာချန်ရန် */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;  /* အောက်ခြေကို အခြေခံပြီး နေရာညှိရန် */
+    padding: 3em 3em 4em 3em !important;   /* စာသားတွေအတွက် အောက်ခြေ ပက်ဒင်း */
     z-index: 10;
 }
 
 /* ၂။ ဓာတ်ပုံအတွက် စက်ဝိုင်းပုံစံ Background Container */
 .profile-container {
-    position: relative;
+    position: absolute !important;
+    top: -50px;                           /* Box ရဲ့ အပေါ်ဘက်ကို ကန်တင်လိုက်တာပါ */
+    left: 50%;
+    transform: translateX(-50%);
     width: 140px;
     height: 140px;
-    margin: 0 auto 1.5em auto;
     border-radius: 50%;
     background: linear-gradient(135deg, #1e222b, #2d323f);
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 4px 15px rgba(0,0,0,0.3);
     border: 3px solid #3a4150;            /* စက်ဝိုင်းဘောင် လိုင်းအလှ */
+    overflow: visible !important;
+    z-index: 12;
 }
 
 /* ၃။ စက်ဝိုင်းဘောင်အပြင် ခေါင်းပြူးထွက်စေမယ့် 3D Pop-out Effect */
 .profile-img {
     position: absolute;
-    bottom: 0;                            /* အောက်ခြေကို ကပ်ထားမည် */
+    bottom: 0;                            /* စက်ဝိုင်းရဲ့ အောက်ခြေမှာ ကပ်ထားမည် */
     left: 50%;
-    transform: translateX(-50%) scale(1.25); /* စက်ဝိုင်းထက် ၂၅% ပိုကြီးအောင်လုပ်ပြီး ခေါင်းထွက်စေခြင်း */
+    transform: translateX(-50%) scale(1.3); /* စက်ဝိုင်းထက် ၃၀% ပိုကြီးအောင်လုပ်ပြီး ခေါင်းထွက်စေခြင်း */
     transform-origin: bottom center;
     width: 100%;
     height: auto;
@@ -889,12 +896,12 @@ input, select, textarea {
 /* Responsive: မိုဘိုင်းဖုန်းဗားရှင်းမှာ ပုံမပျက်စေရန် ထိန်းညှိခြင်း */
 @media screen and (max-width: 736px) {
     #main .item.intro {
-        padding-top: 4em !important;
+        padding-top: 7em !important;       /* ဖုန်းမှာ ပုံအတွက် နေရာပိုချန်ရန် */
         overflow: visible !important;
     }
     .profile-container {
+        top: 20px;                         /* ဖုန်းဗားရှင်းမှာ Box ထဲပြန်ထည့်တာပါ */
         width: 120px;
         height: 120px;
-        margin-bottom: 1em;
     }
 }
