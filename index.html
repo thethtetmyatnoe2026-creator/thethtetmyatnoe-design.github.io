@@ -47,13 +47,14 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
 		<style>
-			/* Vertical Grid Layout Overrides */
+			/* Vertical Grid & Glassmorphism Theme Overrides */
 			:root {
 				--bg-dark: #0c0d10;
 				--card-bg: rgba(255, 255, 255, 0.04);
 				--card-border: rgba(255, 255, 255, 0.08);
 				--text-main: #ffffff;
 				--text-sub: #a0a5b5;
+				--accent: #6366f1;
 			}
 
 			body {
@@ -114,7 +115,7 @@
 				box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2);
 			}
 
-			/* Main Vertical Container Overrides */
+			/* Main Container */
 			#main {
 				width: 100% !important;
 				max-width: 1400px;
@@ -174,6 +175,7 @@
 				background: var(--card-bg) !important;
 				border: 1px solid var(--card-border) !important;
 				transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+				cursor: pointer;
 			}
 
 			.item.thumb:hover {
@@ -182,20 +184,14 @@
 				border-color: rgba(255, 255, 255, 0.25) !important;
 			}
 
-			.item.thumb a.image {
-				display: block;
-				width: 100%;
-				height: 100%;
-			}
-
-			.item.thumb a.image img {
+			.item.thumb img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
 				transition: transform 0.5s ease;
 			}
 
-			.item.thumb:hover a.image img {
+			.item.thumb:hover img {
 				transform: scale(1.06);
 			}
 
@@ -223,6 +219,138 @@
 				display: none !important;
 			}
 
+			/* Modal / Pop-up Styling */
+			.project-modal {
+				display: none;
+				position: fixed;
+				inset: 0;
+				background: rgba(8, 9, 12, 0.88);
+				backdrop-filter: blur(18px);
+				-webkit-backdrop-filter: blur(18px);
+				z-index: 2000;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.project-modal.active {
+				display: flex;
+				opacity: 1;
+			}
+
+			.modal-content {
+				background: rgba(20, 22, 28, 0.95);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				border-radius: 20px;
+				width: 100%;
+				max-width: 900px;
+				max-height: 90vh;
+				overflow-y: auto;
+				position: relative;
+				box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+				display: grid;
+				grid-template-columns: 1.1fr 0.9fr;
+				gap: 0;
+			}
+
+			.modal-image-container {
+				background: #000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+			}
+
+			.modal-image-container img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				max-height: 600px;
+			}
+
+			.modal-details {
+				padding: 32px 28px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.modal-close {
+				position: absolute;
+				top: 16px;
+				right: 18px;
+				background: rgba(255, 255, 255, 0.1);
+				color: #fff;
+				border: none;
+				width: 36px;
+				height: 36px;
+				border-radius: 50%;
+				font-size: 1.2rem;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: background 0.2s ease;
+				z-index: 10;
+			}
+
+			.modal-close:hover {
+				background: rgba(255, 255, 255, 0.25);
+			}
+
+			.modal-category {
+				color: #818cf8;
+				font-size: 0.8rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				margin-bottom: 8px;
+			}
+
+			.modal-title {
+				color: #ffffff;
+				font-size: 1.6rem;
+				font-weight: 700;
+				margin-bottom: 16px;
+				line-height: 1.3;
+			}
+
+			.modal-section-title {
+				color: #e2e8f0;
+				font-size: 0.85rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				margin-top: 16px;
+				margin-bottom: 6px;
+			}
+
+			.modal-description {
+				color: var(--text-sub);
+				font-size: 0.95rem;
+				line-height: 1.6;
+			}
+
+			.tools-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-top: 8px;
+			}
+
+			.tool-badge {
+				background: rgba(255, 255, 255, 0.08);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				color: #d1d5db;
+				font-size: 0.78rem;
+				padding: 4px 12px;
+				border-radius: 12px;
+			}
+
 			/* Footer Layout */
 			#footer {
 				width: 100% !important;
@@ -232,7 +360,15 @@
 				border-top: 1px solid rgba(255, 255, 255, 0.08);
 			}
 
-			@media screen and (max-width: 736px) {
+			@media screen and (max-width: 768px) {
+				.modal-content {
+					grid-template-columns: 1fr;
+				}
+				.modal-image-container {
+					border-top-right-radius: 20px;
+					border-bottom-left-radius: 0;
+					max-height: 300px;
+				}
 				.items {
 					grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
 					gap: 16px !important;
@@ -272,213 +408,363 @@
 								</article>
 
 								<!-- Item 01: MYA YADANAR Cooking Oil -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="MYA YADANAR Cooking Oil"
+									data-category="Branding & Logo"
+									data-concept="Crafted a clean, health-focused, and premium brand identity for a local edible oil producer. Emphasizes purity, golden clarity, and household trust."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/01.webp">
 									<span class="category-badge">Branding</span>
 									<h2>MYA YADANAR Cooking Oil</h2>
-									<a href="images/fulls/01.webp" class="image" title="Logo and Brand Identity Design for Cooking Oil Company"><img src="images/thumbs/01.webp" alt="Logo and Brand Identity Design for Cooking Oil Company"></a>
+									<img src="images/thumbs/01.webp" alt="MYA YADANAR Cooking Oil">
 								</article>
 
 								<!-- Item 02: PRO Liquor Store -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="PRO Liquor Store"
+									data-category="Branding & Logo"
+									data-concept="Modern bold visual identity designed for a premium liquor distributor, featuring sleek typography and a luxurious night-life aesthetic."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/02.webp">
 									<span class="category-badge">Branding</span>
 									<h2>PRO Liquor Store</h2>
-									<a href="images/fulls/02.webp" class="image" title="Logo and Brand Identity Design for Liquor Store"><img src="images/thumbs/02.webp" alt="Logo and Brand Identity Design for Liquor Store"></a>
+									<img src="images/thumbs/02.webp" alt="PRO Liquor Store">
 								</article>
 
 								<!-- Item 03: KTT Constructions -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="KTT Constructions"
+									data-category="Branding & Logo"
+									data-concept="Geometric and structured corporate logo design representing strength, modern architecture, and solid structural integrity."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/03.webp">
 									<span class="category-badge">Branding</span>
 									<h2>KTT Constructions</h2>
-									<a href="images/fulls/03.webp" class="image" title="Logo and Brand Identity Design for Construction Company"><img src="images/thumbs/03.webp" alt="Logo and Brand Identity Design for Construction Company"></a>
+									<img src="images/thumbs/03.webp" alt="KTT Constructions">
 								</article>
 
 								<!-- Item 04: SPY Noodle Shop -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="SPY Noodle Shop"
+									data-category="Branding & Logo"
+									data-concept="Playful and appetite-inducing brand mark for a trendy Asian ramen shop, combining energetic colors with custom character iconography."
+									data-tools="Adobe Illustrator, Procreate"
+									data-image="images/fulls/04.webp">
 									<span class="category-badge">Branding</span>
 									<h2>SPY Noodle Shop</h2>
-									<a href="images/fulls/04.webp" class="image" title="Logo and Brand Identity Design for Raman Restaurant"><img src="images/thumbs/04.webp" alt="Logo and Brand Identity Design for Raman Restaurant"></a>
+									<img src="images/thumbs/04.webp" alt="SPY Noodle Shop">
 								</article>
 
 								<!-- Item 05: ARROW Mobile -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="ARROW Mobile"
+									data-category="Branding & Logo"
+									data-concept="Futuristic, high-tech retail branding designed for a smartphone distributor, symbolizing fast technology and forward momentum."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/05.webp">
 									<span class="category-badge">Branding</span>
 									<h2>ARROW Mobile</h2>
-									<a href="images/fulls/05.webp" class="image" title="Logo and Brand Identity Design for Mobile Phone Shop"><img src="images/thumbs/05.webp" alt="Logo and Brand Identity Design for Mobile Phone Shop"></a>
+									<img src="images/thumbs/05.webp" alt="ARROW Mobile">
 								</article>
 
 								<!-- Item 06: EAZY BITES Snacks -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="EAZY BITES Snacks"
+									data-category="Branding & Logo"
+									data-concept="Vibrant and joyful branding for a local snack food factory aimed at youth and casual snacking culture."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/06.webp">
 									<span class="category-badge">Branding</span>
 									<h2>EAZY BITES Snacks</h2>
-									<a href="images/fulls/06.webp" class="image" title="Logo and Brand Identity Design for Snack Factory"><img src="images/thumbs/06.webp" alt="Logo and Brand Identity Design for Snack Factory"></a>
+									<img src="images/thumbs/06.webp" alt="EAZY BITES Snacks">
 								</article>
 
 								<!-- Item 07: OUN PHA Arabica Coffee -->
-								<article class="item thumb packaging">
+								<article class="item thumb packaging"
+									data-title="OUN PHA Arabica Coffee"
+									data-category="Packaging Design"
+									data-concept="Eco-elegant artisanal packaging design highlighting organic high-land coffee beans from Shan State with rich matte Earth tones."
+									data-tools="Adobe Illustrator, Photoshop, Dimension"
+									data-image="images/fulls/07.webp">
 									<span class="category-badge">Packaging</span>
 									<h2>OUN PHA Arabica Coffee</h2>
-									<a href="images/fulls/07.webp" class="image" title="Product Packaging Design For Arabica Coffee"><img src="images/thumbs/07.webp" alt="Product Packaging Design For Arabica Coffee"></a>
+									<img src="images/thumbs/07.webp" alt="OUN PHA Arabica Coffee">
 								</article>
 
 								<!-- Item 08: FRIENDSHIP Food & Drink -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="FRIENDSHIP Food & Drink"
+									data-category="Branding & Logo"
+									data-concept="Warm and welcoming casual dining brand identity tailored for family gatherings and social culinary experiences."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/08.webp">
 									<span class="category-badge">Branding</span>
 									<h2>FRIENDSHIP Food & Drink</h2>
-									<a href="images/fulls/08.webp" class="image" title="Logo and Brand Identity Design for Restaurant"><img src="images/thumbs/08.webp" alt="Logo and Brand Identity Design for Restaurant"></a>
+									<img src="images/thumbs/08.webp" alt="FRIENDSHIP Food & Drink">
 								</article>
 
 								<!-- Item 09: DJ AND -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="DJ AND"
+									data-category="Branding & Logo"
+									data-concept="Sleek electronic music producer tag logo utilizing soundwave geometry and dark minimalist aesthetics."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/09.webp">
 									<span class="category-badge">Branding</span>
 									<h2>DJ AND</h2>
-									<a href="images/fulls/09.webp" class="image" title="Producer Tag Logo for Record Label"><img src="images/thumbs/09.webp" alt="Producer Tag Logo for Record Label"></a>
+									<img src="images/thumbs/09.webp" alt="DJ AND">
 								</article>
 
 								<!-- Item 10: MERijAAN Production -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="MERijAAN Production"
+									data-category="Branding & Logo"
+									data-concept="Cinematic corporate visual identity for a creative film and video production studio."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/10.webp">
 									<span class="category-badge">Branding</span>
 									<h2>MERijAAN Production</h2>
-									<a href="images/fulls/10.webp" class="image" title="Logo and Brand Identity Design for Film Production"><img src="images/thumbs/10.webp" alt="Logo and Brand Identity Design for Film Production"></a>
+									<img src="images/thumbs/10.webp" alt="MERijAAN Production">
 								</article>
 
 								<!-- Item 11: Young Translator Group -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="Young Translator Group"
+									data-category="Branding & Logo"
+									data-concept="Modern linguistic service logo representing cross-cultural communication and global translation solutions."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/11.webp">
 									<span class="category-badge">Branding</span>
 									<h2>Young Translator Group</h2>
-									<a href="images/fulls/11.webp" class="image" title="Logo and Brand Identity Design for Online Service Team"><img src="images/thumbs/11.webp" alt="Logo and Brand Identity Design for Online Service Team"></a>
+									<img src="images/thumbs/11.webp" alt="Young Translator Group">
 								</article>
 
 								<!-- Item 12: BIBU Shan Foods -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="BIBU Shan Foods"
+									data-category="Branding & Logo"
+									data-concept="Traditional ethnic culinary branding celebrating authentic Shan recipes with a contemporary modern feel."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/12.webp">
 									<span class="category-badge">Branding</span>
 									<h2>BIBU Shan Foods</h2>
-									<a href="images/fulls/12.webp" class="image" title="Logo and Brand Identity Design for Local Foods Product"><img src="images/thumbs/12.webp" alt="Logo and Brand Identity Design for Local Foods Product"></a>
+									<img src="images/thumbs/12.webp" alt="BIBU Shan Foods">
 								</article>
 
 								<!-- Item 13: MAGIC Home Made Chocolates -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="MAGIC Home Made Chocolates"
+									data-category="Branding & Logo"
+									data-concept="Whimsical boutique confectionery brand identity emphasizing hand-crafted sweetness and gourmet cocoa."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/13.webp">
 									<span class="category-badge">Branding</span>
 									<h2>MAGIC Home Made Chocolates</h2>
-									<a href="images/fulls/13.webp" class="image" title="Logo and Brand Identity Design for Local Chocolate Brand"><img src="images/thumbs/13.webp" alt="Logo and Brand Identity Design for Local Chocolate Brand"></a>
+									<img src="images/thumbs/13.webp" alt="MAGIC Home Made Chocolates">
 								</article>
 
 								<!-- Item 14: PHOE HEIN Album Art -->
-								<article class="item thumb poster">
+								<article class="item thumb poster"
+									data-title="PHOE HEIN Album Art"
+									data-category="Album Cover Art"
+									data-concept="Expressive music cover art blending surreal portraiture and atmospheric color gradients for a local indie release."
+									data-tools="Adobe Photoshop, Procreate"
+									data-image="images/fulls/14.webp">
 									<span class="category-badge">Album Art</span>
 									<h2>PHOE HEIN Album Art</h2>
-									<a href="images/fulls/14.webp" class="image" title="Album Cover Art Design for Local Artist"><img src="images/thumbs/14.webp" alt="Album Cover Art Design for Local Artist"></a>
+									<img src="images/thumbs/14.webp" alt="PHOE HEIN Album Art">
 								</article>
 
 								<!-- Item 15: SUGAR Computer Services -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="SUGAR Computer Services"
+									data-category="Branding & Logo"
+									data-concept="Clean technical branding for an IT maintenance center focusing on reliability and modern digital solutions."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/15.webp">
 									<span class="category-badge">Branding</span>
 									<h2>SUGAR Computer Services</h2>
-									<a href="images/fulls/15.webp" class="image" title="Logo and Brand Identity Design for Computer Service Centre"><img src="images/thumbs/15.webp" alt="Logo and Brand Identity Design for Computer Service Centre"></a>
+									<img src="images/thumbs/15.webp" alt="SUGAR Computer Services">
 								</article>
 
 								<!-- Item 16: KAGURA Logistics -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="KAGURA Logistics"
+									data-category="Branding & Logo"
+									data-concept="Dynamic freight and transport logo incorporating arrow motifs for fast delivery and global supply chain reliability."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/16.webp">
 									<span class="category-badge">Branding</span>
 									<h2>KAGURA Logistics</h2>
-									<a href="images/fulls/16.webp" class="image" title="Logo and Brand Identity Design for Logistics Company"><img src="images/thumbs/16.webp" alt="Logo and Brand Identity Design for Logistics Company"></a>
+									<img src="images/thumbs/16.webp" alt="KAGURA Logistics">
 								</article>
 
 								<!-- Item 17: PYI HEIN KYAW Artist Poster -->
-								<article class="item thumb poster">
+								<article class="item thumb poster"
+									data-title="PYI HEIN KYAW Artist Poster"
+									data-category="Poster Design"
+									data-concept="High-contrast promotional concert poster capturing stage energy and dramatic typographic layout."
+									data-tools="Adobe Photoshop, Illustrator"
+									data-image="images/fulls/17.webp">
 									<span class="category-badge">Poster</span>
 									<h2>PYI HEIN KYAW Artist Poster</h2>
-									<a href="images/fulls/17.webp" class="image" title="Poster Design for Local Artist"><img src="images/thumbs/17.webp" alt="Poster Design for Local Artist"></a>
+									<img src="images/thumbs/17.webp" alt="PYI HEIN KYAW Artist Poster">
 								</article>
 
 								<!-- Item 18: TAUNGGYI Seeds -->
-								<article class="item thumb packaging">
+								<article class="item thumb packaging"
+									data-title="TAUNGGYI Seeds"
+									data-category="Packaging Design"
+									data-concept="Agri-product packaging design utilizing clear color coding and organic visual elements for local farmers."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/18.webp">
 									<span class="category-badge">Packaging</span>
 									<h2>TAUNGGYI Seeds</h2>
-									<a href="images/fulls/18.webp" class="image" title="Packaging Design for Agriculture Product"><img src="images/thumbs/18.webp" alt="Packaging Design for Agriculture Product"></a>
+									<img src="images/thumbs/18.webp" alt="TAUNGGYI Seeds">
 								</article>
 
 								<!-- Item 19: VERSE VISION VOYAGE Channel -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="VERSE VISION VOYAGE Channel"
+									data-category="Branding & Logo"
+									data-concept="Digital media agency visual identity designed for content creators and social video production."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/19.webp">
 									<span class="category-badge">Branding</span>
 									<h2>VERSE VISION VOYAGE Channel</h2>
-									<a href="images/fulls/19.webp" class="image" title="Logo and Brand Identity Design for Social Media Service Company"><img src="images/thumbs/19.webp" alt="Logo and Brand Identity Design for Social Media Service Company"></a>
+									<img src="images/thumbs/19.webp" alt="VERSE VISION VOYAGE Channel">
 								</article>
 
 								<!-- Item 20: GOLDEN PIG Sausages -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="GOLDEN PIG Sausages"
+									data-category="Branding & Logo"
+									data-concept="Classic culinary food mark designed for fresh meat stock and premium sausage products."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/20.webp">
 									<span class="category-badge">Branding</span>
 									<h2>GOLDEN PIG Sausages</h2>
-									<a href="images/fulls/20.webp" class="image" title="Logo and Brand Identity Design for Meat Stock Company"><img src="images/thumbs/20.webp" alt="Logo and Brand Identity Design for Meat Stock Company"></a>
+									<img src="images/thumbs/20.webp" alt="GOLDEN PIG Sausages">
 								</article>
 
 								<!-- Item 21: TAUNG ZALAT Instant Coffee -->
-								<article class="item thumb packaging">
+								<article class="item thumb packaging"
+									data-title="TAUNG ZALAT Instant Coffee"
+									data-category="Packaging Design"
+									data-concept="Commercial instant coffee pouch design highlighting mountain coffee origins and rich instant aroma."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/21.webp">
 									<span class="category-badge">Packaging</span>
 									<h2>TAUNG ZALAT Instant Coffee</h2>
-									<a href="images/fulls/21.webp" class="image" title="Product Packaging Design For Arabica Coffee"><img src="images/thumbs/21.webp" alt="Product Packaging Design For Arabica Coffee"></a>
+									<img src="images/thumbs/21.webp" alt="TAUNG ZALAT Instant Coffee">
 								</article>
 
 								<!-- Item 22: JOHN Beef Steaks -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="JOHN Beef Steaks"
+									data-category="Branding & Logo"
+									data-concept="Bold grill house branding using vintage woodcut aesthetic and deep crimson red accents."
+									data-tools="Adobe Illustrator"
+									data-image="images/fulls/22.webp">
 									<span class="category-badge">Branding</span>
 									<h2>JOHN Beef Steaks</h2>
-									<a href="images/fulls/22.webp" class="image" title="Logo and Brand Identity Design for Local Steak House"><img src="images/thumbs/22.webp" alt="Logo and Brand Identity Design for Local Steak House"></a>
+									<img src="images/thumbs/22.webp" alt="JOHN Beef Steaks">
 								</article>
 
 								<!-- Item 23: LUMIÈRE Skincare -->
-								<article class="item thumb marketing">
+								<article class="item thumb marketing"
+									data-title="LUMIÈRE Skincare"
+									data-category="Marketing & Social Media"
+									data-concept="Luxury social media campaign and minimal brand collateral designed for a high-end beauty skincare line."
+									data-tools="Adobe Photoshop, Figma"
+									data-image="images/fulls/23.webp">
 									<span class="category-badge">Marketing</span>
 									<h2>LUMIÈRE Skincare</h2>
-									<a href="images/fulls/23.webp" class="image" title="LUMIÈRE Skincare — Premium Social Media Marketing Campaign and Brand Identity Design"><img src="images/thumbs/23.webp" alt="LUMIÈRE Skincare — Premium Social Media Marketing Campaign and Brand Identity Design"></a>
+									<img src="images/thumbs/23.webp" alt="LUMIÈRE Skincare">
 								</article>
 
 								<!-- Item 24: Galaxy Born Esports -->
-								<article class="item thumb marketing">
+								<article class="item thumb marketing"
+									data-title="Galaxy Born Esports"
+									data-category="Marketing & Print"
+									data-concept="Aggressive PUBG Mobile esports roster reveal graphic set featuring metallic textures and team identity redesign."
+									data-tools="Adobe Photoshop, Illustrator"
+									data-image="images/fulls/24.webp">
 									<span class="category-badge">Marketing</span>
 									<h2>Galaxy Born Esports</h2>
-									<a href="images/fulls/24.webp" class="image" title="Galaxy Born — S.E.A. PUBG Mobile Tournament Roster Reveal & Brand Identity Redesign"><img src="images/thumbs/24.webp" alt="Galaxy Born — S.E.A. PUBG Mobile Tournament Roster Reveal & Brand Identity Redesign"></a>
+									<img src="images/thumbs/24.webp" alt="Galaxy Born Esports">
 								</article>
 
 								<!-- Item 25: BLOOM Cafe & Bistro -->
-								<article class="item thumb marketing">
+								<article class="item thumb marketing"
+									data-title="BLOOM Cafe & Bistro"
+									data-category="Print & Menu Design"
+									data-concept="Elegant print menu card design featuring botanical illustrations and refined typography for fine bistro dining."
+									data-tools="Adobe InDesign, Illustrator"
+									data-image="images/fulls/25.webp">
 									<span class="category-badge">Print & Menu</span>
 									<h2>BLOOM Cafe & Bistro</h2>
-									<a href="images/fulls/25.webp" class="image" title="BLOOM Cafe & Bistro — Premium Food & Beverage Printing Menu Card Design"><img src="images/thumbs/25.webp" alt="BLOOM Cafe & Bistro — Premium Food & Beverage Printing Menu Card Design"></a>
+									<img src="images/thumbs/25.webp" alt="BLOOM Cafe & Bistro">
 								</article>
 
 								<!-- Item 26: Nyein Chan Hotel -->
-								<article class="item thumb branding">
+								<article class="item thumb branding"
+									data-title="Nyein Chan Hotel"
+									data-category="Branding & Stationery"
+									data-concept="Luxury hospitality brand refresh complete with corporate stationery kit, guest amenities, and minimal hotel logo."
+									data-tools="Adobe Illustrator, Photoshop"
+									data-image="images/fulls/26.webp">
 									<span class="category-badge">Branding</span>
 									<h2>Nyein Chan Hotel</h2>
-									<a href="images/fulls/26.webp" class="image" title="Nyein Chan Hotel — Luxury Hospitality Branding & Corporate Stationery Kit Redesign"><img src="images/thumbs/26.webp" alt="Nyein Chan Hotel — Luxury Hospitality Branding & Corporate Stationery Kit Redesign"></a>
+									<img src="images/thumbs/26.webp" alt="Nyein Chan Hotel">
 								</article>
 
 								<!-- Item 27: Crimson Profile -->
-								<article class="item thumb digital-art">
+								<article class="item thumb digital-art"
+									data-title="Crimson Profile"
+									data-category="Digital Art & Illustration"
+									data-concept="Fine art side-profile digital portrait study focusing on dramatic crimson color palettes and soft ambient shadows."
+									data-tools="Procreate, Photoshop"
+									data-image="images/fulls/27.webp">
 									<span class="category-badge">Digital Art</span>
 									<h2>Crimson Profile</h2>
-									<a href="images/fulls/27.webp" class="image" title="Crimson Profile — Digital Portrait Illustration & Side Profile Fine Art Study"><img src="images/thumbs/27.webp" alt="Crimson Profile — Digital Portrait Illustration & Side Profile Fine Art Study"></a>
+									<img src="images/thumbs/27.webp" alt="Crimson Profile">
 								</article>
 
 								<!-- Item 28: Golden Hour -->
-								<article class="item thumb digital-art">
+								<article class="item thumb digital-art"
+									data-title="Golden Hour"
+									data-category="Digital Art & Illustration"
+									data-concept="Digital portrait painting exploring backlit rim lighting and warm sunset atmosphere."
+									data-tools="Procreate, Photoshop"
+									data-image="images/fulls/28.webp">
 									<span class="category-badge">Digital Art</span>
 									<h2>Golden Hour</h2>
-									<a href="images/fulls/28.webp" class="image" title="Golden Hour — Digital Portrait Painting featuring Backlit Rim Lighting Effect"><img src="images/thumbs/28.webp" alt="Golden Hour — Digital Portrait Painting featuring Backlit Rim Lighting Effect"></a>
+									<img src="images/thumbs/28.webp" alt="Golden Hour">
 								</article>
 
 								<!-- Item 29: Cosmic Ballerina -->
-								<article class="item thumb digital-art">
+								<article class="item thumb digital-art"
+									data-title="Cosmic Ballerina"
+									data-category="Digital Art & Illustration"
+									data-concept="Surreal character illustration depicting dynamic fluid movement amidst nebula starscapes."
+									data-tools="Procreate, Photoshop"
+									data-image="images/fulls/29.webp">
 									<span class="category-badge">Digital Art</span>
 									<h2>Cosmic Ballerina</h2>
-									<a href="images/fulls/29.webp" class="image" title="Cosmic Ballerina — Surreal Digital Fine Art & Dynamic Character Illustration"><img src="images/thumbs/29.webp" alt="Cosmic Ballerina — Surreal Digital Fine Art & Dynamic Character Illustration"></a>
+									<img src="images/thumbs/29.webp" alt="Cosmic Ballerina">
 								</article>
 
 								<!-- Item 30: Nebula Reverie -->
-								<article class="item thumb digital-art">
+								<article class="item thumb digital-art"
+									data-title="Nebula Reverie"
+									data-category="Digital Art & Illustration"
+									data-concept="Retro pop surrealism painting combining psychedelic imagery with digital fine art brushwork."
+									data-tools="Procreate, Photoshop"
+									data-image="images/fulls/30.webp">
 									<span class="category-badge">Digital Art</span>
 									<h2>Nebula Reverie</h2>
-									<a href="images/fulls/30.webp" class="image" title="Nebula Reverie — Retro Pop Surrealism & Psychedelic Digital Art Painting"><img src="images/thumbs/30.webp" alt="Nebula Reverie — Retro Pop Surrealism & Psychedelic Digital Art Painting"></a>
+									<img src="images/thumbs/30.webp" alt="Nebula Reverie">
 								</article>
 
 						</div>
@@ -514,17 +800,39 @@
 
 		</div>
 
+		<!-- Interactive Project Details Modal -->
+		<div id="projectModal" class="project-modal">
+			<div class="modal-content">
+				<button class="modal-close" id="modalClose">&times;</button>
+				<div class="modal-image-container">
+					<img id="modalImg" src="" alt="Project Image">
+				</div>
+				<div class="modal-details">
+					<div id="modalCategory" class="modal-category">CATEGORY</div>
+					<h2 id="modalTitle" class="modal-title">Project Title</h2>
+					
+					<div class="modal-section-title">Concept & Story</div>
+					<p id="modalConcept" class="modal-description">Project concept description goes here...</p>
+
+					<div class="modal-section-title">Software & Tools</div>
+					<div id="modalTools" class="tools-list">
+						<!-- Dynamic Tool Badges -->
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.poptrox.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
 
-		<!-- Category Filter Script -->
+		<!-- Category Filter & Modal JavaScript -->
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
+				// Category Filtering
 				const filterButtons = document.querySelectorAll('.filter-btn');
 				const items = document.querySelectorAll('.items .item.thumb');
 
@@ -543,6 +851,54 @@
 							}
 						});
 					});
+				});
+
+				// Interactive Modal Pop-up
+				const modal = document.getElementById('projectModal');
+				const modalImg = document.getElementById('modalImg');
+				const modalCategory = document.getElementById('modalCategory');
+				const modalTitle = document.getElementById('modalTitle');
+				const modalConcept = document.getElementById('modalConcept');
+				const modalTools = document.getElementById('modalTools');
+				const modalClose = document.getElementById('modalClose');
+
+				items.forEach(item => {
+					item.addEventListener('click', function(e) {
+						e.preventDefault();
+
+						const title = this.getAttribute('data-title') || 'Project Details';
+						const category = this.getAttribute('data-category') || 'Design';
+						const concept = this.getAttribute('data-concept') || 'No concept description provided.';
+						const tools = (this.getAttribute('data-tools') || 'Adobe Illustrator').split(',');
+						const imageSrc = this.getAttribute('data-image') || 'images/fulls/01.webp';
+
+						modalImg.src = imageSrc;
+						modalCategory.textContent = category;
+						modalTitle.textContent = title;
+						modalConcept.textContent = concept;
+
+						// Clear & render tools
+						modalTools.innerHTML = '';
+						tools.forEach(tool => {
+							const badge = document.createElement('span');
+							badge.className = 'tool-badge';
+							badge.textContent = tool.trim();
+							modalTools.appendChild(badge);
+						});
+
+						modal.classList.add('active');
+					});
+				});
+
+				// Close modal actions
+				modalClose.addEventListener('click', () => modal.classList.remove('active'));
+				modal.addEventListener('click', (e) => {
+					if (e.target === modal) modal.classList.remove('active');
+				});
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape' && modal.classList.contains('active')) {
+						modal.classList.remove('active');
+					}
 				});
 			});
 		</script>
