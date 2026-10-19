@@ -47,7 +47,7 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
 		<style>
-			/* Vertical Grid & Glassmorphism Theme Overrides */
+			/* Glassmorphism & UI Overrides */
 			:root {
 				--bg-dark: #0c0d10;
 				--card-bg: rgba(255, 255, 255, 0.04);
@@ -55,6 +55,7 @@
 				--text-main: #ffffff;
 				--text-sub: #a0a5b5;
 				--accent: #6366f1;
+				--accent-hover: #4f46e5;
 			}
 
 			body {
@@ -164,6 +165,32 @@
 				object-fit: cover;
 			}
 
+			/* Resume Download Button */
+			.resume-btn-container {
+				margin-top: 18px;
+			}
+
+			.btn-resume {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+				color: #ffffff !important;
+				border: none;
+				padding: 10px 24px;
+				border-radius: 30px;
+				font-size: 0.9rem;
+				font-weight: 600;
+				text-decoration: none !important;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+			}
+
+			.btn-resume:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 22px rgba(99, 102, 241, 0.5);
+			}
+
 			/* Grid Item Cards */
 			.item.thumb {
 				position: relative !important;
@@ -195,7 +222,6 @@
 				transform: scale(1.06);
 			}
 
-			/* Category Badges */
 			.category-badge {
 				position: absolute;
 				top: 12px;
@@ -217,6 +243,152 @@
 
 			.item.category-hidden {
 				display: none !important;
+			}
+
+			/* Services & Hire Me Section */
+			.hire-section {
+				width: 100%;
+				max-width: 1000px;
+				margin: 50px auto 20px auto;
+				padding: 40px 30px;
+				background: rgba(255, 255, 255, 0.03);
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				border-radius: 20px;
+				backdrop-filter: blur(12px);
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+			}
+
+			.hire-header {
+				text-align: center;
+				margin-bottom: 30px;
+			}
+
+			.hire-header h2 {
+				color: #ffffff;
+				font-size: 1.8rem;
+				font-weight: 700;
+				margin-bottom: 8px;
+			}
+
+			.hire-header p {
+				color: var(--text-sub);
+				font-size: 0.95rem;
+			}
+
+			.services-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 16px;
+				margin-bottom: 30px;
+			}
+
+			.service-card {
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 14px;
+				padding: 20px 16px;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.service-card:hover {
+				background: rgba(255, 255, 255, 0.08);
+				border-color: var(--accent);
+				transform: translateY(-3px);
+			}
+
+			.service-icon {
+				font-size: 1.8rem;
+				margin-bottom: 10px;
+				display: block;
+			}
+
+			.service-card h3 {
+				color: #ffffff;
+				font-size: 1rem;
+				margin-bottom: 6px;
+			}
+
+			.service-card p {
+				color: var(--text-sub);
+				font-size: 0.82rem;
+				line-height: 1.4;
+			}
+
+			/* Hire Me Form */
+			.hire-form {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 18px;
+			}
+
+			.form-group {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+
+			.form-group.full-width {
+				grid-column: 1 / -1;
+			}
+
+			.form-group label {
+				color: #e2e8f0;
+				font-size: 0.85rem;
+				font-weight: 500;
+			}
+
+			.form-control {
+				background: rgba(0, 0, 0, 0.4);
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				border-radius: 10px;
+				padding: 12px 16px;
+				color: #ffffff;
+				font-size: 0.9rem;
+				outline: none;
+				transition: border-color 0.3s ease;
+			}
+
+			.form-control:focus {
+				border-color: var(--accent);
+				box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+			}
+
+			textarea.form-control {
+				resize: vertical;
+				min-height: 110px;
+			}
+
+			.btn-submit {
+				grid-column: 1 / -1;
+				background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+				color: #ffffff;
+				border: none;
+				padding: 14px 28px;
+				border-radius: 30px;
+				font-size: 0.95rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 18px rgba(99, 102, 241, 0.4);
+				margin-top: 10px;
+			}
+
+			.btn-submit:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 24px rgba(99, 102, 241, 0.6);
+			}
+
+			.form-success-msg {
+				display: none;
+				grid-column: 1 / -1;
+				background: rgba(34, 197, 94, 0.15);
+				border: 1px solid rgba(34, 197, 94, 0.4);
+				color: #4ade80;
+				padding: 14px;
+				border-radius: 10px;
+				text-align: center;
+				font-size: 0.9rem;
 			}
 
 			/* Modal / Pop-up Styling */
@@ -361,6 +533,9 @@
 			}
 
 			@media screen and (max-width: 768px) {
+				.hire-form {
+					grid-template-columns: 1fr;
+				}
 				.modal-content {
 					grid-template-columns: 1fr;
 				}
@@ -397,7 +572,7 @@
 
 						<div class="items">
 
-								<!-- Intro Item -->
+								<!-- Intro Item with CV Download -->
 								<article class="item intro">
 									<div class="profile-container">
 										<img src="images/designer-photo.webp" alt="Thet Htet Myat Noe" class="profile-img">
@@ -405,6 +580,12 @@
 									
 									<h1>Thet Htet Myat Noe</h1>
 									<p>Graphic Designer / Digital Artist</p>
+
+									<div class="resume-btn-container">
+										<a href="Thet_Htet_Myat_Noe_Resume.pdf" class="btn-resume" download target="_blank">
+											📄 Download CV / Resume
+										</a>
+									</div>
 								</article>
 
 								<!-- Item 01: MYA YADANAR Cooking Oil -->
@@ -771,6 +952,77 @@
 
 					</section>
 
+				<!-- Services & Hire Me Form Section -->
+				<section class="hire-section">
+					<div class="hire-header">
+						<h2>Services & Project Inquiries</h2>
+						<p>Have a project in mind? Let’s collaborate and bring your brand vision to life with strategic design.</p>
+					</div>
+
+					<div class="services-grid">
+						<div class="service-card">
+							<span class="service-icon">🎨</span>
+							<h3>Brand Identity</h3>
+							<p>Logo systems, brand guidelines, stationery, and visual strategy.</p>
+						</div>
+						<div class="service-card">
+							<span class="service-icon">📦</span>
+							<h3>Packaging Design</h3>
+							<p>Commercial pouch, bottle labels, boxes, and shelf-ready products.</p>
+						</div>
+						<div class="service-card">
+							<span class="service-icon">📱</span>
+							<h3>Marketing & Print</h3>
+							<p>Social media campaigns, print menus, rosters, and posters.</p>
+						</div>
+						<div class="service-card">
+							<span class="service-icon">🖌️</span>
+							<h3>Digital Fine Art</h3>
+							<p>Custom portraiture, character illustration, and album artwork.</p>
+						</div>
+					</div>
+
+					<form class="hire-form" id="hireForm" action="https://formspree.io/f/thethtetmyatnoe2026@gmail.com" method="POST">
+						<div class="form-group">
+							<label for="clientName">Your Name *</label>
+							<input type="text" id="clientName" name="name" class="form-control" placeholder="John Doe" required>
+						</div>
+
+						<div class="form-group">
+							<label for="clientEmail">Your Email *</label>
+							<input type="email" id="clientEmail" name="email" class="form-control" placeholder="name@example.com" required>
+						</div>
+
+						<div class="form-group">
+							<label for="serviceType">Service Required *</label>
+							<select id="serviceType" name="service" class="form-control" required>
+								<option value="" disabled selected>Select a service...</option>
+								<option value="Brand Identity & Logo">Brand Identity & Logo Design</option>
+								<option value="Packaging Design">Product Packaging Design</option>
+								<option value="Marketing & Print">Marketing & Print Graphics</option>
+								<option value="Digital Illustration">Digital Art & Album Cover</option>
+								<option value="Other Design Work">Other Custom Design</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="projectBudget">Estimated Budget / Timeline</label>
+							<input type="text" id="projectBudget" name="budget" class="form-control" placeholder="e.g. $300-$500 / 2 Weeks">
+						</div>
+
+						<div class="form-group full-width">
+							<label for="projectDetails">Project Details & Requirements *</label>
+							<textarea id="projectDetails" name="message" class="form-control" placeholder="Briefly describe your brand, objectives, and specific deliverables needed..." required></textarea>
+						</div>
+
+						<div id="formSuccessMsg" class="form-success-msg">
+							✨ Thank you! Your project inquiry has been sent successfully. I will get back to you within 24 hours.
+						</div>
+
+						<button type="submit" class="btn-submit">🚀 Send Project Inquiry / Hire Me</button>
+					</form>
+				</section>
+
 				<!-- Footer Section -->
 				<section id="footer">
 						<section>
@@ -829,7 +1081,7 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 
-		<!-- Category Filter & Modal JavaScript -->
+		<!-- Category Filter, Modal & Form JavaScript -->
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
 				// Category Filtering
@@ -877,7 +1129,6 @@
 						modalTitle.textContent = title;
 						modalConcept.textContent = concept;
 
-						// Clear & render tools
 						modalTools.innerHTML = '';
 						tools.forEach(tool => {
 							const badge = document.createElement('span');
@@ -899,6 +1150,18 @@
 					if (e.key === 'Escape' && modal.classList.contains('active')) {
 						modal.classList.remove('active');
 					}
+				});
+
+				// Form Submission Handling
+				const hireForm = document.getElementById('hireForm');
+				const formSuccessMsg = document.getElementById('formSuccessMsg');
+
+				hireForm.addEventListener('submit', function(e) {
+					// Local visual feedback
+					setTimeout(() => {
+						formSuccessMsg.style.display = 'block';
+						hireForm.reset();
+					}, 300);
 				});
 			});
 		</script>
