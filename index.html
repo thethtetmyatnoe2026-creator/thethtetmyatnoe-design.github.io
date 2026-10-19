@@ -45,8 +45,9 @@
 		<!-- Stylesheets -->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
 		<style>
-			/* Glassmorphism & UI Upgrades */
+			/* Vertical Grid Layout Overrides */
 			:root {
 				--bg-dark: #0c0d10;
 				--card-bg: rgba(255, 255, 255, 0.04);
@@ -58,36 +59,44 @@
 			body {
 				background-color: var(--bg-dark) !important;
 				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+				overflow-x: hidden;
 			}
 
-			/* Category Filter Bar Styling */
+			#wrapper {
+				display: flex !important;
+				flex-direction: column !important;
+				width: 100% !important;
+				height: auto !important;
+				min-height: 100vh;
+			}
+
+			/* Sticky Filter Bar */
 			.filter-bar {
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: center;
-				gap: 12px;
-				padding: 20px 24px;
-				background: rgba(12, 13, 16, 0.85);
+				gap: 10px;
+				padding: 16px 20px;
+				background: rgba(12, 13, 16, 0.88);
 				backdrop-filter: blur(16px);
 				-webkit-backdrop-filter: blur(16px);
 				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 				position: sticky;
 				top: 0;
 				z-index: 1000;
-				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 			}
 
 			.filter-btn {
 				background: rgba(255, 255, 255, 0.05);
 				color: var(--text-sub);
 				border: 1px solid rgba(255, 255, 255, 0.12);
-				padding: 9px 20px;
+				padding: 8px 18px;
 				border-radius: 30px;
 				font-size: 0.85rem;
 				font-weight: 500;
-				letter-spacing: 0.5px;
 				cursor: pointer;
-				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				transition: all 0.3s ease;
 				outline: none;
 			}
 
@@ -95,7 +104,6 @@
 				background: rgba(255, 255, 255, 0.15);
 				color: #ffffff;
 				border-color: rgba(255, 255, 255, 0.3);
-				transform: translateY(-2px);
 			}
 
 			.filter-btn.active {
@@ -103,47 +111,135 @@
 				color: #0c0d10;
 				border-color: #ffffff;
 				font-weight: 700;
-				box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
+				box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2);
 			}
 
-			/* Card Upgrades & Category Badges */
-			.item.thumb {
-				position: relative;
-				border-radius: 12px;
+			/* Main Vertical Container Overrides */
+			#main {
+				width: 100% !important;
+				max-width: 1400px;
+				margin: 0 auto !important;
+				padding: 30px 20px !important;
+				height: auto !important;
+				overflow: visible !important;
+			}
+
+			.items {
+				display: grid !important;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+				gap: 22px !important;
+				width: 100% !important;
+				height: auto !important;
+				overflow: visible !important;
+				padding: 0 !important;
+			}
+
+			/* Intro Header Card */
+			.item.intro {
+				grid-column: 1 / -1 !important;
+				width: 100% !important;
+				height: auto !important;
+				padding: 40px 20px !important;
+				text-align: center !important;
+				background: var(--card-bg) !important;
+				border: 1px solid var(--card-border) !important;
+				border-radius: 16px !important;
+				margin-bottom: 10px !important;
+			}
+
+			.profile-container {
+				margin: 0 auto 15px auto;
+				width: 110px;
+				height: 110px;
+				border-radius: 50%;
 				overflow: hidden;
-				transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-				background: var(--card-bg);
-				border: 1px solid var(--card-border);
+				border: 3px solid rgba(255, 255, 255, 0.2);
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+			}
+
+			.profile-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			/* Grid Item Cards */
+			.item.thumb {
+				position: relative !important;
+				width: 100% !important;
+				height: 280px !important;
+				margin: 0 !important;
+				border-radius: 14px !important;
+				overflow: hidden !important;
+				background: var(--card-bg) !important;
+				border: 1px solid var(--card-border) !important;
+				transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 			}
 
 			.item.thumb:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.1);
-				border-color: rgba(255, 255, 255, 0.2);
+				transform: translateY(-5px) !important;
+				box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6) !important;
+				border-color: rgba(255, 255, 255, 0.25) !important;
 			}
 
+			.item.thumb a.image {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+
+			.item.thumb a.image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.5s ease;
+			}
+
+			.item.thumb:hover a.image img {
+				transform: scale(1.06);
+			}
+
+			/* Category Badges */
 			.category-badge {
 				position: absolute;
-				top: 14px;
-				left: 14px;
-				background: rgba(12, 13, 16, 0.75);
+				top: 12px;
+				left: 12px;
+				background: rgba(12, 13, 16, 0.8);
 				backdrop-filter: blur(8px);
 				-webkit-backdrop-filter: blur(8px);
 				color: #e2e8f0;
-				font-size: 0.7rem;
+				font-size: 0.68rem;
 				font-weight: 600;
 				text-transform: uppercase;
 				letter-spacing: 0.8px;
-				padding: 4px 12px;
+				padding: 4px 10px;
 				border-radius: 20px;
 				border: 1px solid rgba(255, 255, 255, 0.15);
 				z-index: 10;
 				pointer-events: none;
-				box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 			}
 
 			.item.category-hidden {
 				display: none !important;
+			}
+
+			/* Footer Layout */
+			#footer {
+				width: 100% !important;
+				max-width: 1400px;
+				margin: 40px auto 0 auto !important;
+				padding: 40px 20px !important;
+				border-top: 1px solid rgba(255, 255, 255, 0.08);
+			}
+
+			@media screen and (max-width: 736px) {
+				.items {
+					grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+					gap: 16px !important;
+				}
+				.item.thumb {
+					height: 240px !important;
+				}
 			}
 		</style>
 	</head>
@@ -176,210 +272,210 @@
 								</article>
 
 								<!-- Item 01: MYA YADANAR Cooking Oil -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>MYA YADANAR Cooking Oil</h2>
 									<a href="images/fulls/01.webp" class="image" title="Logo and Brand Identity Design for Cooking Oil Company"><img src="images/thumbs/01.webp" alt="Logo and Brand Identity Design for Cooking Oil Company"></a>
 								</article>
 
 								<!-- Item 02: PRO Liquor Store -->
-								<article class="item thumb span-2 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>PRO Liquor Store</h2>
 									<a href="images/fulls/02.webp" class="image" title="Logo and Brand Identity Design for Liquor Store"><img src="images/thumbs/02.webp" alt="Logo and Brand Identity Design for Liquor Store"></a>
 								</article>
 
 								<!-- Item 03: KTT Constructions -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>KTT Constructions</h2>
 									<a href="images/fulls/03.webp" class="image" title="Logo and Brand Identity Design for Construction Company"><img src="images/thumbs/03.webp" alt="Logo and Brand Identity Design for Construction Company"></a>
 								</article>
 
 								<!-- Item 04: SPY Noodle Shop -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>SPY Noodle Shop</h2>
 									<a href="images/fulls/04.webp" class="image" title="Logo and Brand Identity Design for Raman Restaurant"><img src="images/thumbs/04.webp" alt="Logo and Brand Identity Design for Raman Restaurant"></a>
 								</article>
 
 								<!-- Item 05: ARROW Mobile -->
-								<article class="item thumb span-3 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>ARROW Mobile</h2>
 									<a href="images/fulls/05.webp" class="image" title="Logo and Brand Identity Design for Mobile Phone Shop"><img src="images/thumbs/05.webp" alt="Logo and Brand Identity Design for Mobile Phone Shop"></a>
 								</article>
 
 								<!-- Item 06: EAZY BITES Snacks -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>EAZY BITES Snacks</h2>
 									<a href="images/fulls/06.webp" class="image" title="Logo and Brand Identity Design for Snack Factory"><img src="images/thumbs/06.webp" alt="Logo and Brand Identity Design for Snack Factory"></a>
 								</article>
 
 								<!-- Item 07: OUN PHA Arabica Coffee -->
-								<article class="item thumb span-2 packaging">
+								<article class="item thumb packaging">
 									<span class="category-badge">Packaging</span>
 									<h2>OUN PHA Arabica Coffee</h2>
 									<a href="images/fulls/07.webp" class="image" title="Product Packaging Design For Arabica Coffee"><img src="images/thumbs/07.webp" alt="Product Packaging Design For Arabica Coffee"></a>
 								</article>
 
 								<!-- Item 08: FRIENDSHIP Food & Drink -->
-								<article class="item thumb span-2 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>FRIENDSHIP Food & Drink</h2>
 									<a href="images/fulls/08.webp" class="image" title="Logo and Brand Identity Design for Restaurant"><img src="images/thumbs/08.webp" alt="Logo and Brand Identity Design for Restaurant"></a>
 								</article>
 
 								<!-- Item 09: DJ AND -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>DJ AND</h2>
 									<a href="images/fulls/09.webp" class="image" title="Producer Tag Logo for Record Label"><img src="images/thumbs/09.webp" alt="Producer Tag Logo for Record Label"></a>
 								</article>
 
 								<!-- Item 10: MERijAAN Production -->
-								<article class="item thumb span-2 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>MERijAAN Production</h2>
 									<a href="images/fulls/10.webp" class="image" title="Logo and Brand Identity Design for Film Production"><img src="images/thumbs/10.webp" alt="Logo and Brand Identity Design for Film Production"></a>
 								</article>
 
 								<!-- Item 11: Young Translator Group -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>Young Translator Group</h2>
 									<a href="images/fulls/11.webp" class="image" title="Logo and Brand Identity Design for Online Service Team"><img src="images/thumbs/11.webp" alt="Logo and Brand Identity Design for Online Service Team"></a>
 								</article>
 
 								<!-- Item 12: BIBU Shan Foods -->
-								<article class="item thumb span-2 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>BIBU Shan Foods</h2>
 									<a href="images/fulls/12.webp" class="image" title="Logo and Brand Identity Design for Local Foods Product"><img src="images/thumbs/12.webp" alt="Logo and Brand Identity Design for Local Foods Product"></a>
 								</article>
 
 								<!-- Item 13: MAGIC Home Made Chocolates -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>MAGIC Home Made Chocolates</h2>
 									<a href="images/fulls/13.webp" class="image" title="Logo and Brand Identity Design for Local Chocolate Brand"><img src="images/thumbs/13.webp" alt="Logo and Brand Identity Design for Local Chocolate Brand"></a>
 								</article>
 
 								<!-- Item 14: PHOE HEIN Album Art -->
-								<article class="item thumb span-2 poster">
+								<article class="item thumb poster">
 									<span class="category-badge">Album Art</span>
 									<h2>PHOE HEIN Album Art</h2>
 									<a href="images/fulls/14.webp" class="image" title="Album Cover Art Design for Local Artist"><img src="images/thumbs/14.webp" alt="Album Cover Art Design for Local Artist"></a>
 								</article>
 
 								<!-- Item 15: SUGAR Computer Services -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>SUGAR Computer Services</h2>
 									<a href="images/fulls/15.webp" class="image" title="Logo and Brand Identity Design for Computer Service Centre"><img src="images/thumbs/15.webp" alt="Logo and Brand Identity Design for Computer Service Centre"></a>
 								</article>
 
 								<!-- Item 16: KAGURA Logistics -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>KAGURA Logistics</h2>
 									<a href="images/fulls/16.webp" class="image" title="Logo and Brand Identity Design for Logistics Company"><img src="images/thumbs/16.webp" alt="Logo and Brand Identity Design for Logistics Company"></a>
 								</article>
 
 								<!-- Item 17: PYI HEIN KYAW Artist Poster -->
-								<article class="item thumb span-2 poster">
+								<article class="item thumb poster">
 									<span class="category-badge">Poster</span>
 									<h2>PYI HEIN KYAW Artist Poster</h2>
 									<a href="images/fulls/17.webp" class="image" title="Poster Design for Local Artist"><img src="images/thumbs/17.webp" alt="Poster Design for Local Artist"></a>
 								</article>
 
 								<!-- Item 18: TAUNGGYI Seeds -->
-								<article class="item thumb span-1 packaging">
+								<article class="item thumb packaging">
 									<span class="category-badge">Packaging</span>
 									<h2>TAUNGGYI Seeds</h2>
 									<a href="images/fulls/18.webp" class="image" title="Packaging Design for Agriculture Product"><img src="images/thumbs/18.webp" alt="Packaging Design for Agriculture Product"></a>
 								</article>
 
 								<!-- Item 19: VERSE VISION VOYAGE Channel -->
-								<article class="item thumb span-2 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>VERSE VISION VOYAGE Channel</h2>
 									<a href="images/fulls/19.webp" class="image" title="Logo and Brand Identity Design for Social Media Service Company"><img src="images/thumbs/19.webp" alt="Logo and Brand Identity Design for Social Media Service Company"></a>
 								</article>
 
 								<!-- Item 20: GOLDEN PIG Sausages -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>GOLDEN PIG Sausages</h2>
 									<a href="images/fulls/20.webp" class="image" title="Logo and Brand Identity Design for Meat Stock Company"><img src="images/thumbs/20.webp" alt="Logo and Brand Identity Design for Meat Stock Company"></a>
 								</article>
 
 								<!-- Item 21: TAUNG ZALAT Instant Coffee -->
-								<article class="item thumb span-2 packaging">
+								<article class="item thumb packaging">
 									<span class="category-badge">Packaging</span>
 									<h2>TAUNG ZALAT Instant Coffee</h2>
 									<a href="images/fulls/21.webp" class="image" title="Product Packaging Design For Arabica Coffee"><img src="images/thumbs/21.webp" alt="Product Packaging Design For Arabica Coffee"></a>
 								</article>
 
 								<!-- Item 22: JOHN Beef Steaks -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>JOHN Beef Steaks</h2>
 									<a href="images/fulls/22.webp" class="image" title="Logo and Brand Identity Design for Local Steak House"><img src="images/thumbs/22.webp" alt="Logo and Brand Identity Design for Local Steak House"></a>
 								</article>
 
 								<!-- Item 23: LUMIÈRE Skincare -->
-								<article class="item thumb span-1 marketing">
+								<article class="item thumb marketing">
 									<span class="category-badge">Marketing</span>
 									<h2>LUMIÈRE Skincare</h2>
 									<a href="images/fulls/23.webp" class="image" title="LUMIÈRE Skincare — Premium Social Media Marketing Campaign and Brand Identity Design"><img src="images/thumbs/23.webp" alt="LUMIÈRE Skincare — Premium Social Media Marketing Campaign and Brand Identity Design"></a>
 								</article>
 
 								<!-- Item 24: Galaxy Born Esports -->
-								<article class="item thumb span-1 marketing">
+								<article class="item thumb marketing">
 									<span class="category-badge">Marketing</span>
 									<h2>Galaxy Born Esports</h2>
 									<a href="images/fulls/24.webp" class="image" title="Galaxy Born — S.E.A. PUBG Mobile Tournament Roster Reveal & Brand Identity Redesign"><img src="images/thumbs/24.webp" alt="Galaxy Born — S.E.A. PUBG Mobile Tournament Roster Reveal & Brand Identity Redesign"></a>
 								</article>
 
 								<!-- Item 25: BLOOM Cafe & Bistro -->
-								<article class="item thumb span-1 marketing">
+								<article class="item thumb marketing">
 									<span class="category-badge">Print & Menu</span>
 									<h2>BLOOM Cafe & Bistro</h2>
 									<a href="images/fulls/25.webp" class="image" title="BLOOM Cafe & Bistro — Premium Food & Beverage Printing Menu Card Design"><img src="images/thumbs/25.webp" alt="BLOOM Cafe & Bistro — Premium Food & Beverage Printing Menu Card Design"></a>
 								</article>
 
 								<!-- Item 26: Nyein Chan Hotel -->
-								<article class="item thumb span-1 branding">
+								<article class="item thumb branding">
 									<span class="category-badge">Branding</span>
 									<h2>Nyein Chan Hotel</h2>
 									<a href="images/fulls/26.webp" class="image" title="Nyein Chan Hotel — Luxury Hospitality Branding & Corporate Stationery Kit Redesign"><img src="images/thumbs/26.webp" alt="Nyein Chan Hotel — Luxury Hospitality Branding & Corporate Stationery Kit Redesign"></a>
 								</article>
 
 								<!-- Item 27: Crimson Profile -->
-								<article class="item thumb span-1 digital-art">
+								<article class="item thumb digital-art">
 									<span class="category-badge">Digital Art</span>
 									<h2>Crimson Profile</h2>
 									<a href="images/fulls/27.webp" class="image" title="Crimson Profile — Digital Portrait Illustration & Side Profile Fine Art Study"><img src="images/thumbs/27.webp" alt="Crimson Profile — Digital Portrait Illustration & Side Profile Fine Art Study"></a>
 								</article>
 
 								<!-- Item 28: Golden Hour -->
-								<article class="item thumb span-1 digital-art">
+								<article class="item thumb digital-art">
 									<span class="category-badge">Digital Art</span>
 									<h2>Golden Hour</h2>
 									<a href="images/fulls/28.webp" class="image" title="Golden Hour — Digital Portrait Painting featuring Backlit Rim Lighting Effect"><img src="images/thumbs/28.webp" alt="Golden Hour — Digital Portrait Painting featuring Backlit Rim Lighting Effect"></a>
 								</article>
 
 								<!-- Item 29: Cosmic Ballerina -->
-								<article class="item thumb span-1 digital-art">
+								<article class="item thumb digital-art">
 									<span class="category-badge">Digital Art</span>
 									<h2>Cosmic Ballerina</h2>
 									<a href="images/fulls/29.webp" class="image" title="Cosmic Ballerina — Surreal Digital Fine Art & Dynamic Character Illustration"><img src="images/thumbs/29.webp" alt="Cosmic Ballerina — Surreal Digital Fine Art & Dynamic Character Illustration"></a>
 								</article>
 
 								<!-- Item 30: Nebula Reverie -->
-								<article class="item thumb span-1 digital-art">
+								<article class="item thumb digital-art">
 									<span class="category-badge">Digital Art</span>
 									<h2>Nebula Reverie</h2>
 									<a href="images/fulls/30.webp" class="image" title="Nebula Reverie — Retro Pop Surrealism & Psychedelic Digital Art Painting"><img src="images/thumbs/30.webp" alt="Nebula Reverie — Retro Pop Surrealism & Psychedelic Digital Art Painting"></a>
