@@ -60,13 +60,28 @@
 				--accent-glow: rgba(16, 185, 129, 0.35);
 			}
 
+			/* Remove all background images, overlays, and patterns completely */
+			html, body, #wrapper, #main, #bg {
+				background-image: none !important;
+				background-color: var(--bg-nordic) !important;
+				background: var(--bg-nordic) !important;
+			}
+
+			body:before, body:after, #bg:before, #bg:after, #wrapper:before, #wrapper:after {
+				display: none !important;
+				background-image: none !important;
+			}
+
+			#bg {
+				display: none !important;
+			}
+
 			/* Force Page to Vertical Flow */
 			html, body {
 				overflow-x: hidden !important;
 				overflow-y: auto !important;
 				height: auto !important;
 				width: 100% !important;
-				background-color: var(--bg-nordic) !important;
 				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 				color: var(--text-main);
 			}
@@ -405,6 +420,31 @@
 				font-weight: 500;
 			}
 
+			.case-study-link-container {
+				margin-top: 18px;
+			}
+
+			.btn-case-study-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				background: rgba(16, 185, 129, 0.15);
+				border: 1px solid rgba(16, 185, 129, 0.4);
+				color: var(--accent-light) !important;
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 0.82rem;
+				font-weight: 600;
+				text-decoration: none !important;
+				transition: all 0.3s ease;
+			}
+
+			.btn-case-study-link:hover {
+				background: var(--accent-emerald);
+				color: #ffffff !important;
+				box-shadow: 0 4px 12px var(--accent-glow);
+			}
+
 			/* Services & Hire Me Section */
 			.hire-section {
 				width: 100%;
@@ -621,7 +661,8 @@
 									data-category="Branding & Logo"
 									data-concept="Designed a trustworthy visual identity for 'Mya Yadanar' edible cooking oil, featuring a chef-hatted female icon enclosed in a warm sunburst ring in green and yellow hues to symbolize purity, health, and household quality."
 									data-tools="Adobe Illustrator, Photoshop"
-									data-image="images/fulls/01.webp">
+									data-image="images/fulls/01.webp"
+									data-casestudy="case-study-mya-yadanar.html">
 									<span class="category-badge">Branding</span>
 									<h2>MYA YADANAR Cooking Oil</h2>
 									<img src="images/thumbs/01.webp" alt="MYA YADANAR Cooking Oil">
@@ -1097,6 +1138,12 @@
 					<div id="modalTools" class="tools-list">
 						<!-- Dynamic Tool Badges -->
 					</div>
+
+					<div id="modalCaseStudyContainer" class="case-study-link-container" style="display: none;">
+						<a id="modalCaseStudyLink" href="#" class="btn-case-study-link" target="_blank">
+							📖 Read Dedicated Case Study →
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -1133,6 +1180,8 @@
 				const modalConcept = document.getElementById('modalConcept');
 				const modalTools = document.getElementById('modalTools');
 				const modalClose = document.getElementById('modalClose');
+				const modalCaseStudyContainer = document.getElementById('modalCaseStudyContainer');
+				const modalCaseStudyLink = document.getElementById('modalCaseStudyLink');
 
 				items.forEach(item => {
 					item.addEventListener('click', function(e) {
@@ -1143,6 +1192,7 @@
 						const concept = this.getAttribute('data-concept') || 'No concept description provided.';
 						const tools = (this.getAttribute('data-tools') || 'Adobe Illustrator').split(',');
 						const imageSrc = this.getAttribute('data-image') || 'images/fulls/01.webp';
+						const caseStudyUrl = this.getAttribute('data-casestudy');
 
 						modalImg.src = imageSrc;
 						modalCategory.textContent = category;
@@ -1156,6 +1206,13 @@
 							badge.textContent = tool.trim();
 							modalTools.appendChild(badge);
 						});
+
+						if (caseStudyUrl) {
+							modalCaseStudyLink.href = caseStudyUrl;
+							modalCaseStudyContainer.style.display = 'block';
+						} else {
+							modalCaseStudyContainer.style.display = 'none';
+						}
 
 						modal.classList.add('active');
 					});
