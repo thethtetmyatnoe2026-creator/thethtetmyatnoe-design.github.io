@@ -29,4 +29,1362 @@
       --accent-rose: #F43F5E;      /* 03. Terracotta Rose — Digital Artistry & Energy */
 
       /* Borders & Glows */
-      --border-subtle: rgba(212, 175, 5
+      --border-subtle: rgba(212, 175, 55, 0.14);
+      --border-hover: rgba(212, 175, 55, 0.55);
+      --text-main: #F9FAFB;
+      --text-muted: #9CA3AF;
+
+      /* Multi-Accent Gradients */
+      --accent-gradient: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-emerald) 52%, var(--accent-rose) 100%);
+      --gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+
+      /* Typography */
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #FAF7F2;
+      --bg-secondary: #F1ECE1;
+      --bg-elevated: #FFFFFF;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --border-subtle: rgba(180, 138, 30, 0.2);
+      --border-hover: rgba(180, 138, 30, 0.65);
+      --text-main: #111318;
+      --text-muted: #4B5563;
+      --accent-gold: #B48A1E;
+      --accent-emerald: #059669;
+      --accent-rose: #E11D48;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* Tri-Accent Ambient Mesh Background */
+    .ambient-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(212, 175, 55, 0.09), transparent 38%),
+        radial-gradient(circle at 88% 22%, rgba(16, 185, 129, 0.07), transparent 40%),
+        radial-gradient(circle at 52% 85%, rgba(244, 63, 94, 0.07), transparent 45%);
+    }
+
+    /* Interactive Magnetic Cursor */
+    .cursor-ring {
+      width: 30px;
+      height: 30px;
+      border: 1.5px solid var(--accent-gold);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s var(--ease-out-expo), height 0.25s var(--ease-out-expo), border-color 0.25s ease, background-color 0.25s ease;
+      display: none;
+    }
+    @media (pointer: fine) {
+      .cursor-ring { display: block; }
+    }
+    .cursor-ring.hovered {
+      width: 58px;
+      height: 58px;
+      border-color: var(--accent-emerald);
+      background-color: rgba(212, 175, 55, 0.12);
+      backdrop-filter: blur(2px);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.75rem;
+    }
+
+    /* Floating Glassmorphic Navigation */
+    header {
+      position: fixed;
+      top: 1.25rem;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      padding: 0 1.25rem;
+    }
+
+    .nav-bar {
+      width: 100%;
+      max-width: 1320px;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      padding: 0.75rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-mark {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .brand-dots {
+      display: inline-flex;
+      gap: 4px;
+      margin-left: 2px;
+    }
+    .brand-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+    .brand-dots .d-gold { background: var(--accent-gold); }
+    .brand-dots .d-emerald { background: var(--accent-emerald); }
+    .brand-dots .d-rose { background: var(--accent-rose); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .theme-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-gold);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.25s ease;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+      transform: rotate(15deg);
+    }
+
+    .btn-luxury {
+      background: var(--gold-gradient);
+      color: #070709;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px -6px rgba(212, 175, 55, 0.45);
+      transition: transform 0.25s var(--ease-out-expo), box-shadow 0.25s ease;
+    }
+
+    .btn-luxury:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -4px rgba(212, 175, 55, 0.65);
+    }
+
+    .btn-ghost {
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 9.75rem 0 4.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .availability-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.42rem 1.05rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--accent-emerald);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent-emerald);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .hero-role {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-gold);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.65rem, 5.4vw, 4.7rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.35rem;
+    }
+
+    .hero h1 em {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-style: italic;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-right: 0.15em;
+    }
+
+    .hero-lead {
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Tri-Accent KPI Bar */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      max-width: 600px;
+    }
+
+    .kpi-card {
+      padding-left: 0.9rem;
+      border-left: 2px solid var(--accent-gold);
+    }
+    .kpi-card:nth-child(2) { border-left-color: var(--accent-emerald); }
+    .kpi-card:nth-child(3) { border-left-color: var(--accent-rose); }
+
+    .kpi-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Designer Portrait Frame */
+    .portrait-frame {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      margin: 0 auto;
+      border-radius: 28px;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.65);
+    }
+
+    .portrait-frame::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 28px;
+      padding: 1px;
+      background: var(--accent-gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .portrait-img-box {
+      width: 100%;
+      aspect-ratio: 4 / 4.6;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #14151c;
+    }
+
+    .portrait-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease-out-expo);
+    }
+
+    .portrait-frame:hover .portrait-img-box img {
+      transform: scale(1.05);
+    }
+
+    .portrait-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.95rem 0.4rem 0.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .accent- swatches {
+      display: flex;
+      gap: 6px;
+    }
+
+    /* Infinite Ticker */
+    .ticker-wrap {
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-secondary);
+      padding: 0.95rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 2rem 0 5rem;
+    }
+
+    .ticker-move {
+      display: inline-block;
+      animation: ticker 30s linear infinite;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .ticker-move .sep-gold { color: var(--accent-gold); margin: 0 1.6rem; }
+    .ticker-move .sep-emerald { color: var(--accent-emerald); margin: 0 1.6rem; }
+    .ticker-move .sep-rose { color: var(--accent-rose); margin: 0 1.6rem; }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Section Headings */
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 0.45rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3.6vw, 2.85rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* Filter Bar */
+    .control-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.25rem;
+      padding: 0.85rem 1.15rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-pill {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 0.5rem 1.05rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .filter-pill:hover {
+      color: var(--text-main);
+      border-color: var(--border-subtle);
+    }
+
+    .filter-pill.active {
+      background: var(--gold-gradient);
+      color: #070709;
+      font-weight: 700;
+    }
+
+    .search-wrap {
+      position: relative;
+      min-width: 250px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 0.58rem 1rem 0.58rem 2.3rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .search-wrap i {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent-gold);
+      font-size: 0.8rem;
+    }
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.4rem;
+    }
+
+    .work-card {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: transform 0.45s var(--ease-out-expo), border-color 0.3s ease, box-shadow 0.45s ease;
+    }
+
+    .span-1 { grid-column: span 4; }
+    .span-2 { grid-column: span 6; }
+    .span-3 { grid-column: span 8; }
+
+    @media (max-width: 1024px) {
+      .span-1, .span-2, .span-3 { grid-column: span 6; }
+    }
+    @media (max-width: 640px) {
+      .span-1, .span-2, .span-3 { grid-column: span 12; }
+    }
+
+    .work-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-hover);
+      box-shadow: 0 22px 45px -15px rgba(0, 0, 0, 0.7);
+    }
+
+    .work-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.75s var(--ease-out-expo);
+    }
+
+    .work-card:hover .work-img {
+      transform: scale(1.07);
+    }
+
+    .work-overlay {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(7, 7, 9, 0.96) 0%, rgba(7, 7, 9, 0.62) 62%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    /* Category Accent Badges using the 3 Accents */
+    .badge-cat {
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.26rem 0.7rem;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .badge-gold {
+      background: rgba(212, 175, 55, 0.16);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      color: #F3E5AB;
+    }
+
+    .badge-emerald {
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #6EE7B7;
+    }
+
+    .badge-rose {
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid rgba(244, 63, 94, 0.45);
+      color: #FDA4AF;
+    }
+
+    .work-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.2rem;
+    }
+
+    .work-sub {
+      font-size: 0.82rem;
+      color: #D1D5DB;
+      line-height: 1.4;
+    }
+
+    .work-trigger {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFF;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .work-card:hover .work-trigger {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #070709;
+      transform: rotate(45deg);
+    }
+
+    /* CV & Capabilities Section */
+    .cv-section {
+      padding: 6.5rem 0 4rem;
+    }
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .luxury-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 2.35rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .luxury-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.38rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 0.42rem 0.88rem;
+      border-radius: 10px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .spec-row {
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .spec-row:last-of-type { border-bottom: none; }
+
+    .spec-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+    }
+
+    .spec-title {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin: 0.2rem 0;
+    }
+
+    /* Contact Banner */
+    .contact-box {
+      margin: 4rem 0 5rem;
+      padding: 3.75rem 2.5rem;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.16), transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.14), transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.1), transparent 60%),
+        var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+      list-style: none;
+    }
+
+    .contact-links a {
+      padding: 0.8rem 1.45rem;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.25s ease;
+    }
+
+    .contact-links a:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 2.5rem 0;
+      text-align: center;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* Case Study Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(4, 4, 7, 0.88);
+      backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-hover);
+      border-radius: 26px;
+      max-width: 1120px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      position: relative;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-primary);
+      color: var(--text-main);
+      cursor: pointer;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      border-color: var(--accent-rose);
+      color: var(--accent-rose);
+    }
+
+    .modal-stage {
+      background: #050507;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 440px;
+      padding: 1.75rem;
+    }
+
+    .modal-stage img {
+      max-width: 100%;
+      max-height: 76vh;
+      border-radius: 14px;
+      object-fit: contain;
+    }
+
+    .modal-content {
+      padding: 2.5rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .case-box {
+      margin: 1rem 0;
+      padding: 1.1rem 1.2rem;
+      border-radius: 14px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent-gold);
+    }
+
+    .case-box.emerald-box {
+      border-left-color: var(--accent-emerald);
+    }
+
+    .case-box.rose-box {
+      border-left-color: var(--accent-rose);
+    }
+
+    .case-box h4 {
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid, .cv-grid, .modal-dialog {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-canvas"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="nav-bar">
+      <a href="#" class="brand-mark">
+        THET HTET MYAT NOE
+        <span class="brand-dots">
+          <span class="d-gold"></span>
+          <span class="d-emerald"></span>
+          <span class="d-rose"></span>
+        </span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#portfolio">Curated Archive (30)</a></li>
+        <li><a href="#about-cv">Expertise &amp; CV</a></li>
+        <li><a href="#contact">Inquiries</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme" title="Switch Dark / Editorial Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#contact" class="btn-luxury">
+          <span>Commission a Project</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="welcome">
+      <div class="hero-grid">
+        <div>
+          <div class="availability-pill">
+            <span class="pulse-dot"></span>
+            <span>AVAILABLE FOR GLOBAL BRAND &amp; PACKAGING COMMISSIONS — 2026</span>
+          </div>
+          <div class="hero-role">Graphic Designer &amp; Digital Artist</div>
+          <h1>Crafting Strategic Brands &amp; <em>Iconic Visual</em> Worlds.</h1>
+          <p class="hero-lead">
+            I am <strong>Thet Htet Myat Noe</strong> — a Graphic Designer and Digital Artist specializing in high-impact commercial brand identities, print-ready retail packaging systems, bilingual Myanmar-English typography, and expressive digital illustration.
+          </p>
+          <div class="hero-cta">
+            <a href="#portfolio" class="btn-luxury">
+              <i class="fa-solid fa-compass-drafting"></i> Explore All 30 Case Studies
+            </a>
+            <a href="Thet_Htet_Myat_Noe_Resume.pdf" target="_blank" download class="btn-ghost">
+              <i class="fa-solid fa-file-arrow-down"></i> Download Full CV / PDF
+            </a>
+          </div>
+
+          <div class="kpi-strip">
+            <div class="kpi-card">
+              <div class="kpi-num" style="color: var(--accent-gold);">30</div>
+              <div class="kpi-label">Verified Commercial &amp; Art Works</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-num" style="color: var(--accent-emerald);">100%</div>
+              <div class="kpi-label">End-to-End Design Ownership</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-num" style="color: var(--accent-rose);">4</div>
+              <div class="kpi-label">Core Creative Specializations</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="portrait-frame">
+            <div class="portrait-img-box">
+              <img src="images/designer-photo.webp" alt="Thet Htet Myat Noe — Graphic Designer & Digital Artist"
+                   onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'" />
+            </div>
+            <div class="portrait-meta">
+              <span>THET HTET MYAT NOE</span>
+              <span style="color: var(--accent-gold);">PORTFOLIO // 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Tri-Accent Kinetic Marquee -->
+  <div class="ticker-wrap">
+    <div class="ticker-move">
+      BRAND IDENTITY SYSTEMS <span class="sep-gold">✦</span> COMMERCIAL PRODUCT PACKAGING <span class="sep-emerald">✦</span> DIGITAL FINE ART &amp; PORTRAITURE <span class="sep-rose">✦</span> BILINGUAL MYANMAR TYPOGRAPHY <span class="sep-gold">✦</span> MARKETING &amp; ESPORTS GRAPHICS <span class="sep-emerald">✦</span> EDITORIAL PRINT MENUS <span class="sep-rose">✦</span>
+      BRAND IDENTITY SYSTEMS <span class="sep-gold">✦</span> COMMERCIAL PRODUCT PACKAGING <span class="sep-emerald">✦</span> DIGITAL FINE ART &amp; PORTRAITURE <span class="sep-rose">✦</span> BILINGUAL MYANMAR TYPOGRAPHY <span class="sep-gold">✦</span> MARKETING &amp; ESPORTS GRAPHICS <span class="sep-emerald">✦</span> EDITORIAL PRINT MENUS <span class="sep-rose">✦</span>
+    </div>
+  </div>
+
+  <!-- Portfolio Archive Section -->
+  <section class="container" id="portfolio">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">01 // Complete Archive (Photos 01 — 30)</span>
+        <h2 class="section-title">Selected Works &amp; Strategic Case Studies</h2>
+      </div>
+      <p style="color: var(--text-muted); max-width: 460px; font-size: 0.9rem;">
+        Click any project card to inspect the full artwork, visual analysis, strategic design solution, and end-to-end deliverables.
+      </p>
+    </div>
+
+    <div class="control-bar">
+      <div class="filter-group">
+        <button class="filter-pill active" data-filter="all">All Works (30)</button>
+        <button class="filter-pill" data-filter="Branding">Branding &amp; Logos (18)</button>
+        <button class="filter-pill" data-filter="Packaging">Packaging Design (4)</button>
+        <button class="filter-pill" data-filter="Marketing & Print">Marketing, Poster &amp; Print (4)</button>
+        <button class="filter-pill" data-filter="Digital Art">Digital Art &amp; Album (4)</button>
+      </div>
+      <div class="search-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search project 01-30 or keyword..." />
+      </div>
+    </div>
+
+    <div class="bento-grid" id="portfolioGrid"></div>
+  </section>
+
+  <!-- About & CV Section -->
+  <section class="container cv-section" id="about-cv">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">02 // Professional Background</span>
+        <h2 class="section-title">Curriculum Vitae &amp; Design Mastery</h2>
+      </div>
+    </div>
+
+    <div class="cv-grid">
+      <div class="luxury-card">
+        <h3><i class="fa-solid fa-award" style="color: var(--accent-gold);"></i> About Thet Htet Myat Noe</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.15rem;">
+          I am <strong>Thet Htet Myat Noe</strong>, a Graphic Designer and Digital Artist dedicated to transforming strategic business objectives into memorable brand identities, shelf-ready commercial packaging, and evocative digital art.
+        </p>
+        <p style="color: var(--text-muted);">
+          My portfolio spans 30+ commercial and artistic works — ranging from Myanmar highland Arabica coffee pouches (<em>Oun Pha</em>, <em>Taung Zalat</em>) and regional agricultural packaging (<em>Taunggyi Seeds</em>) to luxury hospitality stationery (<em>Nyein Chan Hotel</em>), esports tournament HUDs (<em>Galaxy Born</em>), and atmospheric digital portraiture.
+        </p>
+
+        <h3 style="margin-top: 2rem;"><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-emerald);"></i> Technical &amp; Software Stack</h3>
+        <div class="tag-cloud">
+          <span class="tech-tag">Adobe Illustrator</span>
+          <span class="tech-tag">Adobe Photoshop</span>
+          <span class="tech-tag">Adobe InDesign</span>
+          <span class="tech-tag">Procreate</span>
+          <span class="tech-tag">Figma</span>
+          <span class="tech-tag">Bilingual Burmese Typography</span>
+          <span class="tech-tag">Packaging Dielines &amp; Prepress</span>
+          <span class="tech-tag">3D Product Mockups</span>
+          <span class="tech-tag">Digital Fine Art</span>
+        </div>
+      </div>
+
+      <div class="luxury-card">
+        <h3><i class="fa-solid fa-layer-group" style="color: var(--accent-rose);"></i> Core Specializations</h3>
+
+        <div class="spec-row">
+          <div class="spec-num" style="color: var(--accent-gold);">DISCIPLINE 01 // CHAMPAGNE GOLD</div>
+          <div class="spec-title">Brand Identity &amp; Logo Architecture</div>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">
+            Bespoke logomarks, monograms, mascot illustrations, and complete corporate stationery suites engineered for long-term brand recall.
+          </p>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-num" style="color: var(--accent-emerald);">DISCIPLINE 02 // IMPERIAL EMERALD</div>
+          <div class="spec-title">Commercial Packaging &amp; Retail Systems</div>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">
+            Print-ready flexible pouches, agricultural seed bags, coffee sachets, nutrition/barcode regulatory layouts, and 3D retail presentations.
+          </p>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-num" style="color: var(--accent-rose);">DISCIPLINE 03 // TERRACOTTA ROSE</div>
+          <div class="spec-title">Marketing Campaigns, Print Menus &amp; Digital Art</div>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">
+            Luxury skincare social ads, esports roster reveals, bistro print menus, 3D calligraphic posters, and original digital paintings.
+          </p>
+        </div>
+
+        <div style="margin-top: 1.75rem;">
+          <a href="Thet_Htet_Myat_Noe_Resume.pdf" download target="_blank" class="btn-luxury">
+            <i class="fa-solid fa-file-pdf"></i> Download Full PDF Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container" id="contact">
+    <div class="contact-box">
+      <span class="eyebrow">03 // Project Inquiries</span>
+      <h2>Let’s Build Your Next Iconic Brand.</h2>
+      <p style="color: var(--text-muted); max-width: 560px; margin: 0 auto;">
+        Available for freelance brand identity commissions, commercial product packaging, social media ad campaigns, and custom digital illustration.
+      </p>
+
+      <ul class="contact-links">
+        <li>
+          <a href="mailto:thethtetmyatnoe2026@gmail.com">
+            <i class="fa-solid fa-envelope" style="color: var(--accent-gold);"></i>
+            thethtetmyatnoe2026@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin-in" style="color: var(--accent-emerald);"></i>
+            LinkedIn Profile
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-telegram" style="color: #38bdf8;"></i>
+            Telegram
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-tiktok" style="color: var(--accent-rose);"></i>
+            TikTok
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 <strong>Thet Htet Myat Noe</strong>. All 30 showcased artworks and designs are the original intellectual property of Thet Htet Myat Noe.</p>
+    </div>
+  </footer>
+
+  <!-- Interactive Case Study Modal -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-stage">
+        <img id="modalImg" src="" alt="Project Full Artwork" />
+      </div>
+      <div class="modal-content">
+        <div>
+          <span class="badge-cat badge-gold" id="modalCategory">CATEGORY</span>
+          <h2 id="modalTitle" style="font-family: var(--font-display); font-size: 1.8rem; margin: 0.35rem 0 0.5rem;">Project Title</h2>
+          <p id="modalSummary" style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem;"></p>
+
+          <div class="case-box">
+            <h4 style="color: var(--accent-gold);"><i class="fa-solid fa-chess-queen"></i> Strategic Design Solution</h4>
+            <p id="modalStrategy" style="font-size: 0.87rem; color: var(--text-main);"></p>
+          </div>
+
+          <div class="case-box emerald-box">
+            <h4 style="color: var(--accent-emerald);"><i class="fa-solid fa-signature"></i> End-to-End Ownership &amp; Deliverables</h4>
+            <p id="modalOwnership" style="font-size: 0.87rem; color: var(--text-main);"></p>
+          </div>
+
+          <div class="case-box rose-box">
+            <h4 style="color: var(--accent-rose);"><i class="fa-solid fa-layer-group"></i> Software &amp; Technical Execution</h4>
+            <div class="tag-cloud" id="modalTools" style="margin-top: 0.45rem;"></div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem;">
+          <a id="modalFullLink" href="#" target="_blank" class="btn-luxury">
+            <i class="fa-solid fa-expand"></i> Inspect Full-Res Artwork
+          </a>
+          <a href="mailto:thethtetmyatnoe2026@gmail.com" class="btn-ghost">
+            <i class="fa-solid fa-paper-plane"></i> Inquire About Similar Work
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Complete 30 Projects with rewritten Strategic Design Solution & Ownership based directly on the visual photos in Project.pdf
+    const projects = [
+      {
+        id: "01",
+        title: "MYA YADANAR Cooking Oil",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "Heritage Mascot Emblem & Myanmar Script Logotype for Cooking Oil Brand",
+        strategy: "Anchored the brand around a warm, trustworthy character portrait of a traditional Burmese woman wearing a white chef’s toque and a golden flower tucked behind her ear, framed inside a sunlit yellow-and-green circular crest above bold, ribbon-like green Myanmar calligraphy ('မြရတနာ') to signal household culinary authenticity and pure vegetable oil quality.",
+        ownership: "Sole brand designer — executed custom vector character illustration, Myanmar script lettering customization, color harmony (emerald green & sunlit gold), and scalable label-ready emblem lockups.",
+        tools: ["Adobe Illustrator", "Custom Burmese Lettering", "Mascot Illustration", "FMCG Branding"]
+      },
+      {
+        id: "02",
+        title: "PRO Liquor Store",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-2",
+        desc: "3D Interlocking Ribbon Monogram & Nightlife Retail Identity",
+        strategy: "Engineered a continuous 3D impossible-loop monogram that cleverly weaves the letters 'P-R-O' into three interconnected rings in vibrant crimson-orange, aqua-teal, and deep indigo against a pitch-black backdrop, paired with an elegant gradient script 'Liquors' to evoke premium spirits, mixology, and upscale nightlife.",
+        ownership: "Full visual identity ownership — conceived the interlocking P-R-O geometry, dimensional shadow gradients, luxury script pairing, and dark-mode signage presentation.",
+        tools: ["Adobe Illustrator", "3D Gradient Mesh", "Monogram Architecture", "Retail Signage"]
+      },
+      {
+        id: "03",
+        title: "KTT Construction",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "Architectural Gold Monogram & Corporate Construction Identity",
+        strategy: "Constructed a brushed-gold architectural monogram uniting the initials 'K-T-T' beneath a pitched residential roofline with a four-pane window icon, framed inside a metallic gold border over matte obsidian with the corporate ethos 'BUILT TOGETHER, GROW TOGETHER' in authoritative serif capitals.",
+        ownership: "Led end-to-end corporate identity — designed the structural 'KTT' roofline grid, metallic gold foil gradient specifications, tagline typography, and executive presentation frame.",
+        tools: ["Adobe Illustrator", "Architectural Grid", "Gold Foil Styling", "Corporate Identity"]
+      },
+      {
+        id: "04",
+        title: "SPY Noodle Bar",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "Incognito Mascot Illustration & Street-Food Ramen Identity",
+        strategy: "Created a witty, high-recall visual pun by illustrating a mysterious incognito 'Spy' agent in a fedora, sunglasses, and upturned trench-coat collar slurping ramen noodles with chopsticks from a steaming bowl, arched by expressive brush-styled 'NOODLE' lettering and bold 3D-extruded 'SPY' typography on a warm cream canvas.",
+        ownership: "Owned complete concept and mascot illustration — crafted the character silhouette, chopstick-and-noodle line art, custom retro shadow typography, and warm culinary palette.",
+        tools: ["Adobe Illustrator", "Character Mascot", "Custom Type Shadowing", "F&B Branding"]
+      },
+      {
+        id: "05",
+        title: "Arrow Mobile",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-3",
+        desc: "Dual-OS Geometric Star Emblem for Smartphone Sales & Service Hub",
+        strategy: "Solved the challenge of communicating cross-platform mobile expertise by fusing half of the Android robot and half of the Apple silhouette at the center of a dynamic four-point directional arrow star in amber-gold, royal blue, cobalt, and deep navy—instantly signaling all-in-one iOS & Android sales and repair.",
+        ownership: "Sole logo architect — engineered the 4-way inward/outward arrow geometry, hybrid OS centerpiece icon, and high-visibility retail color system.",
+        tools: ["Adobe Illustrator", "Geometric Grid", "Tech Retail Branding", "Vector Iconography"]
+      },
+      {
+        id: "06",
+        title: "EazyBites Snacks",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "Playful Monster-Mascot Logotype for Youth Snack Brand",
+        strategy: "Transformed the central letter 'B' of 'EazyBites' into a quirky, wide-eyed cartoon monster with sharp teeth, a red tongue, and a curled tail playfully chomping the orange dot of the letter 'i', pairing warm cheddar-orange and charcoal bubble typography over a fresh pistachio-green background.",
+        ownership: "Full character-type integration ownership — designed custom rounded display lettering, monster 'B' character anatomy, and youth-appealing snack color psychology.",
+        tools: ["Adobe Illustrator", "Typographic Mascot", "Playful Display Type", "Snack Branding"]
+      },
+      {
+        id: "07",
+        title: "OunPha Arabica Coffee",
+        category: "Packaging",
+        filterGroup: "Packaging",
+        badgeClass: "badge-emerald",
+        span: "span-2",
+        desc: "Full Front & Back 2+1 Instant Arabica Coffee Sachet Packaging (22g)",
+        strategy: "Designed a dark-luxury matte-black and metallic-bronze 22g sachet layout featuring a top-down photorealistic espresso crema cup, six vertical gold-framed quality badges (Healthy & Tasty, Superior Quality, Organic Eco-Friendly, Aromatic, Instant Arabica Granules, Ethically Sourced), a white silhouette map of Myanmar, step-by-step hot/iced brewing pictograms, and complete bilingual Burmese-English nutrition & regulatory data.",
+        ownership: "End-to-end packaging production — executed full front/back dieline layout, custom gold iconography, bilingual typesetting for Southern Shan State (Taunggyi) origin, barcode integration, and print prepress.",
+        tools: ["Adobe Illustrator", "Photoshop", "Bilingual Packaging Dieline", "Prepress CMYK"]
+      },
+      {
+        id: "08",
+        title: "Friendship Food & Drink",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-2",
+        desc: "Continuous-Line Fork & Spoon Infinity Monogram for Hospitality Brand",
+        strategy: " crafted a clever monoline infinity loop that seamlessly morphs into a four-tine fork on the left and a soup spoon on the right—forming an abstract 'S/8' knot of togetherness set in bold matte black over a high-energy chartreuse-lime background to symbolize shared meals and modern hospitality.",
+        ownership: "Sole identity designer — developed the continuous-stroke utensil geometry, balanced negative space, and high-contrast modern F&B color palette.",
+        tools: ["Adobe Illustrator", "Monoline Vector", "Negative Space Design", "Restaurant Identity"]
+      },
+      {
+        id: "09",
+        title: "DJ AND",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "Origami Piano-Key & Turntable Monogram for Music Producer",
+        strategy: "Engineered an angular, folded-ribbon 'AND' monogram in deep petrol-teal where the ascending left stroke integrates miniature piano keys and the right 'D' chevron houses a stylized vinyl turntable platter/speaker cone—visually merging melody writing with electronic DJ performance.",
+        ownership: "Complete producer logo ownership — created the isometric ribbon folds, integrated musical keyboard & deck motifs, and scalable watermark assets.",
+        tools: ["Adobe Illustrator", "Isometric Ribbon", "Music & Audio Branding", "Vector Logo"]
+      },
+      {
+        id: "10",
+        title: "MERijAAN Production",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-2",
+        desc: "Glittering Gold Swan-Lotus Emblem & Cinematic Title Identity",
+        strategy: "Combined a graceful golden swan silhouette cradling a blooming lotus flower with opulent, diamond-sparkling gold-leaf serif typography ('MERijAAN') and wide-tracked silver 'PRODUCTION' sub-lettering over velvet black to evoke theatrical prestige and South Asian/Myanmar cinema glamour.",
+        ownership: "Directed full production house identity — illustrated the swan-lotus crest, applied metallic gold-glitter texture mapping, lens-flare highlights, and theatrical title lockup.",
+        tools: ["Adobe Photoshop", "Illustrator", "Gold Texture Compositing", "Cinema Title Design"]
+      },
+      {
+        id: "11",
+        title: "Young Translators Group",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "Dual Fountain-Pen Nib 'YT' Monogram for Online Translation Collective",
+        strategy: "Transformed the vertical stems of the initials 'Y' and 'T' into twin precision fountain-pen nibs rendered in an iridescent purple-to-cyan neon gradient, encircled by a global orbital ring that sweeps down into a calligraphic 'G' flourish—symbolizing literary craft and cross-border digital translation.",
+        ownership: "Sole brand creator — designed the interlocking nib-letterform architecture, twilight neon gradient palette, and circular social avatar lockup.",
+        tools: ["Adobe Illustrator", "Calligraphic Vector", "Gradient Identity", "Digital Service Branding"]
+      },
+      {
+        id: "12",
+        title: "BiBu Tai Foods",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-2",
+        desc: "3D Golden Ribbon 'BiBu' Emblem for Traditional Shan/Tai Culinary Brand",
+        strategy: "Sculpted a symmetrical, tactile gold-foil ribbon monogram that weaves two mirrored 'B' loops around a central 'i' topped with a golden heart inside a 'U' cradle—communicating homemade care, Shan/Tai cultural richness, and premium artisanal food quality.",
+        ownership: "Owned complete emblem design — constructed the multi-layered ribbon curves, realistic drop-shadow depth, hammered gold surface texture, and food seal badge.",
+        tools: ["Adobe Illustrator", "Photoshop", "Tactile Gold Texturing", "Regional Food Branding"]
+      },
+      {
+        id: "13",
+        title: "Magic Homemade Chocolates",
+        category: "Branding",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "Melted Cocoa-Drip & Handcrafted Emblem for Artisanal Chocolate Brand",
+        strategy: "Framed the composition beneath glossy, dripping melted chocolate along the top edge, centering a negative-space handprint inside a cocoa sphere alongside glossy 3D chocolate-molded 'MAGIC @Home' lettering and a '100% Cacao' roasted pod seal to emphasize small-batch, hand-tempered indulgence.",
+        ownership: "End-to-end confectionery branding — illustrated the liquid chocolate drips, negative-space artisan hand mark, 3D specular chocolate typography, and 100% Cacao stamp.",
+        tools: ["Adobe Illustrator", "Photoshop", "3D Liquid Lighting", "Confectionery Branding"]
+      },
+      {
+        id: "14",
+        title: "Phoe Hein — Comet Strike",
+        category: "Album Art",
+        filterGroup: "Digital Art",
+        badgeClass: "badge-rose",
+        span: "span-2",
+        desc: "Cosmic Narrative Album Cover Art ('လေဟာနယ်...တမ်းချင်း')",
+        strategy: "Illustrated a poignant zero-gravity narrative depicting an astronaut floating above alunar crater reaching toward a drifting woman amidst a starfield, Earth globe, and glowing golden sunflare—paired with futuristic chrome 'PHOE HEIN / COMET STRIKE' display type and Burmese subtitle 'လေဟာနယ်...တမ်းချင်း' (Space Elegy).",
+        ownership: "Sole cover artist & typographer — created the character illustrations, space environment lighting, bilingual sci-fi title lockup, and Parental Advisory streaming layout.",
+        tools: ["Procreate", "Adobe Photoshop", "Character Illustration", "Album Cover Art"]
+      },
+      {
+        id: "15",
+        title: "Sugar Computer Services",
+        category: "Logo",
+        filterGroup: "Branding",
+        badgeClass: "badge-gold",
+        span: "span-1",
+        desc: "3D Monitor & Orbital Wrench App-Icon Logo for IT Repair Center",
+        strategy: "Set a perspective desktop monitor glowing with a warm sunrise-gold to deep-tech-blue screen gradient inside a rounded dark-navy app icon, dynamically orbited by a silver-and-gold repair wrench
