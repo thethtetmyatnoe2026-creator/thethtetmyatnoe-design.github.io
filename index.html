@@ -243,13 +243,16 @@
     .hero {
       padding: 5.5rem 0 4.5rem;
       border-bottom: 1px solid var(--border-line);
+      text-align: center;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
+      grid-template-columns: 1fr;
       gap: 3.5rem;
       align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .availability-pill {
@@ -301,12 +304,13 @@
       font-size: 1.04rem;
       color: var(--text-secondary);
       max-width: 610px;
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 0.85rem;
       margin-bottom: 2rem;
     }
@@ -315,6 +319,7 @@
     .hero-social-strip {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       align-items: center;
       gap: 0.65rem;
       margin-bottom: 2.5rem;
@@ -348,6 +353,7 @@
       padding-top: 1.75rem;
       border-top: 1px solid var(--border-line);
       max-width: 520px;
+      margin: 0 auto;
     }
 
     .metric-val {
@@ -364,39 +370,6 @@
       margin-top: 0.2rem;
     }
 
-    .portrait-frame {
-      background: var(--bg-card);
-      border: 1px solid var(--border-gold);
-      border-radius: 20px;
-      padding: 0.9rem;
-      max-width: 360px;
-      margin-left: auto;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-    }
-
-    .portrait-img-box {
-      border-radius: 14px;
-      overflow: hidden;
-      aspect-ratio: 4 / 4.7;
-      background: var(--bg-elevated);
-    }
-
-    .portrait-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .portrait-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      padding: 0.75rem 0.25rem 0.1rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
 
     /* Section Headings */
     .section-wrap {
@@ -510,8 +483,6 @@
 
     @media (max-width: 992px) {
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .hero-grid { grid-template-columns: 1fr; }
-      .portrait-frame { margin: 0 auto; }
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
@@ -907,7 +878,6 @@
     <div class="container nav-bar">
       <a href="#" class="brand-identity">
         <div class="brand-logo-mark" title="Sankita Studio">
-          <!-- Automatically uses images/logo.webp if uploaded to repo, otherwise shows luxury S monogram -->
           <img src="images/logo.webp" alt="Sankita Studio Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='S';" />
         </div>
         <div class="brand-text-wrap">
@@ -995,20 +965,6 @@
           <div>
             <div class="metric-val">100%</div>
             <div class="metric-lbl">Original Bespoke Craft</div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="portrait-frame">
-          <div class="portrait-img-box">
-            <img src="images/designer-photo.webp"
-                 onerror="this.onerror=null; this.src='https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/images/designer-photo.webp';"
-                 alt="Thet Htet Myat Noe — Sankita Studio" />
-          </div>
-          <div class="portrait-meta">
-            <span>Sankita Studio</span>
-            <span>Founder // Thet Htet Myat Noe</span>
           </div>
         </div>
       </div>
