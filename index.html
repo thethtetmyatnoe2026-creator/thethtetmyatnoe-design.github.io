@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thet Htet Myat Noe — Graphic Designer & Digital Artist</title>
-  <meta name="description" content="Portfolio of Thet Htet Myat Noe — Graphic Designer & Digital Artist specializing in brand identity, commercial packaging, and digital illustration." />
+  <title>Sankita Studio — Graphic Design, Packaging & Digital Art | Thet Htet Myat Noe</title>
+  <meta name="description" content="Sankita Studio by Thet Htet Myat Noe — Graphic Designer & Digital Artist specializing in strategic brand identity systems, commercial product packaging, and digital illustration." />
 
   <!-- Minimal Luxury Fonts: Cormorant Garamond (Editorial Display) + Plus Jakarta Sans (Clean UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 
   <style>
     :root {
-      /* Simple & Timeless Luxury Palette */
+      /* Sankita Studio Logo-Inspired Luxury Palette */
       --bg-main: #0a0a0c;
       --bg-elevated: #121216;
       --bg-card: #16161b;
@@ -25,6 +25,7 @@
       --accent-gold: #c6a868;
       --accent-gold-soft: rgba(198, 168, 104, 0.14);
       --accent-emerald: #2e8b6e;
+      --accent-rose: #d96b43;
       --border-line: rgba(245, 243, 239, 0.09);
       --border-gold: rgba(198, 168, 104, 0.45);
 
@@ -42,6 +43,7 @@
       --accent-gold: #9e7f3e;
       --accent-gold-soft: rgba(158, 127, 62, 0.12);
       --accent-emerald: #1f6b53;
+      --accent-rose: #c2552d;
       --border-line: rgba(20, 20, 22, 0.1);
       --border-gold: rgba(158, 127, 62, 0.45);
     }
@@ -72,39 +74,82 @@
       position: sticky;
       top: 0;
       z-index: 90;
-      background: rgba(10, 10, 12, 0.82);
+      background: rgba(10, 10, 12, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-line);
     }
     [data-theme="light"] header {
-      background: rgba(248, 246, 242, 0.85);
+      background: rgba(248, 246, 242, 0.88);
     }
 
     .nav-bar {
-      height: 76px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
 
-    .logo {
+    .brand-identity {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(198, 168, 104, 0.2), rgba(46, 139, 110, 0.2));
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--accent-gold);
+    }
+
+    .brand-logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
       font-family: var(--font-serif);
       font-size: 1.45rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
-      color: var(--text-primary);
-      text-decoration: none;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
     }
 
-    .logo span {
+    .brand-name span {
       color: var(--accent-gold);
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-secondary);
     }
 
     .nav-links {
       display: flex;
-      gap: 2.25rem;
+      gap: 2.1rem;
       list-style: none;
     }
 
@@ -137,12 +182,14 @@
       cursor: pointer;
       display: grid;
       place-items: center;
-      transition: border-color 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
 
     .icon-btn:hover {
       border-color: var(--accent-gold);
       color: var(--accent-gold);
+      transform: translateY(-2px);
     }
 
     /* Buttons */
@@ -153,7 +200,7 @@
       font-weight: 600;
       font-size: 0.85rem;
       letter-spacing: 0.03em;
-      padding: 0.7rem 1.4rem;
+      padding: 0.72rem 1.4rem;
       border-radius: 999px;
       border: 1px solid var(--accent-gold);
       cursor: pointer;
@@ -161,7 +208,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      transition: transform 0.25s var(--ease), box-shadow 0.25s ease, background-color 0.25s ease;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
     }
 
     .btn-gold:hover {
@@ -175,7 +222,7 @@
       font-family: var(--font-sans);
       font-weight: 500;
       font-size: 0.85rem;
-      padding: 0.7rem 1.35rem;
+      padding: 0.72rem 1.35rem;
       border-radius: 999px;
       border: 1px solid var(--border-line);
       cursor: pointer;
@@ -183,12 +230,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      transition: border-color 0.25s ease, color 0.25s ease;
+      transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
     }
 
     .btn-ghost:hover {
       border-color: var(--accent-gold);
       color: var(--accent-gold);
+      transform: translateY(-2px);
     }
 
     /* Hero Section */
@@ -208,7 +256,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      padding: 0.35rem 0.9rem;
+      padding: 0.35rem 0.95rem;
       border-radius: 999px;
       background: rgba(46, 139, 110, 0.12);
       border: 1px solid rgba(46, 139, 110, 0.35);
@@ -216,7 +264,7 @@
       font-size: 0.76rem;
       font-weight: 500;
       letter-spacing: 0.04em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
 
     .availability-dot {
@@ -237,7 +285,7 @@
 
     .hero h1 {
       font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+      font-size: clamp(2.8rem, 5.4vw, 4.5rem);
       font-weight: 600;
       line-height: 1.08;
       margin-bottom: 1.25rem;
@@ -250,17 +298,47 @@
     }
 
     .hero-lead {
-      font-size: 1.05rem;
+      font-size: 1.04rem;
       color: var(--text-secondary);
-      max-width: 600px;
-      margin-bottom: 2.25rem;
+      max-width: 610px;
+      margin-bottom: 2rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-bottom: 2.75rem;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Quick Social Strip inside Hero */
+    .hero-social-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .social-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.42rem 0.9rem;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-line);
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-chip:hover {
+      border-color: var(--accent-gold);
+      color: var(--text-primary);
+      transform: translateY(-2px);
     }
 
     .hero-metrics {
@@ -288,11 +366,12 @@
 
     .portrait-frame {
       background: var(--bg-card);
-      border: 1px solid var(--border-line);
+      border: 1px solid var(--border-gold);
       border-radius: 20px;
       padding: 0.9rem;
       max-width: 360px;
       margin-left: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
     }
 
     .portrait-img-box {
@@ -312,7 +391,7 @@
     .portrait-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       color: var(--text-secondary);
       padding: 0.75rem 0.25rem 0.1rem;
       letter-spacing: 0.06em;
@@ -478,7 +557,7 @@
       position: absolute;
       top: 0.85rem;
       left: 0.85rem;
-      background: rgba(10, 10, 12, 0.78);
+      background: rgba(10, 10, 12, 0.8);
       backdrop-filter: blur(8px);
       color: var(--accent-gold);
       border: 1px solid var(--border-gold);
@@ -580,12 +659,65 @@
       color: var(--text-primary);
     }
 
+    /* Contact Channels Grid */
+    .contact-channels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.15rem;
+      margin-top: 2.25rem;
+      text-align: left;
+    }
+
+    .channel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: 16px;
+      padding: 1.35rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.25s var(--ease), border-color 0.25s ease;
+    }
+
+    .channel-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-gold);
+    }
+
+    .channel-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--accent-gold-soft);
+      color: var(--accent-gold);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .channel-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    .channel-val {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.1rem;
+      word-break: break-all;
+    }
+
     /* Modals (Case Study + Commission Project) */
     .modal-overlay {
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(6, 6, 8, 0.85);
+      background: rgba(6, 6, 8, 0.86);
       backdrop-filter: blur(10px);
       display: none;
       align-items: center;
@@ -773,14 +905,31 @@
   <!-- Header -->
   <header>
     <div class="container nav-bar">
-      <a href="#" class="logo">THET HTET MYAT NOE<span>.</span></a>
+      <a href="#" class="brand-identity">
+        <div class="brand-logo-mark" title="Sankita Studio">
+          <!-- Automatically uses images/logo.webp if uploaded to repo, otherwise shows luxury S monogram -->
+          <img src="images/logo.webp" alt="Sankita Studio Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='S';" />
+        </div>
+        <div class="brand-text-wrap">
+          <div class="brand-name">SANKITA <span>STUDIO.</span></div>
+          <div class="brand-sub">By Thet Htet Myat Noe</div>
+        </div>
+      </a>
+
       <ul class="nav-links">
         <li><a href="#welcome">Home</a></li>
-        <li><a href="#portfolio">Selected Works</a></li>
-        <li><a href="#about-cv">About &amp; CV</a></li>
+        <li><a href="#portfolio">Selected Works (30)</a></li>
+        <li><a href="#about-cv">About Studio &amp; CV</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
       <div class="nav-actions">
+        <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="icon-btn" title="Sankita Studio Facebook Page">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="icon-btn" title="Sankita Studio Telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
         <button class="icon-btn" id="themeBtn" title="Toggle Dark/Light Theme">
           <i class="fa-solid fa-moon"></i>
         </button>
@@ -798,36 +947,54 @@
       <div>
         <div class="availability-pill">
           <span class="availability-dot"></span>
-          <span>Accepting New Brand &amp; Packaging Commissions — 2026</span>
+          <span>SANKITA STUDIO — ACCEPTING NEW COMMISSIONS FOR 2026</span>
         </div>
-        <div class="hero-eyebrow">Graphic Designer &amp; Digital Artist</div>
-        <h1>Crafting Timeless <em>Brand Identities</em> &amp; Visual Stories.</h1>
+        <div class="hero-eyebrow">Thet Htet Myat Noe // Graphic Designer &amp; Digital Artist</div>
+        <h1>Elevating Brands Through <em>Strategic Design</em> &amp; Visual Craft.</h1>
         <p class="hero-lead">
-          Hi, I’m <strong>Thet Htet Myat Noe</strong>. I transform strategic business concepts into refined brand systems, commercial retail packaging, and expressive digital illustrations.
+          Welcome to <strong>Sankita Studio</strong>, the creative practice of <strong>Thet Htet Myat Noe</strong>. We transform business concepts into distinctive brand identities, commercial product packaging, and expressive digital illustrations.
         </p>
+
         <div class="hero-actions">
           <button class="btn-gold" onclick="openCommissionModal()">
             <i class="fa-solid fa-sparkles"></i> Commission a Project
           </button>
           <a href="#portfolio" class="btn-ghost">
-            <i class="fa-solid fa-grid-2"></i> View 30 Works
+            <i class="fa-solid fa-layer-group"></i> Explore 30 Works
           </a>
           <a href="https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/Thet_Htet_Myat_Noe_Resume.pdf" target="_blank" class="btn-ghost">
             <i class="fa-solid fa-file-arrow-down"></i> Download CV
           </a>
         </div>
+
+        <!-- Direct Studio Channels -->
+        <div class="hero-social-strip">
+          <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="social-chip">
+            <i class="fa-brands fa-facebook" style="color: var(--accent-gold);"></i> Facebook Page
+          </a>
+          <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="social-chip">
+            <i class="fa-brands fa-telegram" style="color: var(--accent-gold);"></i> @sanketastudio
+          </a>
+          <a href="viber://chat?number=%2B959780008874" class="social-chip">
+            <i class="fa-brands fa-viber" style="color: var(--accent-gold);"></i> Viber: +959 780008874
+          </a>
+          <a href="https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/" target="_blank" rel="noopener" class="social-chip">
+            <i class="fa-brands fa-linkedin" style="color: var(--accent-gold);"></i> LinkedIn
+          </a>
+        </div>
+
         <div class="hero-metrics">
           <div>
             <div class="metric-val">30</div>
-            <div class="metric-lbl">Featured Case Studies</div>
+            <div class="metric-lbl">Curated Case Studies</div>
           </div>
           <div>
             <div class="metric-val">4</div>
-            <div class="metric-lbl">Core Specializations</div>
+            <div class="metric-lbl">Studio Specializations</div>
           </div>
           <div>
             <div class="metric-val">100%</div>
-            <div class="metric-lbl">Bespoke Original Craft</div>
+            <div class="metric-lbl">Original Bespoke Craft</div>
           </div>
         </div>
       </div>
@@ -837,11 +1004,11 @@
           <div class="portrait-img-box">
             <img src="images/designer-photo.webp"
                  onerror="this.onerror=null; this.src='https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/images/designer-photo.webp';"
-                 alt="Thet Htet Myat Noe" />
+                 alt="Thet Htet Myat Noe — Sankita Studio" />
           </div>
           <div class="portrait-meta">
-            <span>Thet Htet Myat Noe</span>
-            <span>Portfolio // 2026</span>
+            <span>Sankita Studio</span>
+            <span>Founder // Thet Htet Myat Noe</span>
           </div>
         </div>
       </div>
@@ -853,11 +1020,11 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="section-tag">01 // Curated Archive (01 — 30)</span>
+          <span class="section-tag">01 // Sankita Studio Archive (01 — 30)</span>
           <h2 class="section-title">Selected Works &amp; Case Studies</h2>
         </div>
         <p style="color: var(--text-secondary); max-width: 420px; font-size: 0.9rem;">
-          Click <strong>“View Case Study”</strong> on any project to inspect the full artwork, strategic solution, and deliverables.
+          Click <strong>“View Case Study”</strong> on any project to inspect the full-resolution artwork, strategic design solution, and deliverables.
         </p>
       </div>
 
@@ -871,7 +1038,7 @@
         </div>
         <div class="search-input-wrap">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="searchBox" placeholder="Search project name..." />
+          <input type="text" id="searchBox" placeholder="Search brand or project..." />
         </div>
       </div>
 
@@ -879,55 +1046,55 @@
     </div>
   </section>
 
-  <!-- About & CV Section -->
+  <!-- About Studio & CV Section -->
   <section class="section-wrap" id="about-cv" style="border-top: 1px solid var(--border-line);">
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="section-tag">02 // Background &amp; Capabilities</span>
-          <h2 class="section-title">About &amp; Curriculum Vitae</h2>
+          <span class="section-tag">02 // Studio Capabilities &amp; Lead Designer</span>
+          <h2 class="section-title">About Sankita Studio &amp; CV</h2>
         </div>
       </div>
 
       <div class="cv-grid">
         <div class="info-card">
-          <h3>Professional Profile</h3>
+          <h3>Sankita Studio &amp; Lead Designer</h3>
           <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-            I am <strong>Thet Htet Myat Noe</strong>, a Graphic Designer and Digital Artist specializing in strategic brand identity systems, commercial product packaging, and digital illustration.
+            Founded and led by <strong>Thet Htet Myat Noe</strong>, <strong>Sankita Studio</strong> is a creative graphic design and digital art practice dedicated to turning strategic concepts into memorable visual stories.
           </p>
           <p style="color: var(--text-secondary);">
-            Every project is guided by visual clarity, cultural relevance, and commercial shelf impact—helping businesses build lasting recognition across print and digital touchpoints.
+            From commercial food &amp; beverage packaging and corporate brand identities to social media ad campaigns and original digital portraiture, every project is crafted with precision, clarity, and market impact.
           </p>
-          <h3 style="margin-top: 1.75rem; font-size: 1.35rem;">Software &amp; Skills</h3>
+          <h3 style="margin-top: 1.75rem; font-size: 1.35rem;">Software &amp; Technical Mastery</h3>
           <div class="tag-list">
             <span class="tag-chip">Adobe Illustrator</span>
             <span class="tag-chip">Adobe Photoshop</span>
             <span class="tag-chip">Adobe InDesign</span>
             <span class="tag-chip">Procreate</span>
             <span class="tag-chip">Figma</span>
-            <span class="tag-chip">Brand Identity</span>
+            <span class="tag-chip">Brand Identity Systems</span>
             <span class="tag-chip">Packaging Dielines</span>
-            <span class="tag-chip">Print Production</span>
-            <span class="tag-chip">Digital Illustration</span>
+            <span class="tag-chip">Print Prepress</span>
+            <span class="tag-chip">Digital Fine Art</span>
           </div>
         </div>
 
         <div class="info-card">
-          <h3>Core Services</h3>
+          <h3>Core Studio Services</h3>
           <div style="margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--border-line);">
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">01 // BRAND IDENTITY</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Logo Systems &amp; Brand Guidelines</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Bespoke logomarks, typography hierarchy, color systems, and corporate stationery suites.</p>
+            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">01 // BRAND IDENTITY &amp; LOGO DESIGN</div>
+            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Visual Strategy &amp; Complete Brand Systems</div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Bespoke logomarks, bilingual Burmese/English typography lockups, color systems, and corporate stationery.</p>
           </div>
           <div style="margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--border-line);">
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">02 // COMMERCIAL PACKAGING</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Retail Pouches, Labels &amp; Boxes</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Print-ready dielines, coffee &amp; food pouches, bottle labels, and realistic 3D product mockups.</p>
+            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">02 // COMMERCIAL PACKAGING DESIGN</div>
+            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Retail Pouches, Labels &amp; Dielines</div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">Print-ready coffee pouches, agricultural seed bags, bottle labels, nutrition layouts, and 3D product mockups.</p>
           </div>
           <div>
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">03 // MARKETING &amp; DIGITAL ART</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Campaign Visuals, Menus &amp; Illustration</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Social media ads, esports rosters, bistro menus, album art, and custom digital portraiture.</p>
+            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">03 // MARKETING, PRINT &amp; DIGITAL ART</div>
+            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Social Media Ads, Menus &amp; Custom Illustration</div>
+            <p style="color: var(--text-secondary); font-size: 0.88rem;">High-converting social media campaigns, esports graphics, bistro menus, album art, and digital paintings.</p>
           </div>
         </div>
       </div>
@@ -936,21 +1103,57 @@
 
   <!-- Contact Section -->
   <section class="section-wrap" id="contact" style="border-top: 1px solid var(--border-line);">
-    <div class="container" style="text-align: center; max-width: 760px;">
-      <span class="section-tag">03 // Start a Conversation</span>
-      <h2 class="section-title" style="margin-bottom: 1rem;">Ready to Commission Your Next Project?</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-        Select your project type, estimated budget range, and preferred timeline using our interactive brief builder, or reach out directly via email or LinkedIn.
+    <div class="container" style="text-align: center; max-width: 1080px;">
+      <span class="section-tag">03 // Connect With Sankita Studio</span>
+      <h2 class="section-title" style="margin-bottom: 0.85rem;">Start a Project With Sankita Studio</h2>
+      <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 1.75rem;">
+        Choose your project type, budget range, and deadline using our interactive brief builder, or reach out directly through any of our official studio channels below.
       </p>
-      <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
-        <button class="btn-gold" onclick="openCommissionModal()">
-          <i class="fa-solid fa-sliders"></i> Open Project Brief Builder
-        </button>
-        <a href="mailto:thethtetmyatnoe2026@gmail.com" class="btn-ghost">
-          <i class="fa-solid fa-envelope"></i> thethtetmyatnoe2026@gmail.com
+
+      <button class="btn-gold" onclick="openCommissionModal()" style="padding: 0.85rem 1.85rem; font-size: 0.92rem;">
+        <i class="fa-solid fa-sliders"></i> Commission a Project (Interactive Brief)
+      </button>
+
+      <!-- All 5 Official Contact Channels -->
+      <div class="contact-channels">
+        <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="channel-card">
+          <div class="channel-icon"><i class="fa-brands fa-facebook-f"></i></div>
+          <div>
+            <div class="channel-label">Facebook Page</div>
+            <div class="channel-val">Sankita Studio</div>
+          </div>
         </a>
-        <a href="https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/" target="_blank" rel="noopener" class="btn-ghost">
-          <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+
+        <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="channel-card">
+          <div class="channel-icon"><i class="fa-brands fa-telegram"></i></div>
+          <div>
+            <div class="channel-label">Telegram Channel / Chat</div>
+            <div class="channel-val">t.me/sanketastudio</div>
+          </div>
+        </a>
+
+        <a href="tel:+959780008874" class="channel-card">
+          <div class="channel-icon"><i class="fa-brands fa-viber"></i></div>
+          <div>
+            <div class="channel-label">Viber / Direct Phone</div>
+            <div class="channel-val">+95 9 780 008 874</div>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/" target="_blank" rel="noopener" class="channel-card">
+          <div class="channel-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+          <div>
+            <div class="channel-label">LinkedIn Profile</div>
+            <div class="channel-val">Thet Htet Myat Noe</div>
+          </div>
+        </a>
+
+        <a href="mailto:thethtetmyatnoe2026@gmail.com" class="channel-card">
+          <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div class="channel-label">Official Email</div>
+            <div class="channel-val">thethtetmyatnoe2026@gmail.com</div>
+          </div>
         </a>
       </div>
     </div>
@@ -958,7 +1161,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 Thet Htet Myat Noe. All showcased artworks and designs are original works.</p>
+      <p>&copy; 2026 <strong>Sankita Studio</strong> (Thet Htet Myat Noe). All showcased artworks and designs are original property.</p>
     </div>
   </footer>
 
@@ -984,7 +1187,7 @@
             </div>
 
             <div class="cs-block">
-              <h4>Ownership &amp; Deliverables</h4>
+              <h4>Ownership &amp; Deliverables (Sankita Studio)</h4>
               <p id="csModalOwnership" style="font-size: 0.88rem; color: var(--text-primary);"></p>
             </div>
 
@@ -1002,9 +1205,9 @@
             </div>
 
             <div class="cs-nav-bar">
-              <button class="case-study-btn" id="csPrevBtn"><i class="fa-solid fa-arrow-left"></i> Previous Project</button>
+              <button class="case-study-btn" id="csPrevBtn"><i class="fa-solid fa-arrow-left"></i> Previous</button>
               <span id="csCounter" style="font-size: 0.8rem; color: var(--text-secondary);">01 / 30</span>
-              <button class="case-study-btn" id="csNextBtn">Next Project <i class="fa-solid fa-arrow-right"></i></button>
+              <button class="case-study-btn" id="csNextBtn">Next <i class="fa-solid fa-arrow-right"></i></button>
             </div>
           </div>
         </div>
@@ -1012,41 +1215,41 @@
     </div>
   </div>
 
-  <!-- MODAL 2: Interactive Commission a Project Modal -->
+  <!-- MODAL 2: Interactive Commission a Project Modal (1. Project Type, 2. Budget Range, 3. Project Deadline) -->
   <div class="modal-overlay" id="commissionModal">
     <div class="modal-box commission-box">
       <button class="modal-close-btn" onclick="closeCommissionModal()" aria-label="Close">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <span class="section-tag">Interactive Project Brief</span>
+      <span class="section-tag">Sankita Studio — Project Brief Builder</span>
       <h2 style="font-family: var(--font-serif); font-size: 2.1rem; font-weight: 600; margin-bottom: 0.35rem;">Commission a Project</h2>
       <p style="color: var(--text-secondary); font-size: 0.9rem;">
-        Select your options below to generate a structured project inquiry for <strong>Thet Htet Myat Noe</strong>.
+        Select your options below to send your project brief directly to <strong>Sankita Studio</strong> via Email, Telegram, or Viber.
       </p>
 
       <form id="commissionForm" onsubmit="submitCommissionForm(event)">
-        <!-- Option 1: Project Type -->
-        <label class="step-label">1. Select Project Type</label>
+        <!-- 1. Project Type -->
+        <label class="step-label">1. Project Type</label>
         <div class="option-grid" data-group="projectType">
           <div class="option-pill selected" data-val="Brand Identity & Logo">Brand Identity &amp; Logo</div>
           <div class="option-pill" data-val="Product Packaging Design">Product Packaging</div>
           <div class="option-pill" data-val="Marketing & Print Design">Marketing &amp; Print</div>
-          <div class="option-pill" data-val="Digital Art & Illustration">Digital Art / Poster</div>
+          <div class="option-pill" data-val="Digital Art & Poster">Digital Art / Poster</div>
           <div class="option-pill" data-val="Full Brand & Packaging Suite">Full Brand Suite</div>
         </div>
 
-        <!-- Option 2: Budget Range -->
-        <label class="step-label">2. Select Estimated Budget Range</label>
+        <!-- 2. Budget Range -->
+        <label class="step-label">2. Budget Range</label>
         <div class="option-grid" data-group="budgetRange">
           <div class="option-pill" data-val="$100 – $250 (Starter)">$100 – $250</div>
           <div class="option-pill selected" data-val="$250 – $500 (Standard)">$250 – $500</div>
           <div class="option-pill" data-val="$500 – $1,000 (Comprehensive)">$500 – $1,000</div>
-          <div class="option-pill" data-val="$1,000+ (Custom Enterprise)">$1,000+ / Custom</div>
+          <div class="option-pill" data-val="$1,000+ / Custom Quote">$1,000+ / Custom</div>
         </div>
 
-        <!-- Option 3: Project Deadline -->
-        <label class="step-label">3. Select Project Deadline / Timeline</label>
+        <!-- 3. Project Deadline -->
+        <label class="step-label">3. Project Deadline</label>
         <div class="option-grid" data-group="deadline">
           <div class="option-pill" data-val="Urgent (3 – 5 Days)">Urgent (3–5 Days)</div>
           <div class="option-pill selected" data-val="Standard (1 – 2 Weeks)">Standard (1–2 Weeks)</div>
@@ -1057,34 +1260,37 @@
         <!-- Client Contact Details -->
         <label class="step-label">4. Your Details &amp; Project Notes</label>
         <div class="form-row">
-          <input type="text" id="clientName" class="form-input" placeholder="Your Name / Brand Name *" required />
-          <input type="email" id="clientEmail" class="form-input" placeholder="Your Email or Phone *" required />
+          <input type="text" id="clientName" class="form-input" placeholder="Your Name or Business Name *" required />
+          <input type="text" id="clientEmail" class="form-input" placeholder="Your Phone / Viber / Email *" required />
         </div>
-        <textarea id="clientNotes" class="form-textarea" rows="3" style="margin-top: 0.85rem;" placeholder="Briefly describe your brand, product, or reference project..."></textarea>
+        <textarea id="clientNotes" class="form-textarea" rows="3" style="margin-top: 0.85rem;" placeholder="Tell us briefly about your brand, product, or design requirements..."></textarea>
 
-        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem;">
           <button type="submit" class="btn-gold">
-            <i class="fa-solid fa-paper-plane"></i> Send Brief via Email
+            <i class="fa-solid fa-envelope"></i> Send via Email
+          </button>
+          <button type="button" class="btn-ghost" onclick="sendBriefViaTelegram()">
+            <i class="fa-brands fa-telegram" style="color: var(--accent-gold);"></i> Send via Telegram
           </button>
           <button type="button" class="btn-ghost" onclick="copyBriefToClipboard()">
-            <i class="fa-regular fa-copy"></i> Copy Brief Text (For Telegram/Messenger)
+            <i class="fa-brands fa-viber" style="color: var(--accent-gold);"></i> Copy for Viber (+959780008874)
           </button>
         </div>
         <p id="copyFeedback" style="color: #4ade80; font-size: 0.82rem; margin-top: 0.65rem; display: none;">
-          ✓ Project brief copied to clipboard! You can paste it directly into Telegram or Email.
+          ✓ Project brief copied! You can now paste it directly into Telegram, Viber (+959780008874), or Facebook Messenger.
         </p>
       </form>
     </div>
   </div>
 
   <script>
-    // Base URLs so images ALWAYS load whether opened locally or on GitHub Pages
+    // Live URL base guarantees images always load both locally and on GitHub Pages
     const LIVE_BASE = "https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/";
 
-    // Complete 30 Projects with Rewritten Strategic Design Solutions & Ownership from Project.pdf
+    // Complete 30 Projects with Strategic Design Solutions & Ownership
     const projects = [
       { id: "01", title: "Myayadanar Cooking Oil", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Cooking Oil Company", strategy: "Designed a warm, culturally resonant emblem featuring a chef portrait paired with traditional Burmese script ('မြရတနာ') in vibrant green and gold to communicate culinary authenticity and household trust.", ownership: "Full ownership of character emblem illustration, custom Burmese script typography, and primary brand mark lockup.", tools: ["Adobe Illustrator", "Vector Illustration", "Typography"] },
-      { id: "02", title: "Pro Liquor Store", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Liquor Store", strategy: "Crafted an interlocking tri-ring geometric monogram Forming 'PRO' in vibrant orange, teal, and violet gradients over a sleek black backdrop, paired with refined cursive 'Liquors' script.", ownership: "Sole designer responsible for 3D-shaded ribbon monogram geometry, gradient color profiling, and night-retail signage lockup.", tools: ["Adobe Illustrator", "Gradient Mesh", "Brand Identity"] },
+      { id: "02", title: "Pro Liquor Store", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Liquor Store", strategy: "Crafted an interlocking tri-ring geometric monogram forming 'PRO' in vibrant orange, teal, and violet gradients over a sleek black backdrop, paired with refined cursive 'Liquors' script.", ownership: "Sole designer responsible for 3D-shaded ribbon monogram geometry, gradient color profiling, and night-retail signage lockup.", tools: ["Adobe Illustrator", "Gradient Mesh", "Brand Identity"] },
       { id: "03", title: "KTT Construction", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Construction Company", strategy: "Engineered an architectural gold-foil monogram integrating the letters 'KTT' beneath a pitched roof and window silhouette, anchored by the tagline 'BUILT TOGETHER, GROW TOGETHER'.", ownership: "Led structural monogram grid construction, metallic gold luxury presentation, and corporate identity standards.", tools: ["Adobe Illustrator", "Corporate Identity", "Grid System"] },
       { id: "04", title: "SPY Noodle Bar", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Ramen Restaurant", strategy: "Created an unforgettable incognito 'Spy' character in a fedora hat slurping noodles with chopsticks, framed by bold 3D shadow display typography on a warm vintage cream palette.", ownership: "Full ownership of mascot character illustration, custom arched display lettering, and restaurant packaging assets.", tools: ["Adobe Illustrator", "Mascot Design", "Food Branding"] },
       { id: "05", title: "Arrow Mobile", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Mobile Phone Shop", strategy: "Built a dynamic four-point directional arrow star in gold and cobalt blue framing a unified Android-and-Apple dual-OS emblem to signal complete smartphone sales and repair expertise.", ownership: "Conceptualized and executed the dual-platform tech icon, geometric arrow frame, and retail signage system.", tools: ["Adobe Illustrator", "Tech Branding", "Iconography"] },
@@ -1095,7 +1301,7 @@
       { id: "10", title: "Metijaan Production", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Film Production", strategy: "Crafted a regal golden swan-and-lotus emblem paired with glittering 3D metallic gold serif typography ('MERijAAN PRODUCTION') for theatrical screen presence.", ownership: "Owned emblem illustration, metallic gold texture rendering, and cinematic title card lockup.", tools: ["Adobe Photoshop", "Illustrator", "3D Type Effects"] },
       { id: "11", title: "Young Translator Group", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Online Service Team", strategy: "Designed interlocking 'YT' monograms whose vertical stems morph into fountain pen nibs inside a glowing purple-to-cyan circular crest.", ownership: "Delivered complete digital team identity, pen-nib vector construction, and social avatar suite.", tools: ["Adobe Illustrator", "Digital Branding", "Monogram"] },
       { id: "12", title: "BiBu Tai Foods", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Local Foods Product", strategy: "Sculpted symmetrical golden ribbons wrapping around vertical pillars with a central heart motif to celebrate authentic regional Tai culinary craft.", ownership: "Owned textured gold ribbon illustration, emblem symmetry, and food label seal design.", tools: ["Adobe Illustrator", "Photoshop", "Textured Vector"] },
-      { id: "13", title: "Magic Homemade Chocolates", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Local Chocolate Brand", strategy: " Combined glossy melting chocolate drips, a negative-space hand & cocoa pod emblem, 3D liquid-chocolate lettering, and a '100% Cacao' stamp.", ownership: "Full ownership of 3D liquid typography, negative-space icon concept, and artisanal confectionery branding.", tools: ["Adobe Photoshop", "Illustrator", "Confectionery Art"] },
+      { id: "13", title: "Magic Homemade Chocolates", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Local Chocolate Brand", strategy: "Combined glossy melting chocolate drips, a negative-space hand & cocoa pod emblem, 3D liquid-chocolate lettering, and a '100% Cacao' stamp.", ownership: "Full ownership of 3D liquid typography, negative-space icon concept, and artisanal confectionery branding.", tools: ["Adobe Photoshop", "Illustrator", "Confectionery Art"] },
       { id: "14", title: "Phoe Hein Album Art", category: "Album Art", group: "Marketing & Print", brief: "Album Cover Art ('Comet Strike / လေဟာနယ်...တမ်းချင်း')", strategy: "Illustrated a surreal cosmic narrative of an astronaut on the lunar surface reaching toward a floating figure beneath Earth and a glowing comet.", ownership: "Executed character illustration, space atmosphere compositing, bilingual title typography, and streaming cover formatting.", tools: ["Adobe Photoshop", "Procreate", "Album Cover Art"] },
       { id: "15", title: "Sugar Computer Services", category: "Branding", group: "Branding", brief: "Logo Design for Computer Service & Repair Centre", strategy: "Paired a perspective desktop monitor and orbiting repair wrench in a dynamic gold-to-blue gradient with custom tech-stencil 'SUGAR' typography.", ownership: "Created the app-icon badge, hardware repair symbolism, and store signage mark.", tools: ["Adobe Illustrator", "Logo Design", "Tech Retail"] },
       { id: "16", title: "Kagura Logistics", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Logistics Company", strategy: "Constructed a clean, modern 'K' monogram from intersecting pastel pink and sky-blue ribbons with subtle drop shadows inside a cream circle.", ownership: "Owned minimal ribbon geometry, pastel corporate palette, and fleet/parcel sticker identity.", tools: ["Adobe Illustrator", "Minimalist Logo", "Logistics"] },
@@ -1123,18 +1329,10 @@
     let currentSearch = "";
     let currentModalIndex = 0;
 
-    function getThumbSrc(id) {
-      return `images/thumbs/${id}.webp`;
-    }
-    function getFallbackThumbSrc(id) {
-      return `${LIVE_BASE}images/thumbs/${id}.webp`;
-    }
-    function getFullSrc(id) {
-      return `images/fulls/${id}.webp`;
-    }
-    function getFallbackFullSrc(id) {
-      return `${LIVE_BASE}images/fulls/${id}.webp`;
-    }
+    function getThumbSrc(id) { return `images/thumbs/${id}.webp`; }
+    function getFallbackThumbSrc(id) { return `${LIVE_BASE}images/thumbs/${id}.webp`; }
+    function getFullSrc(id) { return `images/fulls/${id}.webp`; }
+    function getFallbackFullSrc(id) { return `${LIVE_BASE}images/fulls/${id}.webp`; }
 
     function renderGrid() {
       const list = projects.filter(p => {
@@ -1171,7 +1369,6 @@
       `).join("");
     }
 
-    // Filter & Search Listeners
     filterTabs.forEach(tab => {
       tab.addEventListener("click", () => {
         filterTabs.forEach(t => t.classList.remove("active"));
@@ -1186,7 +1383,7 @@
       renderGrid();
     });
 
-    // Case Study Modal Functions
+    // Case Study Modal Logic
     const csModal = document.getElementById("caseStudyModal");
     const csImg = document.getElementById("csModalImg");
     const csCat = document.getElementById("csModalCat");
@@ -1248,7 +1445,7 @@
       updateCaseStudyModal();
     });
 
-    // Commission Modal Functions (1. Project Type, 2. Budget Range, 3. Project Deadline)
+    // Commission Modal Logic
     const commModal = document.getElementById("commissionModal");
 
     window.openCommissionModal = function(refProject = "") {
@@ -1265,7 +1462,6 @@
       document.body.style.overflow = "";
     };
 
-    // Option Pill Selection Logic
     document.querySelectorAll(".option-grid").forEach(grid => {
       grid.addEventListener("click", e => {
         const pill = e.target.closest(".option-pill");
@@ -1285,23 +1481,23 @@
       const budget = getSelectedOption("budgetRange");
       const deadline = getSelectedOption("deadline");
       const name = document.getElementById("clientName").value.trim() || "Client";
-      const email = document.getElementById("clientEmail").value.trim() || "Not provided";
+      const contact = document.getElementById("clientEmail").value.trim() || "Not provided";
       const notes = document.getElementById("clientNotes").value.trim() || "No additional notes.";
 
       return {
-        subject: `New Project Commission: ${pType} (${name})`,
+        subject: `Sankita Studio Commission: ${pType} (${name})`,
         body:
-`Hello Thet Htet Myat Noe,
+`Hello Sankita Studio (Thet Htet Myat Noe),
 
-I would like to commission a new design project with the following details:
+I would like to commission a project with the following brief:
 
 1. PROJECT TYPE: ${pType}
 2. BUDGET RANGE: ${budget}
 3. PROJECT DEADLINE: ${deadline}
 
---- CLIENT DETAILS ---
-Name / Brand: ${name}
-Contact: ${email}
+--- CLIENT CONTACT ---
+Name / Business: ${name}
+Phone / Viber / Email: ${contact}
 
 --- PROJECT NOTES ---
 ${notes}`
@@ -1315,16 +1511,21 @@ ${notes}`
       window.location.href = mailtoLink;
     };
 
+    window.sendBriefViaTelegram = function() {
+      const brief = buildBriefSummary();
+      navigator.clipboard.writeText(brief.body);
+      window.open(`https://t.me/sanketastudio`, "_blank");
+    };
+
     window.copyBriefToClipboard = function() {
       const brief = buildBriefSummary();
       navigator.clipboard.writeText(brief.body).then(() => {
         const msg = document.getElementById("copyFeedback");
         msg.style.display = "block";
-        setTimeout(() => { msg.style.display = "none"; }, 4000);
+        setTimeout(() => { msg.style.display = "none"; }, 5000);
       });
     };
 
-    // Close modals on backdrop click or Escape key
     window.addEventListener("click", e => {
       if (e.target === csModal) closeCaseStudyModal();
       if (e.target === commModal) closeCommissionModal();
@@ -1350,7 +1551,7 @@ ${notes}`
       }
     });
 
-    // Initialize Portfolio
+    // Initialize Portfolio Grid
     renderGrid();
   </script>
 </body>
