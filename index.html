@@ -1,1506 +1,1495 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sankita Studio — Graphic Design, Packaging & Digital Art | Thet Htet Myat Noe</title>
-  <meta name="description" content="Sankita Studio by Thet Htet Myat Noe — Graphic Designer & Digital Artist specializing in strategic brand identity systems, commercial product packaging, and digital illustration." />
-
-  <!-- Minimal Luxury Fonts: Cormorant Garamond (Editorial Display) + Plus Jakarta Sans (Clean UI) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <style>
-    :root {
-      /* Sankita Studio Logo-Inspired Luxury Palette */
-      --bg-main: #0a0a0c;
-      --bg-elevated: #121216;
-      --bg-card: #16161b;
-      --text-primary: #f5f3ef;
-      --text-secondary: #9ca0ab;
-      --accent-gold: #c6a868;
-      --accent-gold-soft: rgba(198, 168, 104, 0.14);
-      --accent-emerald: #2e8b6e;
-      --accent-rose: #d96b43;
-      --border-line: rgba(245, 243, 239, 0.09);
-      --border-gold: rgba(198, 168, 104, 0.45);
-
-      --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    [data-theme="light"] {
-      --bg-main: #f8f6f2;
-      --bg-elevated: #efece6;
-      --bg-card: #ffffff;
-      --text-primary: #141416;
-      --text-secondary: #5a5d65;
-      --accent-gold: #9e7f3e;
-      --accent-gold-soft: rgba(158, 127, 62, 0.12);
-      --accent-emerald: #1f6b53;
-      --accent-rose: #c2552d;
-      --border-line: rgba(20, 20, 22, 0.1);
-      --border-gold: rgba(158, 127, 62, 0.45);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      line-height: 1.65;
-      overflow-x: hidden;
-      transition: background-color 0.35s ease, color 0.35s ease;
-    }
-
-    .container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Header & Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 90;
-      background: rgba(10, 10, 12, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-line);
-    }
-    [data-theme="light"] header {
-      background: rgba(248, 246, 242, 0.88);
-    }
-
-    .nav-bar {
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand-identity {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      text-decoration: none;
-      color: var(--text-primary);
-    }
-
-    .brand-logo-mark {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .brand-logo-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .brand-text-wrap {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-name {
-      font-family: var(--font-serif);
-      font-size: 1.45rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      line-height: 1.1;
-    }
-
-    .brand-name span {
-      color: var(--accent-gold);
-    }
-
-    .brand-sub {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-secondary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.1rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .icon-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border-line);
-      background: transparent;
-      color: var(--text-primary);
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      text-decoration: none;
-      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-
-    .icon-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      transform: translateY(-2px);
-    }
-
-    /* Buttons */
-    .btn-gold {
-      background-color: var(--accent-gold);
-      color: #0a0a0c;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.03em;
-      padding: 0.72rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--accent-gold);
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
-    }
-
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px -6px rgba(198, 168, 104, 0.45);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-primary);
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 0.85rem;
-      padding: 0.72rem 1.35rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-line);
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      transform: translateY(-2px);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 5.5rem 0 4.5rem;
-      border-bottom: 1px solid var(--border-line);
-      text-align: center;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3.5rem;
-      align-items: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .availability-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.35rem 0.95rem;
-      border-radius: 999px;
-      background: rgba(46, 139, 110, 0.12);
-      border: 1px solid rgba(46, 139, 110, 0.35);
-      color: #4ade80;
-      font-size: 0.76rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      margin-bottom: 1.4rem;
-    }
-
-    .availability-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #4ade80;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent-gold);
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 5.4vw, 4.5rem);
-      font-weight: 600;
-      line-height: 1.08;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-
-    .hero-lead {
-      font-size: 1.04rem;
-      color: var(--text-secondary);
-      max-width: 610px;
-      margin: 0 auto 2rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.85rem;
-      margin-bottom: 2rem;
-    }
-
-    /* Quick Social Strip inside Hero */
-    .hero-social-strip {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .social-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.42rem 0.9rem;
-      border-radius: 999px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-line);
-      color: var(--text-secondary);
-      font-size: 0.78rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .social-chip:hover {
-      border-color: var(--accent-gold);
-      color: var(--text-primary);
-      transform: translateY(-2px);
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      padding-top: 1.75rem;
-      border-top: 1px solid var(--border-line);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .metric-val {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.1;
-    }
-
-    .metric-lbl {
-      font-size: 0.78rem;
-      color: var(--text-secondary);
-      margin-top: 0.2rem;
-    }
-
-
-    /* Section Headings */
-    .section-wrap {
-      padding: 5rem 0;
-    }
-
-    .section-head {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      margin-bottom: 2.25rem;
-    }
-
-    .section-tag {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent-gold);
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 3.8vw, 2.9rem);
-      font-weight: 600;
-      line-height: 1.15;
-    }
-
-    /* Filter Bar */
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.25rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border-line);
-    }
-
-    .filter-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .filter-tab {
-      background: transparent;
-      border: 1px solid var(--border-line);
-      color: var(--text-secondary);
-      padding: 0.48rem 1.05rem;
-      border-radius: 999px;
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .filter-tab:hover {
-      border-color: var(--accent-gold);
-      color: var(--text-primary);
-    }
-
-    .filter-tab.active {
-      background: var(--accent-gold);
-      border-color: var(--accent-gold);
-      color: #0a0a0c;
-      font-weight: 600;
-    }
-
-    .search-input-wrap {
-      position: relative;
-      min-width: 240px;
-    }
-
-    .search-input-wrap input {
-      width: 100%;
-      background: var(--bg-card);
-      border: 1px solid var(--border-line);
-      color: var(--text-primary);
-      padding: 0.52rem 1rem 0.52rem 2.25rem;
-      border-radius: 999px;
-      font-size: 0.83rem;
-      outline: none;
-    }
-
-    .search-input-wrap input:focus {
-      border-color: var(--accent-gold);
-    }
-
-    .search-input-wrap i {
-      position: absolute;
-      left: 0.9rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-secondary);
-      font-size: 0.78rem;
-    }
-
-    /* Portfolio Grid */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.75rem;
-    }
-
-    @media (max-width: 992px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .nav-links { display: none; }
-    }
-    @media (max-width: 640px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
-    }
-
-    .work-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-line);
-      border-radius: 16px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.35s var(--ease), border-color 0.3s ease;
-    }
-
-    .work-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--border-gold);
-    }
-
-    .work-thumb-wrap {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      background: var(--bg-elevated);
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .work-thumb-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s var(--ease);
-    }
-
-    .work-card:hover .work-thumb-wrap img {
-      transform: scale(1.05);
-    }
-
-    .work-badge {
-      position: absolute;
-      top: 0.85rem;
-      left: 0.85rem;
-      background: rgba(10, 10, 12, 0.8);
-      backdrop-filter: blur(8px);
-      color: var(--accent-gold);
-      border: 1px solid var(--border-gold);
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .work-body {
-      padding: 1.35rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      justify-content: space-between;
-    }
-
-    .work-title {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-      color: var(--text-primary);
-    }
-
-    .work-sub {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.15rem;
-    }
-
-    .work-footer {
-      padding-top: 0.9rem;
-      border-top: 1px solid var(--border-line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .case-study-btn {
-      background: transparent;
-      border: none;
-      color: var(--accent-gold);
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.25rem 0;
-      transition: gap 0.2s ease;
-    }
-
-    .case-study-btn:hover {
-      gap: 0.7rem;
-    }
-
-    /* About & CV Section */
-    .cv-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    @media (max-width: 820px) {
-      .cv-grid { grid-template-columns: 1fr; }
-    }
-
-    .info-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-line);
-      border-radius: 18px;
-      padding: 2.25rem;
-    }
-
-    .info-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.65rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .tag-chip {
-      font-size: 0.78rem;
-      padding: 0.4rem 0.85rem;
-      border-radius: 8px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-line);
-      color: var(--text-primary);
-    }
-
-    /* Contact Channels Grid */
-    .contact-channels {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.15rem;
-      margin-top: 2.25rem;
-      text-align: left;
-    }
-
-    .channel-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-line);
-      border-radius: 16px;
-      padding: 1.35rem;
-      text-decoration: none;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: transform 0.25s var(--ease), border-color 0.25s ease;
-    }
-
-    .channel-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-gold);
-    }
-
-    .channel-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      background: var(--accent-gold-soft);
-      color: var(--accent-gold);
-      display: grid;
-      place-items: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .channel-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-secondary);
-    }
-
-    .channel-val {
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-top: 0.1rem;
-      word-break: break-all;
-    }
-
-    /* Modals (Case Study + Commission Project) */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(6, 6, 8, 0.86);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
-    }
-
-    .modal-overlay.active {
-      display: flex;
-    }
-
-    .modal-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-gold);
-      border-radius: 20px;
-      max-width: 1020px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-line);
-      color: var(--text-primary);
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      z-index: 10;
-    }
-
-    .modal-close-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-
-    /* Case Study Modal Layout */
-    .cs-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-    }
-    @media (max-width: 820px) {
-      .cs-layout { grid-template-columns: 1fr; }
-    }
-
-    .cs-image-side {
-      background: #050507;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      min-height: 380px;
-    }
-
-    .cs-image-side img {
-      max-width: 100%;
-      max-height: 72vh;
-      border-radius: 12px;
-      object-fit: contain;
-    }
-
-    .cs-content-side {
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .cs-block {
-      margin-top: 1.15rem;
-      padding: 1rem 1.15rem;
-      border-radius: 12px;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-line);
-    }
-
-    .cs-block h4 {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-gold);
-      margin-bottom: 0.4rem;
-    }
-
-    .cs-nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-line);
-    }
-
-    /* Commission Modal Form */
-    .commission-box {
-      max-width: 680px;
-      padding: 2.5rem 2.25rem;
-    }
-
-    .step-label {
-      display: block;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-gold);
-      font-weight: 600;
-      margin: 1.35rem 0 0.65rem;
-    }
-
-    .option-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-      gap: 0.6rem;
-    }
-
-    .option-pill {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-line);
-      color: var(--text-primary);
-      padding: 0.65rem 0.85rem;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s ease;
-    }
-
-    .option-pill:hover {
-      border-color: var(--accent-gold);
-    }
-
-    .option-pill.selected {
-      background: var(--accent-gold-soft);
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      font-weight: 600;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-      margin-top: 1rem;
-    }
-    @media (max-width: 560px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    .form-input, .form-textarea {
-      width: 100%;
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-line);
-      color: var(--text-primary);
-      padding: 0.7rem 0.95rem;
-      border-radius: 10px;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .form-input:focus, .form-textarea:focus {
-      border-color: var(--accent-gold);
-    }
-
-    footer {
-      border-top: 1px solid var(--border-line);
-      padding: 3rem 0;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header -->
-  <header>
-    <div class="container nav-bar">
-      <a href="#" class="brand-identity">
-        <div class="brand-logo-mark" title="Sankita Studio">
-          <img src="images/Logo.png" alt="Sankita Studio Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='S';" />
-        </div>
-        <div class="brand-text-wrap">
-          <div class="brand-name">SANKITA <span>STUDIO.</span></div>
-          <div class="brand-sub">By Thet Htet Myat Noe</div>
-        </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#welcome">Home</a></li>
-        <li><a href="#portfolio">Selected Works (30)</a></li>
-        <li><a href="#about-cv">About Studio &amp; CV</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="icon-btn" title="Sankita Studio Facebook Page">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="icon-btn" title="Sankita Studio Telegram">
-          <i class="fa-brands fa-telegram"></i>
-        </a>
-        <button class="icon-btn" id="themeBtn" title="Toggle Dark/Light Theme">
-          <i class="fa-solid fa-moon"></i>
-        </button>
-        <button class="btn-gold" onclick="openCommissionModal()">
-          <i class="fa-solid fa-pen-nib"></i>
-          <span>Commission a Project</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero" id="welcome">
-    <div class="container hero-grid">
-      <div>
-        <div class="availability-pill">
-          <span class="availability-dot"></span>
-          <span>SANKITA STUDIO — ACCEPTING NEW COMMISSIONS FOR 2026</span>
-        </div>
-        <div class="hero-eyebrow">Thet Htet Myat Noe // Graphic Designer &amp; Digital Artist</div>
-        <h1>Elevating Brands Through <em>Strategic Design</em> &amp; Visual Craft.</h1>
-        <p class="hero-lead">
-          Welcome to <strong>Sankita Studio</strong>, the creative practice of <strong>Thet Htet Myat Noe</strong>. We transform business concepts into distinctive brand identities, commercial product packaging, and expressive digital illustrations.
-        </p>
-
-        <div class="hero-actions">
-          <button class="btn-gold" onclick="openCommissionModal()">
-            <i class="fa-solid fa-sparkles"></i> Commission a Project
-          </button>
-          <a href="#portfolio" class="btn-ghost">
-            <i class="fa-solid fa-layer-group"></i> Explore 30 Works
-          </a>
-          <a href="assets/Thet_Htet_Myat_Noe_Resume.pdf" target="_blank" class="btn-ghost">
-            <i class="fa-solid fa-file-arrow-down"></i> Download CV
-          </a>
-        </div>
-
-        <!-- Direct Studio Channels -->
-        <div class="hero-social-strip">
-          <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="social-chip">
-            <i class="fa-brands fa-facebook" style="color: var(--accent-gold);"></i> Facebook Page
-          </a>
-          <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="social-chip">
-            <i class="fa-brands fa-telegram" style="color: var(--accent-gold);"></i> @sanketastudio
-          </a>
-          <a href="viber://chat?number=%2B959780008874" class="social-chip">
-            <i class="fa-brands fa-viber" style="color: var(--accent-gold);"></i> Viber: +959 780008874
-          </a>
-          <a href="https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/" target="_blank" rel="noopener" class="social-chip">
-            <i class="fa-brands fa-linkedin" style="color: var(--accent-gold);"></i> LinkedIn
-          </a>
-        </div>
-
-        <div class="hero-metrics">
-          <div>
-            <div class="metric-val">30</div>
-            <div class="metric-lbl">Curated Case Studies</div>
-          </div>
-          <div>
-            <div class="metric-val">4</div>
-            <div class="metric-lbl">Studio Specializations</div>
-          </div>
-          <div>
-            <div class="metric-val">100%</div>
-            <div class="metric-lbl">Original Bespoke Craft</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section class="section-wrap" id="portfolio">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="section-tag">01 // Sankita Studio Archive (01 — 30)</span>
-          <h2 class="section-title">Selected Works &amp; Case Studies</h2>
-        </div>
-        <p style="color: var(--text-secondary); max-width: 420px; font-size: 0.9rem;">
-          Click <strong>“View Case Study”</strong> on any project to inspect the full-resolution artwork, strategic design solution, and deliverables.
-        </p>
-      </div>
-
-      <div class="filter-bar">
-        <div class="filter-group" id="filterTabs">
-          <button class="filter-tab active" data-cat="all">All Works (30)</button>
-          <button class="filter-tab" data-cat="Branding">Branding (18)</button>
-          <button class="filter-tab" data-cat="Packaging">Packaging (4)</button>
-          <button class="filter-tab" data-cat="Marketing & Print">Marketing &amp; Print (4)</button>
-          <button class="filter-tab" data-cat="Digital Art">Digital Art (4)</button>
-        </div>
-        <div class="search-input-wrap">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="searchBox" placeholder="Search brand or project..." />
-        </div>
-      </div>
-
-      <div class="portfolio-grid" id="portfolioGrid"></div>
-    </div>
-  </section>
-
-  <!-- About Studio & CV Section -->
-  <section class="section-wrap" id="about-cv" style="border-top: 1px solid var(--border-line);">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <span class="section-tag">02 // Studio Capabilities &amp; Lead Designer</span>
-          <h2 class="section-title">About Sankita Studio &amp; CV</h2>
-        </div>
-      </div>
-
-      <div class="cv-grid">
-        <div class="info-card">
-          <h3>Sankita Studio &amp; Lead Designer</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-            Founded and led by <strong>Thet Htet Myat Noe</strong>, <strong>Sankita Studio</strong> is a creative graphic design and digital art practice dedicated to turning strategic concepts into memorable visual stories.
-          </p>
-          <p style="color: var(--text-secondary);">
-            From commercial food &amp; beverage packaging and corporate brand identities to social media ad campaigns and original digital portraiture, every project is crafted with precision, clarity, and market impact.
-          </p>
-          <h3 style="margin-top: 1.75rem; font-size: 1.35rem;">Software &amp; Technical Mastery</h3>
-          <div class="tag-list">
-            <span class="tag-chip">Adobe Illustrator</span>
-            <span class="tag-chip">Adobe Photoshop</span>
-            <span class="tag-chip">Adobe InDesign</span>
-            <span class="tag-chip">Procreate</span>
-            <span class="tag-chip">Figma</span>
-            <span class="tag-chip">Brand Identity Systems</span>
-            <span class="tag-chip">Packaging Dielines</span>
-            <span class="tag-chip">Print Prepress</span>
-            <span class="tag-chip">Digital Fine Art</span>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <h3>Core Studio Services</h3>
-          <div style="margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--border-line);">
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">01 // BRAND IDENTITY &amp; LOGO DESIGN</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Visual Strategy &amp; Complete Brand Systems</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Bespoke logomarks, bilingual Burmese/English typography lockups, color systems, and corporate stationery.</p>
-          </div>
-          <div style="margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--border-line);">
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">02 // COMMERCIAL PACKAGING DESIGN</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Retail Pouches, Labels &amp; Dielines</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Print-ready coffee pouches, agricultural seed bags, bottle labels, nutrition layouts, and 3D product mockups.</p>
-          </div>
-          <div>
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">03 // MARKETING, PRINT &amp; DIGITAL ART</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Social Media Ads, Menus &amp; Custom Illustration</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">High-converting social media campaigns, esports graphics, bistro menus, album art, and digital paintings.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section-wrap" id="contact" style="border-top: 1px solid var(--border-line);">
-    <div class="container" style="text-align: center; max-width: 1080px;">
-      <span class="section-tag">03 // Connect With Sankita Studio</span>
-      <h2 class="section-title" style="margin-bottom: 0.85rem;">Start a Project With Sankita Studio</h2>
-      <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 1.75rem;">
-        Choose your project type, budget range, and deadline using our interactive brief builder, or reach out directly through any of our official studio channels below.
-      </p>
-
-      <button class="btn-gold" onclick="openCommissionModal()" style="padding: 0.85rem 1.85rem; font-size: 0.92rem;">
-        <i class="fa-solid fa-sliders"></i> Commission a Project (Interactive Brief)
-      </button>
-
-      <!-- All 5 Official Contact Channels -->
-      <div class="contact-channels">
-        <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="channel-card">
-          <div class="channel-icon"><i class="fa-brands fa-facebook-f"></i></div>
-          <div>
-            <div class="channel-label">Facebook Page</div>
-            <div class="channel-val">Sankita Studio</div>
-          </div>
-        </a>
-
-        <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="channel-card">
-          <div class="channel-icon"><i class="fa-brands fa-telegram"></i></div>
-          <div>
-            <div class="channel-label">Telegram Channel / Chat</div>
-            <div class="channel-val">t.me/sanketastudio</div>
-          </div>
-        </a>
-
-        <a href="tel:+959780008874" class="channel-card">
-          <div class="channel-icon"><i class="fa-brands fa-viber"></i></div>
-          <div>
-            <div class="channel-label">Viber / Direct Phone</div>
-            <div class="channel-val">+95 9 780 008 874</div>
-          </div>
-        </a>
-
-        <a href="https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/" target="_blank" rel="noopener" class="channel-card">
-          <div class="channel-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-          <div>
-            <div class="channel-label">LinkedIn Profile</div>
-            <div class="channel-val">Thet Htet Myat Noe</div>
-          </div>
-        </a>
-
-        <a href="mailto:thethtetmyatnoe2026@gmail.com" class="channel-card">
-          <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
-          <div>
-            <div class="channel-label">Official Email</div>
-            <div class="channel-val">thethtetmyatnoe2026@gmail.com</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 <strong>Sankita Studio</strong> (Thet Htet Myat Noe). All showcased artworks and designs are original property.</p>
-    </div>
-  </footer>
-
-  <!-- MODAL 1: Case Study Viewer Modal -->
-  <div class="modal-overlay" id="caseStudyModal">
-    <div class="modal-box">
-      <button class="modal-close-btn" onclick="closeCaseStudyModal()" aria-label="Close">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="cs-layout">
-        <div class="cs-image-side">
-          <img id="csModalImg" src="" alt="Project Artwork" />
-        </div>
-        <div class="cs-content-side">
-          <div>
-            <span class="section-tag" id="csModalCat">CATEGORY</span>
-            <h2 id="csModalTitle" style="font-family: var(--font-serif); font-size: 2rem; font-weight: 600; margin-bottom: 0.4rem;">Project Title</h2>
-            <p id="csModalBrief" style="color: var(--text-secondary); font-size: 0.92rem;"></p>
-
-            <div class="cs-block">
-              <h4>Strategic Design Solution</h4>
-              <p id="csModalStrategy" style="font-size: 0.88rem; color: var(--text-primary);"></p>
-            </div>
-
-            <div class="cs-block">
-              <h4>Ownership &amp; Deliverables (Sankita Studio)</h4>
-              <p id="csModalOwnership" style="font-size: 0.88rem; color: var(--text-primary);"></p>
-            </div>
-
-            <div class="tag-list" id="csModalTools" style="margin-top: 1rem;"></div>
-          </div>
-
-          <div>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
-              <button class="btn-gold" id="csCommissionSimilarBtn">
-                <i class="fa-solid fa-pen-nib"></i> Commission Similar Project
-              </button>
-              <a id="csFullImgLink" href="#" target="_blank" class="btn-ghost">
-                <i class="fa-solid fa-up-right-from-square"></i> Full Resolution
-              </a>
-            </div>
-
-            <div class="cs-nav-bar">
-              <button class="case-study-btn" id="csPrevBtn"><i class="fa-solid fa-arrow-left"></i> Previous</button>
-              <span id="csCounter" style="font-size: 0.8rem; color: var(--text-secondary);">01 / 30</span>
-              <button class="case-study-btn" id="csNextBtn">Next <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL 2: Interactive Commission a Project Modal (1. Project Type, 2. Budget Range, 3. Project Deadline) -->
-  <div class="modal-overlay" id="commissionModal">
-    <div class="modal-box commission-box">
-      <button class="modal-close-btn" onclick="closeCommissionModal()" aria-label="Close">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <span class="section-tag">Sankita Studio — Project Brief Builder</span>
-      <h2 style="font-family: var(--font-serif); font-size: 2.1rem; font-weight: 600; margin-bottom: 0.35rem;">Commission a Project</h2>
-      <p style="color: var(--text-secondary); font-size: 0.9rem;">
-        Select your options below to send your project brief directly to <strong>Sankita Studio</strong> via Email, Telegram, or Viber.
-      </p>
-
-      <form id="commissionForm" onsubmit="submitCommissionForm(event)">
-        <!-- 1. Project Type -->
-        <label class="step-label">1. Project Type</label>
-        <div class="option-grid" data-group="projectType">
-          <div class="option-pill selected" data-val="Brand Identity & Logo">Brand Identity &amp; Logo</div>
-          <div class="option-pill" data-val="Product Packaging Design">Product Packaging</div>
-          <div class="option-pill" data-val="Marketing & Print Design">Marketing &amp; Print</div>
-          <div class="option-pill" data-val="Digital Art & Poster">Digital Art / Poster</div>
-          <div class="option-pill" data-val="Full Brand & Packaging Suite">Full Brand Suite</div>
-        </div>
-
-        <!-- 2. Budget Range -->
-        <label class="step-label">2. Budget Range</label>
-        <div class="option-grid" data-group="budgetRange">
-          <div class="option-pill" data-val="$100 – $250 (Starter)">$100 – $250</div>
-          <div class="option-pill selected" data-val="$250 – $500 (Standard)">$250 – $500</div>
-          <div class="option-pill" data-val="$500 – $1,000 (Comprehensive)">$500 – $1,000</div>
-          <div class="option-pill" data-val="$1,000+ / Custom Quote">$1,000+ / Custom</div>
-        </div>
-
-        <!-- 3. Project Deadline -->
-        <label class="step-label">3. Project Deadline</label>
-        <div class="option-grid" data-group="deadline">
-          <div class="option-pill" data-val="Urgent (3 – 5 Days)">Urgent (3–5 Days)</div>
-          <div class="option-pill selected" data-val="Standard (1 – 2 Weeks)">Standard (1–2 Weeks)</div>
-          <div class="option-pill" data-val="Flexible (3 – 4 Weeks)">Flexible (3–4 Weeks)</div>
-          <div class="option-pill" data-val="Long-Term Retainer">Long-Term / Retainer</div>
-        </div>
-
-        <!-- Client Contact Details -->
-        <label class="step-label">4. Your Details &amp; Project Notes</label>
-        <div class="form-row">
-          <input type="text" id="clientName" class="form-input" placeholder="Your Name or Business Name *" required />
-          <input type="text" id="clientEmail" class="form-input" placeholder="Your Phone / Viber / Email *" required />
-        </div>
-        <textarea id="clientNotes" class="form-textarea" rows="3" style="margin-top: 0.85rem;" placeholder="Tell us briefly about your brand, product, or design requirements..."></textarea>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem;">
-          <button type="submit" class="btn-gold">
-            <i class="fa-solid fa-envelope"></i> Send via Email
-          </button>
-          <button type="button" class="btn-ghost" onclick="sendBriefViaTelegram()">
-            <i class="fa-brands fa-telegram" style="color: var(--accent-gold);"></i> Send via Telegram
-          </button>
-          <button type="button" class="btn-ghost" onclick="copyBriefToClipboard()">
-            <i class="fa-brands fa-viber" style="color: var(--accent-gold);"></i> Copy for Viber (+959780008874)
-          </button>
-        </div>
-        <p id="copyFeedback" style="color: #4ade80; font-size: 0.82rem; margin-top: 0.65rem; display: none;">
-          ✓ Project brief copied! You can now paste it directly into Telegram, Viber (+959780008874), or Facebook Messenger.
-        </p>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    // Live URL base guarantees images always load both locally and on GitHub Pages
-    const LIVE_BASE = "https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/";
-
-    // Complete 30 Projects with Strategic Design Solutions & Ownership
-    const projects = [
-      { id: "01", title: "Myayadanar Cooking Oil", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Cooking Oil Company", strategy: "Designed a warm, culturally resonant emblem featuring a chef portrait paired with traditional Burmese script ('မြရတနာ') in vibrant green and gold to communicate culinary authenticity and household trust.", ownership: "Full ownership of character emblem illustration, custom Burmese script typography, and primary brand mark lockup.", tools: ["Adobe Illustrator", "Vector Illustration", "Typography"] },
-      { id: "02", title: "Pro Liquor Store", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Liquor Store", strategy: "Crafted an interlocking tri-ring geometric monogram forming 'PRO' in vibrant orange, teal, and violet gradients over a sleek black backdrop, paired with refined cursive 'Liquors' script.", ownership: "Sole designer responsible for 3D-shaded ribbon monogram geometry, gradient color profiling, and night-retail signage lockup.", tools: ["Adobe Illustrator", "Gradient Mesh", "Brand Identity"] },
-      { id: "03", title: "KTT Construction", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Construction Company", strategy: "Engineered an architectural gold-foil monogram integrating the letters 'KTT' beneath a pitched roof and window silhouette, anchored by the tagline 'BUILT TOGETHER, GROW TOGETHER'.", ownership: "Led structural monogram grid construction, metallic gold luxury presentation, and corporate identity standards.", tools: ["Adobe Illustrator", "Corporate Identity", "Grid System"] },
-      { id: "04", title: "SPY Noodle Bar", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Ramen Restaurant", strategy: "Created an unforgettable incognito 'Spy' character in a fedora hat slurping noodles with chopsticks, framed by bold 3D shadow display typography on a warm vintage cream palette.", ownership: "Full ownership of mascot character illustration, custom arched display lettering, and restaurant packaging assets.", tools: ["Adobe Illustrator", "Mascot Design", "Food Branding"] },
-      { id: "05", title: "Arrow Mobile", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Mobile Phone Shop", strategy: "Built a dynamic four-point directional arrow star in gold and cobalt blue framing a unified Android-and-Apple dual-OS emblem to signal complete smartphone sales and repair expertise.", ownership: "Conceptualized and executed the dual-platform tech icon, geometric arrow frame, and retail signage system.", tools: ["Adobe Illustrator", "Tech Branding", "Iconography"] },
-      { id: "06", title: "EazyBites Snacks", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Snack Factory", strategy: "Transformed the letter 'B' into a playful, hungry monster character chomping an orange snack bite, paired with rounded, kid-friendly typography on a fresh pistachio background.", ownership: "Owned character-letterform integration, playful color psychology, and FMCG snack line identity.", tools: ["Adobe Illustrator", "Character Type", "FMCG Identity"] },
-      { id: "07", title: "OunPha Arabica Coffee", category: "Packaging", group: "Packaging", brief: "2+1 Instant Arabica Coffee Sachet & Pouch Packaging", strategy: "Architected a luxury dark-roast matte black and bronze-gold packaging layout featuring a top-down espresso crema visual, 6 quality seal icons, Myanmar origin map, and bilingual brewing/nutrition guides.", ownership: "End-to-end packaging ownership: front/back dieline layout, custom iconography, barcode/regulatory integration, and print prepress.", tools: ["Adobe Illustrator", "Photoshop", "Packaging Dieline"] },
-      { id: "08", title: "Friendship Food & Drink", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Restaurant", strategy: "Wove a single continuous black line into an infinity-style loop terminating in a fork and spoon over an electric lime-yellow backdrop—symbolizing connection through dining.", ownership: "Designed the continuous-line utensil monogram, high-contrast color system, and F&B brand mark.", tools: ["Adobe Illustrator", "Minimalist Line Art", "Hospitality"] },
-      { id: "09", title: "DJ AND", category: "Branding", group: "Branding", brief: "Producer Tag Logo for Record Label", strategy: "Fused folded geometric ribbon letterforms ('AND') with piano keys integrated into the 'A' stroke and a turntable vinyl platter built into the 'D'.", ownership: "Sole creator of the sonic producer insignia, vector ribbon shading, and stage/streaming watermark kit.", tools: ["Adobe Illustrator", "Music Identity", "Vector Geometry"] },
-      { id: "10", title: "Metijaan Production", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Film Production", strategy: "Crafted a regal golden swan-and-lotus emblem paired with glittering 3D metallic gold serif typography ('MERijAAN PRODUCTION') for theatrical screen presence.", ownership: "Owned emblem illustration, metallic gold texture rendering, and cinematic title card lockup.", tools: ["Adobe Photoshop", "Illustrator", "3D Type Effects"] },
-      { id: "11", title: "Young Translator Group", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Online Service Team", strategy: "Designed interlocking 'YT' monograms whose vertical stems morph into fountain pen nibs inside a glowing purple-to-cyan circular crest.", ownership: "Delivered complete digital team identity, pen-nib vector construction, and social avatar suite.", tools: ["Adobe Illustrator", "Digital Branding", "Monogram"] },
-      { id: "12", title: "BiBu Tai Foods", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Local Foods Product", strategy: "Sculpted symmetrical golden ribbons wrapping around vertical pillars with a central heart motif to celebrate authentic regional Tai culinary craft.", ownership: "Owned textured gold ribbon illustration, emblem symmetry, and food label seal design.", tools: ["Adobe Illustrator", "Photoshop", "Textured Vector"] },
-      { id: "13", title: "Magic Homemade Chocolates", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Local Chocolate Brand", strategy: "Combined glossy melting chocolate drips, a negative-space hand & cocoa pod emblem, 3D liquid-chocolate lettering, and a '100% Cacao' stamp.", ownership: "Full ownership of 3D liquid typography, negative-space icon concept, and artisanal confectionery branding.", tools: ["Adobe Photoshop", "Illustrator", "Confectionery Art"] },
-      { id: "14", title: "Phoe Hein Album Art", category: "Album Art", group: "Marketing & Print", brief: "Album Cover Art ('Comet Strike / လေဟာနယ်...တမ်းချင်း')", strategy: "Illustrated a surreal cosmic narrative of an astronaut on the lunar surface reaching toward a floating figure beneath Earth and a glowing comet.", ownership: "Executed character illustration, space atmosphere compositing, bilingual title typography, and streaming cover formatting.", tools: ["Adobe Photoshop", "Procreate", "Album Cover Art"] },
-      { id: "15", title: "Sugar Computer Services", category: "Branding", group: "Branding", brief: "Logo Design for Computer Service & Repair Centre", strategy: "Paired a perspective desktop monitor and orbiting repair wrench in a dynamic gold-to-blue gradient with custom tech-stencil 'SUGAR' typography.", ownership: "Created the app-icon badge, hardware repair symbolism, and store signage mark.", tools: ["Adobe Illustrator", "Logo Design", "Tech Retail"] },
-      { id: "16", title: "Kagura Logistics", category: "Branding", group: "Branding", brief: "Logo and Brand Identity Design for Logistics Company", strategy: "Constructed a clean, modern 'K' monogram from intersecting pastel pink and sky-blue ribbons with subtle drop shadows inside a cream circle.", ownership: "Owned minimal ribbon geometry, pastel corporate palette, and fleet/parcel sticker identity.", tools: ["Adobe Illustrator", "Minimalist Logo", "Logistics"] },
-      { id: "17", title: "PyiHeinKyaw Artist Poster", category: "Poster", group: "Marketing & Print", brief: "Custom 3D Burmese Calligraphy Poster ('ပြည်ဟိန်းကျော်')", strategy: "Lettered sharp, architectural 3D Burmese display typography in royal blue and gold extrusion set against a weathered vintage parchment canvas.", ownership: "Hand-crafted the 3D Burmese lettering perspective, bevel shading, and grungy editorial poster texture.", tools: ["Adobe Illustrator", "Photoshop", "Burmese Typography"] },
-      { id: "18", title: "Taunggyi Seeds", category: "Packaging", group: "Packaging", brief: "Agricultural Seed Pouch Packaging ('တောင်ကြီး မျိုးစေ့စုံရောင်းဝယ်ရေး')", strategy: "Designed a vibrant emerald-green agricultural seed pack with vegetable line-art patterns, bold yellow Burmese title typography, and fresh snow-pea/tomato product photography.", ownership: "Full ownership of seed packet layout, custom vegetable pattern backdrop, and print-ready packaging.", tools: ["Adobe Illustrator", "Photoshop", "Agricultural Pack"] },
-      { id: "19", title: "Verse Vision Voyage Channel", category: "Branding", group: "Branding", brief: "Logo and Identity for Social Media Service Channel", strategy: "Formed a pixelated geometric 'V' check-wing in pastel blue, yellow, and coral that visually steps upward alongside the words 'Verse Vision Voyage'.", ownership: "Designed modular geometric mark, color-coded wordmark hierarchy, and channel branding kit.", tools: ["Adobe Illustrator", "Media Identity", "Digital Branding"] },
-      { id: "20", title: "Golden Pig Sausage", category: "Packaging", group: "Packaging", brief: "Brand & Packaging Visual for 'ရွှေဝက်လေး ဝက်အူချောင်း'", strategy: "Art-directed a cheerful 3D pink pig mascot holding a sausage on a fork atop golden coins, surrounded by floating chilies, herbs, and sausage slices on a fiery orange backdrop.", ownership: "Owned 3D mascot staging, appetizing food-floating composition, and bold Burmese packaging typography.", tools: ["Adobe Photoshop", "Illustrator", "FMCG Packaging"] },
-      { id: "21", title: "Taung Zalat Instant Coffee", category: "Packaging", group: "Packaging", brief: "2+1 Arabica Coffee Packaging ('တောင်ဇလပ်')", strategy: "Wrapped a warm mocha-brown coffee pouch in delicate botanical floral illustrations, a steaming latte-art cup with roasted beans, and complete bilingual nutrition/brewing specifications.", ownership: "Full ownership of floral illustration layout, front/back pouch dieline, and commercial print preparation.", tools: ["Adobe Illustrator", "Photoshop", "Coffee Packaging"] },
-      { id: "22", title: "John Beef Steaks", category: "Branding", group: "Branding", brief: "Minimalist Brand Mark for Local Steak House ('ဂျွန် အမဲကင်ကျပ်တိုက်ကြော်')", strategy: "Anchored the composition with a bold, oversized cream 'J' hook on a deep navy background, balanced by stacked Burmese display typography for smoked beef steak.", ownership: "Created the minimalist typographic hook concept, bilingual lockup, and culinary brand badge.", tools: ["Adobe Illustrator", "Minimalist Identity", "Typography"] },
-      { id: "23", title: "Lumere Skincare", category: "Social Media AD", group: "Marketing & Print", brief: "Luxury Facial Glow Serum Campaign ('Nature's Essence Unveiled')", strategy: "Staged the glass serum bottle nestled inside a wet moss-covered Zen stone surrounded by tropical monstera leaves, warm sunlight, and high-fashion editorial serif typography.", ownership: "Executed product manipulation, natural lighting integration, badge layout, and conversion CTA styling.", tools: ["Adobe Photoshop", "Beauty Ad Direction", "Compositing"] },
-      { id: "24", title: "GalaxyBorn Esports", category: "Social Media AD", group: "Marketing & Print", brief: "S.E.A. PUBG Team Roster Reveal Broadcast Graphic", strategy: "Built a futuristic cyberpunk HUD frame in neon cyan and magenta around the 'GB' comet crest, featuring 10 structured player/coach slots over a deep-space nebula.", ownership: "Designed the sci-fi UI border architecture, neon team emblem, and esports roster announcement template.", tools: ["Adobe Photoshop", "Illustrator", "Esports UI"] },
-      { id: "25", title: "Bloom Cafe & Bistro", category: "Print & Menu", group: "Marketing & Print", brief: "Printable Tabletop Menu & Editorial Layout", strategy: "Typeset an airy, four-quadrant bistro menu (Coffee, Pastries, Tea, All-Day Kitchen) with fine botanical corner line-art and crisp serif headings, presented in a warm cafe tabletop mockup.", ownership: "Owned editorial grid layout, typographic price alignment, botanical line illustration, and print specification.", tools: ["Adobe InDesign", "Illustrator", "Menu Design"] },
-      { id: "26", title: "Nyein Chan Hotel", category: "Branding", group: "Branding", brief: "Luxury Hospitality Identity & Stationery ('Nyein Chan Hotel Taunggyi')", strategy: "Paired a serene golden peace-dove emblem with deep imperial emerald and gold-foil stationery—including letterhead, envelope, and QR-enabled General Manager business cards.", ownership: "Full ownership of hotel crest design, luxury emerald/gold print collateral system, and corporate mockup presentation.", tools: ["Adobe Illustrator", "Photoshop", "Luxury Stationery"] },
-      { id: "27", title: "Crimson Profile", category: "Digital Art", group: "Digital Art", brief: "Original Digital Portraiture & Rim-Light Study", strategy: "Explored high-contrast crimson rim lighting and expressive painterly brushwork to evoke mystery and emotional intensity in profile portraiture.", ownership: "100% original digital painting—from rough sketch to custom brush texturing and color grading.", tools: ["Procreate", "Adobe Photoshop", "Digital Painting"] },
-      { id: "28", title: "Golden Hour", category: "Digital Art", group: "Digital Art", brief: "Warm Atmospheric Digital Portrait Illustration", strategy: "Captured the soft, nostalgic glow of late-afternoon sunlight across skin and hair using translucent warm glazes and delicate light particles.", ownership: "Original digital illustration, lighting study, and fine-art canvas rendering.", tools: ["Procreate", "Digital Illustration", "Light Study"] },
-      { id: "29", title: "Cosmic Ballerina", category: "Digital Art", group: "Digital Art", brief: "Surreal Celestial Dance Digital Artwork", strategy: "Painted a poised ballerina en pointe suspended against a violet-and-sapphire cosmos, wrapped in swirling ribbons of stardust and lens flares.", ownership: "Original concept art, anatomical figure painting, particle stardust brushwork, and signed canvas.", tools: ["Procreate", "Adobe Photoshop", "Concept Art"] },
-      { id: "30", title: "Nebula Reverie", category: "Digital Art", group: "Digital Art", brief: "Dreamscape Astral Digital Fine Art", strategy: "Synthesized deep-space nebula clouds with ethereal figurative storytelling to conclude the 2026 digital fine art collection.", ownership: "Complete digital painting execution, color harmony, and high-resolution print master.", tools: ["Procreate", "Adobe Photoshop", "Digital Fine Art"] }
-    ];
-
-    const gridEl = document.getElementById("portfolioGrid");
-    const filterTabs = document.querySelectorAll(".filter-tab");
-    const searchBox = document.getElementById("searchBox");
-
-    let currentFilter = "all";
-    let currentSearch = "";
-    let currentModalIndex = 0;
-
-    function getThumbSrc(id) { return `images/thumbs/${id}.webp`; }
-    function getFallbackThumbSrc(id) { return `${LIVE_BASE}images/thumbs/${id}.webp`; }
-    function getFullSrc(id) { return `images/fulls/${id}.webp`; }
-    function getFallbackFullSrc(id) { return `${LIVE_BASE}images/fulls/${id}.webp`; }
-
-    function renderGrid() {
-      const list = projects.filter(p => {
-        const matchCat = currentFilter === "all" || p.group === currentFilter;
-        const matchText = p.title.toLowerCase().includes(currentSearch) ||
-                          p.brief.toLowerCase().includes(currentSearch) ||
-                          p.category.toLowerCase().includes(currentSearch);
-        return matchCat && matchText;
-      });
-
-      gridEl.innerHTML = list.map(item => `
-        <article class="work-card">
-          <div class="work-thumb-wrap" onclick="openCaseStudy('${item.id}')">
-            <span class="work-badge">${item.id} // ${item.category}</span>
-            <img src="${getThumbSrc(item.id)}"
-                 alt="${item.title}"
-                 loading="lazy"
-                 onerror="if (this.src !== '${getFallbackThumbSrc(item.id)}') { this.src = '${getFallbackThumbSrc(item.id)}'; }" />
-          </div>
-          <div class="work-body">
-            <div>
-              <h3 class="work-title">${item.title}</h3>
-              <p class="work-sub">${item.brief}</p>
-            </div>
-            <div class="work-footer">
-              <button type="button" class="case-study-btn" onclick="openCaseStudy('${item.id}')">
-                <span>View Case Study</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-              <span style="font-size: 0.75rem; color: var(--text-secondary);">#${item.id}</span>
-            </div>
-          </div>
-        </article>
-      `).join("");
-    }
-
-    filterTabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        filterTabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
-        currentFilter = tab.dataset.cat;
-        renderGrid();
-      });
-    });
-
-    searchBox.addEventListener("input", e => {
-      currentSearch = e.target.value.trim().toLowerCase();
-      renderGrid();
-    });
-
-    // Case Study Modal Logic
-    const csModal = document.getElementById("caseStudyModal");
-    const csImg = document.getElementById("csModalImg");
-    const csCat = document.getElementById("csModalCat");
-    const csTitle = document.getElementById("csModalTitle");
-    const csBrief = document.getElementById("csModalBrief");
-    const csStrategy = document.getElementById("csModalStrategy");
-    const csOwnership = document.getElementById("csModalOwnership");
-    const csTools = document.getElementById("csModalTools");
-    const csFullLink = document.getElementById("csFullImgLink");
-    const csCounter = document.getElementById("csCounter");
-
-    window.openCaseStudy = function(id) {
-      const idx = projects.findIndex(p => p.id === id);
-      if (idx === -1) return;
-      currentModalIndex = idx;
-      updateCaseStudyModal();
-      csModal.classList.add("active");
-      document.body.style.overflow = "hidden";
-    };
-
-    function updateCaseStudyModal() {
-      const item = projects[currentModalIndex];
-      csImg.src = getFullSrc(item.id);
-      csImg.onerror = function() {
-        if (this.src !== getFallbackFullSrc(item.id)) {
-          this.src = getFallbackFullSrc(item.id);
-        } else {
-          this.src = getFallbackThumbSrc(item.id);
-        }
-      };
-
-      csCat.textContent = `PROJECT ${item.id} // ${item.category}`;
-      csTitle.textContent = item.title;
-      csBrief.textContent = item.brief;
-      csStrategy.textContent = item.strategy;
-      csOwnership.textContent = item.ownership;
-      csTools.innerHTML = item.tools.map(t => `<span class="tag-chip">${t}</span>`).join("");
-      csFullLink.href = getFallbackFullSrc(item.id);
-      csCounter.textContent = `${item.id} / 30`;
-
-      document.getElementById("csCommissionSimilarBtn").onclick = function() {
-        closeCaseStudyModal();
-        openCommissionModal(item.title);
-      };
-    }
-
-    window.closeCaseStudyModal = function() {
-      csModal.classList.remove("active");
-      document.body.style.overflow = "";
-    };
-
-    document.getElementById("csPrevBtn").addEventListener("click", () => {
-      currentModalIndex = (currentModalIndex - 1 + projects.length) % projects.length;
-      updateCaseStudyModal();
-    });
-
-    document.getElementById("csNextBtn").addEventListener("click", () => {
-      currentModalIndex = (currentModalIndex + 1) % projects.length;
-      updateCaseStudyModal();
-    });
-
-    // Commission Modal Logic
-    const commModal = document.getElementById("commissionModal");
-
-    window.openCommissionModal = function(refProject = "") {
-      if (refProject) {
-        const notesEl = document.getElementById("clientNotes");
-        notesEl.value = `Reference Project: ${refProject}\n`;
-      }
-      commModal.classList.add("active");
-      document.body.style.overflow = "hidden";
-    };
-
-    window.closeCommissionModal = function() {
-      commModal.classList.remove("active");
-      document.body.style.overflow = "";
-    };
-
-    document.querySelectorAll(".option-grid").forEach(grid => {
-      grid.addEventListener("click", e => {
-        const pill = e.target.closest(".option-pill");
-        if (!pill) return;
-        grid.querySelectorAll(".option-pill").forEach(p => p.classList.remove("selected"));
-        pill.classList.add("selected");
-      });
-    });
-
-    function getSelectedOption(groupName) {
-      const el = document.querySelector(`.option-grid[data-group="${groupName}"] .option-pill.selected`);
-      return el ? el.dataset.val : "";
-    }
-
-    function buildBriefSummary() {
-      const pType = getSelectedOption("projectType");
-      const budget = getSelectedOption("budgetRange");
-      const deadline = getSelectedOption("deadline");
-      const name = document.getElementById("clientName").value.trim() || "Client";
-      const contact = document.getElementById("clientEmail").value.trim() || "Not provided";
-      const notes = document.getElementById("clientNotes").value.trim() || "No additional notes.";
-
-      return {
-        subject: `Sankita Studio Commission: ${pType} (${name})`,
-        body:
-`Hello Sankita Studio (Thet Htet Myat Noe),
-
-I would like to commission a project with the following brief:
-
-1. PROJECT TYPE: ${pType}
-2. BUDGET RANGE: ${budget}
-3. PROJECT DEADLINE: ${deadline}
-
---- CLIENT CONTACT ---
-Name / Business: ${name}
-Phone / Viber / Email: ${contact}
-
---- PROJECT NOTES ---
-${notes}`
-      };
-    }
-
-    window.submitCommissionForm = function(e) {
-      e.preventDefault();
-      const brief = buildBriefSummary();
-      const mailtoLink = `mailto:thethtetmyatnoe2026@gmail.com?subject=${encodeURIComponent(brief.subject)}&body=${encodeURIComponent(brief.body)}`;
-      window.location.href = mailtoLink;
-    };
-
-    window.sendBriefViaTelegram = function() {
-      const brief = buildBriefSummary();
-      navigator.clipboard.writeText(brief.body);
-      window.open(`https://t.me/sanketastudio`, "_blank");
-    };
-
-    window.copyBriefToClipboard = function() {
-      const brief = buildBriefSummary();
-      navigator.clipboard.writeText(brief.body).then(() => {
-        const msg = document.getElementById("copyFeedback");
-        msg.style.display = "block";
-        setTimeout(() => { msg.style.display = "none"; }, 5000);
-      });
-    };
-
-    window.addEventListener("click", e => {
-      if (e.target === csModal) closeCaseStudyModal();
-      if (e.target === commModal) closeCommissionModal();
-    });
-
-    window.addEventListener("keydown", e => {
-      if (e.key === "Escape") {
-        closeCaseStudyModal();
-        closeCommissionModal();
-      }
-    });
-
-    // Dark / Light Theme Toggle
-    const themeBtn = document.getElementById("themeBtn");
-    themeBtn.addEventListener("click", () => {
-      const root = document.documentElement;
-      if (root.getAttribute("data-theme") === "light") {
-        root.removeAttribute("data-theme");
-        themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-      } else {
-        root.setAttribute("data-theme", "light");
-        themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-      }
-    });
-
-    // Initialize Portfolio Grid
-    renderGrid();
-  </script>
-</body>
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<!-- Primary Meta Tags -->
+		<title>Thet Htet Myat Noe | Graphic Designer & Digital Artist Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="title" content="Thet Htet Myat Noe | Graphic Designer & Digital Artist Portfolio" />
+		<meta name="description" content="Official portfolio of Thet Htet Myat Noe — Professional Graphic Designer and Digital Artist specializing in Brand Identity, Packaging Design, Marketing Collaterals, and Digital Fine Art." />
+		<meta name="keywords" content="Thet Htet Myat Noe, Graphic Designer, Digital Artist, Brand Identity, Logo Design, Packaging Design, Myanmar Designer, Graphic Design Portfolio, Digital Fine Art" />
+		<meta name="author" content="Thet Htet Myat Noe" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/" />
+
+		<!-- Open Graph / Facebook / LinkedIn -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/" />
+		<meta property="og:title" content="Thet Htet Myat Noe | Graphic Designer & Digital Artist" />
+		<meta property="og:description" content="Explore creative visual solutions, strategic brand identity designs, product packaging, and original digital artworks by Thet Htet Myat Noe." />
+		<meta property="og:image" content="https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/images/designer-photo.webp" />
+
+		<!-- Font Awesome Icons CDN -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "Person",
+		  "name": "Thet Htet Myat Noe",
+		  "jobTitle": "Graphic Designer & Digital Artist",
+		  "url": "https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/",
+		  "email": "mailto:thethtetmyatnoe2026@gmail.com",
+		  "sameAs": [
+		    "https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/"
+		  ],
+		  "knowsAbout": ["Graphic Design", "Brand Identity", "Logo Design", "Packaging Design", "Digital Illustration", "Visual Arts"]
+		}
+		</script>
+
+		<style>
+			/* CSS RESET & COMPLETE OVERRIDE OF TEMPLATE CONSTRAINTS */
+			*, *:before, *:after {
+				box-sizing: border-box;
+			}
+
+			/* OBSIDIAN & CHAMPAGNE GOLD COLOR PALETTE */
+			:root {
+				--bg-obsidian: #0b0f17;             /* Deep Obsidian Black */
+				--card-bg: rgba(255, 255, 255, 0.035);
+				--card-border: rgba(245, 158, 11, 0.18);
+				--text-main: #ffffff;
+				--text-sub: #a1a1aa;              /* Cool Grey */
+				--accent-gold: #f59e0b;           /* Champagne Gold */
+				--accent-hover: #d97706;          /* Deep Gold */
+				--accent-light: #fef3c7;          /* Soft Champagne Glow */
+				--accent-glow: rgba(245, 158, 11, 0.35);
+			}
+
+			html, body {
+				opacity: 1 !important;
+				visibility: visible !important;
+				display: block !important;
+				background-color: var(--bg-obsidian) !important;
+				background-image: none !important;
+				background: var(--bg-obsidian) !important;
+				color: var(--text-main) !important;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+				line-height: 1.6 !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				overflow-x: hidden !important;
+				overflow-y: auto !important;
+				height: auto !important;
+				min-height: 100vh !important;
+				scroll-behavior: smooth;
+			}
+
+			body.is-preload *, body.is-loading *, body * {
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+
+			#wrapper {
+				opacity: 1 !important;
+				visibility: visible !important;
+				display: block !important;
+				position: relative !important;
+				top: auto !important;
+				left: auto !important;
+				width: 100% !important;
+				height: auto !important;
+				min-height: 100vh !important;
+				padding: 0 !important;
+				margin: 0 !important;
+				transform: none !important;
+				background: transparent !important;
+			}
+
+			#main {
+				opacity: 1 !important;
+				visibility: visible !important;
+				display: block !important;
+				position: relative !important;
+				top: auto !important;
+				left: auto !important;
+				width: 100% !important;
+				max-width: 1350px !important;
+				margin: 0 auto !important;
+				padding: 0 !important;
+				height: auto !important;
+				transform: none !important;
+			}
+
+			#bg, body:before, body:after, #wrapper:before, #wrapper:after {
+				display: none !important;
+			}
+
+			/* Navigation Header Bar */
+			.navbar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 18px 40px;
+				background: rgba(11, 15, 23, 0.95);
+				backdrop-filter: blur(16px);
+				-webkit-backdrop-filter: blur(16px);
+				border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+				position: sticky;
+				top: 0;
+				z-index: 1000;
+				width: 100%;
+			}
+
+			.nav-brand {
+				font-size: 1.15rem;
+				font-weight: 800;
+				color: #ffffff !important;
+				text-decoration: none !important;
+				letter-spacing: 0.5px;
+			}
+
+			.nav-brand span {
+				color: var(--accent-gold);
+			}
+
+			.nav-links {
+				display: flex;
+				gap: 25px;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			.nav-links a {
+				color: var(--text-sub) !important;
+				text-decoration: none !important;
+				font-size: 0.9rem;
+				font-weight: 600;
+				transition: color 0.25s ease;
+			}
+
+			.nav-links a:hover {
+				color: var(--accent-gold) !important;
+			}
+
+			/* 1. Welcome / Hero Section */
+			.hero-section {
+				min-height: 85vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				padding: 60px 20px;
+				max-width: 900px;
+				margin: 0 auto;
+			}
+
+			.hero-profile-container {
+				width: 140px;
+				height: 140px;
+				margin: 0 auto 24px;
+				border-radius: 50%;
+				overflow: hidden;
+				border: 3px solid rgba(245, 158, 11, 0.6);
+				box-shadow: 0 10px 30px var(--accent-glow);
+			}
+
+			.hero-profile-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.hero-title {
+				font-size: 3rem;
+				font-weight: 800;
+				color: #ffffff !important;
+				margin: 0 0 10px 0;
+				line-height: 1.2;
+			}
+
+			.hero-subtitle {
+				font-size: 1.25rem;
+				color: var(--accent-gold);
+				font-weight: 600;
+				margin-bottom: 20px;
+				letter-spacing: 0.5px;
+			}
+
+			.hero-bio {
+				font-size: 1.05rem;
+				color: var(--text-sub);
+				max-width: 680px;
+				margin: 0 auto 35px;
+				line-height: 1.7;
+			}
+
+			.hero-buttons {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 15px;
+			}
+
+			.btn-primary {
+				background: linear-gradient(135deg, var(--accent-gold), var(--accent-hover));
+				color: #000000 !important;
+				border: none;
+				padding: 12px 28px;
+				border-radius: 30px;
+				font-size: 0.92rem;
+				font-weight: 700;
+				text-decoration: none !important;
+				box-shadow: 0 4px 18px var(--accent-glow);
+				transition: all 0.3s ease;
+				display: inline-block;
+			}
+
+			.btn-primary:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+			}
+
+			.btn-secondary {
+				background: rgba(255, 255, 255, 0.05);
+				color: var(--text-main) !important;
+				border: 1px solid rgba(245, 158, 11, 0.25);
+				padding: 12px 28px;
+				border-radius: 30px;
+				font-size: 0.92rem;
+				font-weight: 600;
+				text-decoration: none !important;
+				transition: all 0.3s ease;
+				display: inline-block;
+			}
+
+			.btn-secondary:hover {
+				background: rgba(245, 158, 11, 0.15);
+				color: var(--accent-light) !important;
+				border-color: rgba(245, 158, 11, 0.5);
+			}
+
+			/* Section Containers & Headers */
+			.section-container {
+				max-width: 1350px;
+				margin: 0 auto;
+				padding: 80px 20px 40px;
+			}
+
+			.section-header {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+
+			.section-badge {
+				color: var(--accent-gold);
+				font-size: 0.8rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1.5px;
+				background: rgba(245, 158, 11, 0.12);
+				border: 1px solid rgba(245, 158, 11, 0.3);
+				padding: 5px 14px;
+				border-radius: 20px;
+				display: inline-block;
+				margin-bottom: 12px;
+			}
+
+			.section-title {
+				color: #ffffff !important;
+				font-size: 2.2rem;
+				font-weight: 800;
+				margin: 0 0 10px 0;
+			}
+
+			.section-subtitle {
+				color: var(--text-sub);
+				font-size: 1rem;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			/* 2. Category Navigation Buttons Bar */
+			.category-bar {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 10px;
+				margin-bottom: 35px;
+			}
+
+			.filter-btn {
+				background: rgba(255, 255, 255, 0.04);
+				color: var(--text-sub);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				padding: 10px 22px;
+				border-radius: 25px;
+				font-size: 0.88rem;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.25s ease;
+				outline: none;
+			}
+
+			.filter-btn:hover {
+				background: rgba(245, 158, 11, 0.15);
+				color: var(--accent-light);
+				border-color: rgba(245, 158, 11, 0.4);
+			}
+
+			.filter-btn.active {
+				background: var(--accent-gold);
+				color: #000000;
+				border-color: var(--accent-gold);
+				box-shadow: 0 4px 15px var(--accent-glow);
+			}
+
+			/* Projects Grid */
+			.projects-grid {
+				display: grid !important;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+				gap: 22px !important;
+				width: 100% !important;
+			}
+
+			.project-card {
+				width: 100% !important;
+				height: 280px !important;
+				position: relative !important;
+				border-radius: 14px !important;
+				overflow: hidden !important;
+				background: var(--card-bg) !important;
+				border: 1px solid var(--card-border) !important;
+				transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+				cursor: pointer;
+				margin: 0 !important;
+				display: block !important;
+			}
+
+			.project-card:hover {
+				transform: translateY(-5px) !important;
+				box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 18px var(--accent-glow) !important;
+				border-color: rgba(245, 158, 11, 0.5) !important;
+			}
+
+			.project-card img {
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: cover !important;
+				transition: transform 0.5s ease !important;
+				display: block !important;
+			}
+
+			.project-card:hover img {
+				transform: scale(1.06) !important;
+			}
+
+			.category-badge {
+				position: absolute;
+				top: 12px;
+				left: 12px;
+				background: rgba(11, 15, 23, 0.88);
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
+				color: var(--accent-gold);
+				font-size: 0.68rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.8px;
+				padding: 4px 10px;
+				border-radius: 18px;
+				border: 1px solid rgba(245, 158, 11, 0.3);
+				z-index: 10;
+				pointer-events: none;
+			}
+
+			.project-card.category-hidden {
+				display: none !important;
+			}
+
+			/* 3. Detailed CV / Resume Section */
+			.cv-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 30px;
+				margin-top: 20px;
+			}
+
+			.cv-card {
+				background: var(--card-bg);
+				border: 1px solid var(--card-border);
+				border-radius: 18px;
+				padding: 30px;
+				backdrop-filter: blur(12px);
+			}
+
+			.cv-card-title {
+				color: #ffffff !important;
+				font-size: 1.3rem;
+				font-weight: 700;
+				margin: 0 0 20px 0;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+				padding-bottom: 12px;
+			}
+
+			.timeline-item {
+				margin-bottom: 22px;
+				position: relative;
+				padding-left: 20px;
+				border-left: 2px solid rgba(245, 158, 11, 0.35);
+			}
+
+			.timeline-item:last-child {
+				margin-bottom: 0;
+			}
+
+			.timeline-period {
+				color: var(--accent-gold);
+				font-size: 0.8rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+
+			.timeline-role {
+				color: #ffffff !important;
+				font-size: 1.05rem;
+				font-weight: 700;
+				margin: 3px 0;
+			}
+
+			.timeline-company {
+				color: var(--text-sub);
+				font-size: 0.88rem;
+				margin-bottom: 6px;
+			}
+
+			.skills-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+
+			.skill-pill {
+				background: rgba(245, 158, 11, 0.12);
+				border: 1px solid rgba(245, 158, 11, 0.3);
+				color: var(--accent-light);
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 0.85rem;
+				font-weight: 600;
+			}
+
+			/* Interactive Pop-up Modal */
+			.project-modal {
+				display: none;
+				position: fixed;
+				inset: 0;
+				background: rgba(11, 15, 23, 0.92);
+				backdrop-filter: blur(16px);
+				-webkit-backdrop-filter: blur(16px);
+				z-index: 3000;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.project-modal.active {
+				display: flex !important;
+				opacity: 1 !important;
+			}
+
+			.modal-content {
+				background: #121824;
+				border: 1px solid rgba(245, 158, 11, 0.35);
+				border-radius: 20px;
+				width: 100%;
+				max-width: 920px;
+				max-height: 90vh;
+				overflow-y: auto;
+				position: relative;
+				box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--accent-glow);
+				display: grid;
+				grid-template-columns: 1.1fr 0.9fr;
+				gap: 0;
+			}
+
+			.modal-image-container {
+				background: #000000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+			}
+
+			.modal-image-container img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				max-height: 580px;
+			}
+
+			.modal-details {
+				padding: 35px 30px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			.modal-close {
+				position: absolute;
+				top: 16px;
+				right: 18px;
+				background: rgba(255, 255, 255, 0.1);
+				color: #ffffff;
+				border: none;
+				width: 38px;
+				height: 38px;
+				border-radius: 50%;
+				font-size: 1.3rem;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: background 0.2s ease, transform 0.2s ease;
+				z-index: 10;
+			}
+
+			.modal-close:hover {
+				background: rgba(245, 158, 11, 0.4);
+				transform: scale(1.08);
+			}
+
+			.modal-category {
+				color: var(--accent-gold);
+				font-size: 0.8rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				margin-bottom: 8px;
+			}
+
+			.modal-title {
+				color: #ffffff !important;
+				font-size: 1.65rem;
+				font-weight: 700;
+				margin: 0 0 18px 0;
+				line-height: 1.25;
+			}
+
+			.modal-section-title {
+				color: #e2e8f0;
+				font-size: 0.85rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				margin-top: 18px;
+				margin-bottom: 8px;
+				display: flex;
+				align-items: center;
+				gap: 6px;
+			}
+
+			.modal-description {
+				color: var(--text-sub);
+				font-size: 0.94rem;
+				line-height: 1.65;
+				background: rgba(255, 255, 255, 0.03);
+				padding: 14px 16px;
+				border-radius: 12px;
+				border: 1px solid rgba(255, 255, 255, 0.06);
+			}
+
+			.tools-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-top: 8px;
+			}
+
+			.tool-badge {
+				background: rgba(245, 158, 11, 0.12);
+				border: 1px solid rgba(245, 158, 11, 0.3);
+				color: var(--accent-light);
+				font-size: 0.78rem;
+				padding: 5px 13px;
+				border-radius: 14px;
+				font-weight: 500;
+			}
+
+			.case-study-link-container {
+				margin-top: 18px;
+			}
+
+			.btn-case-study-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				background: rgba(245, 158, 11, 0.15);
+				border: 1px solid rgba(245, 158, 11, 0.4);
+				color: var(--accent-light) !important;
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 0.82rem;
+				font-weight: 600;
+				text-decoration: none !important;
+				transition: all 0.3s ease;
+			}
+
+			.btn-case-study-link:hover {
+				background: var(--accent-gold);
+				color: #000000 !important;
+				box-shadow: 0 4px 12px var(--accent-glow);
+			}
+
+			/* 4. Services & Hire Me Section */
+			.hire-section {
+				width: 100%;
+				max-width: 1100px;
+				margin: 50px auto 20px auto;
+				padding: 40px 30px;
+				background: rgba(255, 255, 255, 0.025);
+				border: 1px solid rgba(245, 158, 11, 0.18);
+				border-radius: 20px;
+				backdrop-filter: blur(12px);
+			}
+
+			.hire-header {
+				text-align: center;
+				margin-bottom: 30px;
+			}
+
+			.hire-header h2 {
+				color: #ffffff !important;
+				font-size: 1.8rem;
+				font-weight: 800;
+				margin: 0 0 6px 0;
+			}
+
+			.hire-header p {
+				color: var(--text-sub);
+				font-size: 0.95rem;
+			}
+
+			.services-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 18px;
+				margin-bottom: 30px;
+			}
+
+			.service-card {
+				background: rgba(255, 255, 255, 0.03);
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				border-radius: 14px;
+				padding: 22px 18px;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.service-card:hover {
+				background: rgba(245, 158, 11, 0.06);
+				border-color: var(--accent-gold);
+				transform: translateY(-3px);
+			}
+
+			.service-icon {
+				font-size: 1.8rem;
+				margin-bottom: 10px;
+				display: block;
+			}
+
+			.service-card h3 {
+				color: #ffffff !important;
+				font-size: 1rem;
+				font-weight: 700;
+				margin: 0 0 6px 0;
+			}
+
+			.service-card p {
+				color: var(--text-sub);
+				font-size: 0.82rem;
+				line-height: 1.5;
+			}
+
+			/* Hire Me Form */
+			.hire-form {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 18px;
+			}
+
+			.form-group {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+
+			.form-group.full-width {
+				grid-column: 1 / -1;
+			}
+
+			.form-group label {
+				color: #e2e8f0;
+				font-size: 0.85rem;
+				font-weight: 600;
+			}
+
+			.form-control {
+				background: rgba(11, 15, 23, 0.7);
+				border: 1px solid rgba(245, 158, 11, 0.2);
+				border-radius: 10px;
+				padding: 12px 16px;
+				color: #ffffff;
+				font-size: 0.9rem;
+				outline: none;
+				transition: border-color 0.3s ease;
+			}
+
+			.form-control:focus {
+				border-color: var(--accent-gold);
+				box-shadow: 0 0 12px var(--accent-glow);
+			}
+
+			textarea.form-control {
+				resize: vertical;
+				min-height: 110px;
+			}
+
+			.btn-submit {
+				grid-column: 1 / -1;
+				background: linear-gradient(135deg, var(--accent-gold), var(--accent-hover));
+				color: #000000;
+				border: none;
+				padding: 14px 28px;
+				border-radius: 30px;
+				font-size: 0.95rem;
+				font-weight: 700;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 18px var(--accent-glow);
+				margin-top: 10px;
+			}
+
+			.btn-submit:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(245, 158, 11, 0.5);
+			}
+
+			.form-success-msg {
+				display: none;
+				grid-column: 1 / -1;
+				background: rgba(245, 158, 11, 0.15);
+				border: 1px solid rgba(245, 158, 11, 0.4);
+				color: var(--accent-light);
+				padding: 14px;
+				border-radius: 10px;
+				text-align: center;
+				font-size: 0.9rem;
+			}
+
+			/* Footer Section */
+			#footer {
+				width: 100% !important;
+				max-width: 1350px;
+				margin: 50px auto 0 auto !important;
+				padding: 40px 20px !important;
+				border-top: 1px solid rgba(245, 158, 11, 0.15);
+				text-align: center;
+			}
+
+			.footer-icons {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+				list-style: none;
+				padding: 0;
+				margin: 20px 0;
+			}
+
+			.footer-icons a {
+				color: var(--text-sub) !important;
+				font-size: 1.4rem;
+				transition: color 0.25s ease;
+				text-decoration: none !important;
+			}
+
+			.footer-icons a:hover {
+				color: var(--accent-gold) !important;
+			}
+
+			@media screen and (max-width: 768px) {
+				.navbar { padding: 15px 20px; }
+				.hero-title { font-size: 2.2rem; }
+				.cv-grid { grid-template-columns: 1fr; }
+				.hire-form { grid-template-columns: 1fr; }
+				.modal-content { grid-template-columns: 1fr; }
+				.modal-image-container { border-top-right-radius: 20px; border-bottom-left-radius: 0; max-height: 320px; }
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="wrapper">
+
+			<!-- Navbar Navigation -->
+			<nav class="navbar">
+				<a href="#" class="nav-brand">THET HTET MYAT NOE<span>.</span></a>
+				<ul class="nav-links">
+					<li><a href="#welcome">Home</a></li>
+					<li><a href="#portfolio">Projects</a></li>
+					<li><a href="#about-cv">About & CV</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- 1. Welcome / Intro Page Section -->
+			<section id="welcome" class="hero-section">
+				<div>
+					<div class="hero-profile-container">
+						<img src="images/designer-photo.webp" alt="Thet Htet Myat Noe" class="hero-profile-img">
+					</div>
+					
+					<h1 class="hero-title">Thet Htet Myat Noe</h1>
+					<div class="hero-subtitle">Graphic Designer & Digital Artist</div>
+					<p class="hero-bio">
+						Transforming strategic ideas into compelling visual stories. Specializing in high-impact brand identities, commercial product packaging, digital illustration, and marketing collaterals.
+					</p>
+
+					<div class="hero-buttons">
+						<a href="#portfolio" class="btn-primary">✨ Explore Selected Works</a>
+						<a href="#about-cv" class="btn-secondary">📄 View Experience & CV</a>
+						<a href="#contact" class="btn-secondary">📩 Start a Project</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- 2. Portfolio Projects with Category Filter Section -->
+			<section id="portfolio" class="section-container">
+				<div class="section-header">
+					<span class="section-badge">Selected Projects Showcase</span>
+					<h2 class="section-title">Creative Portfolio</h2>
+					<p class="section-subtitle">Browse through commercial brand identity systems, product packaging designs, and digital artworks.</p>
+				</div>
+
+				<!-- Category Filter Buttons Bar -->
+				<div class="category-bar">
+					<button class="filter-btn active" data-filter="all">All Projects</button>
+					<button class="filter-btn" data-filter="branding">Branding & Logo</button>
+					<button class="filter-btn" data-filter="packaging">Packaging</button>
+					<button class="filter-btn" data-filter="marketing">Marketing & Print</button>
+					<button class="filter-btn" data-filter="poster">Posters & Album Art</button>
+					<button class="filter-btn" data-filter="digital-art">Digital Art</button>
+				</div>
+
+				<div class="projects-grid">
+
+					<!-- Item 01: MYA YADANAR Cooking Oil -->
+					<article class="project-card branding"
+						data-title="MYA YADANAR Cooking Oil"
+						data-category="Branding & Logo"
+						data-concept="Designed a trustworthy visual identity for 'Mya Yadanar' edible cooking oil, featuring a chef-hatted female icon enclosed in a warm sunburst ring in green and yellow hues to symbolize purity, health, and household quality."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/01.webp"
+						data-casestudy="case-study-mya-yadanar.html">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/01.webp" alt="MYA YADANAR Cooking Oil">
+					</article>
+
+					<!-- Item 02: PRO Liquor Store -->
+					<article class="project-card branding"
+						data-title="PRO Liquor Store"
+						data-category="Branding & Logo"
+						data-concept="Created a vibrant nightlife brand mark for 'PRO Liquors' using 3D intertwined ribbon loops forming 'P', 'R', and 'O' in orange, blue, and purple gradients set against a sleek dark backdrop."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/02.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/02.webp" alt="PRO Liquor Store">
+					</article>
+
+					<!-- Item 03: KTT Constructions -->
+					<article class="project-card branding"
+						data-title="KTT Constructions"
+						data-category="Branding & Logo"
+						data-concept="Developed a luxury corporate identity for 'KTT Constructions' incorporating house roof silhouettes, window line-art, and 'KTT' letterforms in gold and black with the tagline 'Built Together, Grow Together'."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/03.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/03.webp" alt="KTT Constructions">
+					</article>
+
+					<!-- Item 04: SPY Noodle Shop -->
+					<article class="project-card branding"
+						data-title="SPY Noodle Shop"
+						data-category="Branding & Logo"
+						data-concept="Crafted an energetic retro brand identity for 'SPY Noodle Shop' starring a fedora-and-sunglasses wearing Spy cartoon character enjoying a bowl of noodles in a vector illustration style."
+						data-tools="Adobe Illustrator, Procreate"
+						data-image="images/fulls/04.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/04.webp" alt="SPY Noodle Shop">
+					</article>
+
+					<!-- Item 05: ARROW Mobile -->
+					<article class="project-card branding"
+						data-title="ARROW Mobile"
+						data-category="Branding & Logo"
+						data-concept="Designed a high-tech retail identity for 'ARROW Mobile' fusing Android and Apple symbols encircled by four multi-colored directional arrows to represent speed and technological innovation."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/05.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/05.webp" alt="ARROW Mobile">
+					</article>
+
+					<!-- Item 06: EAZY BITES Snacks -->
+					<article class="project-card branding"
+						data-title="EAZY BITES Snacks"
+						data-category="Branding & Logo"
+						data-concept="Created a playful snack brand mark for 'EAZY BITES' transforming the letter 'B' into a friendly tongue-out monster character with energetic orange and black typography."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/06.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/06.webp" alt="EAZY BITES Snacks">
+					</article>
+
+					<!-- Item 07: OUN PHA Arabica Coffee -->
+					<article class="project-card packaging"
+						data-title="OUN PHA Arabica Coffee"
+						data-category="Packaging Design"
+						data-concept="Engineered a premium 22g instant coffee pouch packaging for 'Oun Pha' 100% Shan State Arabica Coffee, featuring gold-and-black luxury tones, coffee cup visuals, and complete nutrition details."
+						data-tools="Adobe Illustrator, Photoshop, Dimension"
+						data-image="images/fulls/07.webp">
+						<span class="category-badge">Packaging</span>
+						<img src="images/thumbs/07.webp" alt="OUN PHA Arabica Coffee">
+					</article>
+
+					<!-- Item 08: FRIENDSHIP Food & Drink -->
+					<article class="project-card branding"
+						data-title="FRIENDSHIP Food & Drink"
+						data-category="Branding & Logo"
+						data-concept="Designed a minimalist culinary brand identity for 'Friendship Food & Drink' fusing spoon, fork, and circular line-art into a clean emblem on a vibrant lime background."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/08.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/08.webp" alt="FRIENDSHIP Food & Drink">
+					</article>
+
+					<!-- Item 09: DJ AND -->
+					<article class="project-card branding"
+						data-title="DJ AND"
+						data-category="Branding & Logo"
+						data-concept="Crafted a modern music producer mark for 'DJ AND' combining 'A-N-D' ribbon typography with piano key geometry and play-arrow symbols in sleek teal tones."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/09.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/09.webp" alt="DJ AND">
+					</article>
+
+					<!-- Item 10: MERijAAN Production -->
+					<article class="project-card branding"
+						data-title="MERijAAN Production"
+						data-category="Branding & Logo"
+						data-concept="Created a cinematic film studio logo for 'MERijAAN Production' featuring a golden swan and lotus emblem paired with sparkling metallic typography for artistic prestige."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/10.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/10.webp" alt="MERijAAN Production">
+					</article>
+
+					<!-- Item 11: Young Translator Group -->
+					<article class="project-card branding"
+						data-title="Young Translator Group"
+						data-category="Branding & Logo"
+						data-concept="Designed a professional identity for 'Young Translator Group' stylizing 'Y' and 'T' letterforms as fountain pen nibs within a gradient 'G' emblem to symbolize translation expertise."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/11.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/11.webp" alt="Young Translator Group">
+					</article>
+
+					<!-- Item 12: BIBU Shan Foods -->
+					<article class="project-card branding"
+						data-title="BIBU Shan Foods"
+						data-category="Branding & Logo"
+						data-concept="Developed an authentic food brand mark for 'BIBU Shan Foods' weaving 'BIBU' typography into golden ribbons centered around a heart icon for homemade culinary warmth."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/12.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/12.webp" alt="BIBU Shan Foods">
+					</article>
+
+					<!-- Item 13: MAGIC Home Made Chocolates -->
+					<article class="project-card branding"
+						data-title="MAGIC Home Made Chocolates"
+						data-category="Branding & Logo"
+						data-concept="Crafted boutique confectionery branding for 'MAGIC Home Made Chocolates' featuring dripping cocoa graphics, '100% Cacao' badges, and an artisan handmade aesthetic."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/13.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/13.webp" alt="MAGIC Home Made Chocolates">
+					</article>
+
+					<!-- Item 14: PHOE HEIN Album Art -->
+					<article class="project-card poster"
+						data-title="PHOE HEIN Album Art"
+						data-category="Album Cover Art"
+						data-concept="Designed a surreal digital art album cover for Phoe Hein's 'COMET STRIKE', depicting an astronaut and a female figure reaching out across deep cosmic space."
+						data-tools="Adobe Photoshop, Procreate"
+						data-image="images/fulls/14.webp">
+						<span class="category-badge">Album Art</span>
+						<img src="images/thumbs/14.webp" alt="PHOE HEIN Album Art">
+					</article>
+
+					<!-- Item 15: SUGAR Computer Services -->
+					<article class="project-card branding"
+						data-title="SUGAR Computer Services"
+						data-category="Branding & Logo"
+						data-concept="Created a reliable IT service logo for 'SUGAR Computer Services' featuring a monitor display icon framed by a wrench tool and tech circuit elements."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/15.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/15.webp" alt="SUGAR Computer Services">
+					</article>
+
+					<!-- Item 16: KAGURA Logistics -->
+					<article class="project-card branding"
+						data-title="KAGURA Logistics"
+						data-category="Branding & Logo"
+						data-concept="Developed a modern logistics identity for 'KAGURA' shaping the letter 'K' with soft pink and blue ribbon lines in a clean pastel palette."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/16.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/16.webp" alt="KAGURA Logistics">
+					</article>
+
+					<!-- Item 17: PYI HEIN KYAW Artist Poster -->
+					<article class="project-card poster"
+						data-title="PYI HEIN KYAW Artist Poster"
+						data-category="Poster Design"
+						data-concept="Designed a high-impact artist poster for 'Pyi Hein Kyaw' featuring 3D-layered Myanmar typography in blue and gold over a vintage grunge texture."
+						data-tools="Adobe Photoshop, Illustrator"
+						data-image="images/fulls/17.webp">
+						<span class="category-badge">Poster</span>
+						<img src="images/thumbs/17.webp" alt="PYI HEIN KYAW Artist Poster">
+					</article>
+
+					<!-- Item 18: TAUNGGYI Seeds -->
+					<article class="project-card packaging"
+						data-title="TAUNGGYI Seeds"
+						data-category="Packaging Design"
+						data-concept="Created pouch packaging artwork for 'Taunggyi Seeds' (Shwe Pe The pea seeds), incorporating fresh farm photography and vibrant green mountain backdrops."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/18.webp">
+						<span class="category-badge">Packaging</span>
+						<img src="images/thumbs/18.webp" alt="TAUNGGYI Seeds">
+					</article>
+
+					<!-- Item 19: VERSE VISION VOYAGE Channel -->
+					<article class="project-card branding"
+						data-title="VERSE VISION VOYAGE Channel"
+						data-category="Branding & Logo"
+						data-concept="Crafted a dynamic digital media identity for 'Verse Vision Voyage' utilizing three overlapping 'V' letterforms in blue, yellow, and orange directional arrows."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/19.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/19.webp" alt="VERSE VISION VOYAGE Channel">
+					</article>
+
+					<!-- Item 20: GOLDEN PIG Sausages -->
+					<article class="project-card branding"
+						data-title="GOLDEN PIG Sausages"
+						data-category="Branding & Logo"
+						data-concept="Designed playful food branding for 'Golden Pig Sausages' featuring a 3D cartoon pig sitting on gold coins and eating sausages with a fork on a bright orange background."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/20.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/20.webp" alt="GOLDEN PIG Sausages">
+					</article>
+
+					<!-- Item 21: TAUNG ZALAT Instant Coffee -->
+					<article class="project-card packaging"
+						data-title="TAUNG ZALAT Instant Coffee"
+						data-category="Packaging Design"
+						data-concept="Engineered 22g instant coffee pouch packaging for 'Taung Zalat' 2+1 Arabica Coffee, featuring red Rhododendron blooms, mountain peaks, and a latte cup showcase."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/21.webp">
+						<span class="category-badge">Packaging</span>
+						<img src="images/thumbs/21.webp" alt="TAUNG ZALAT Instant Coffee">
+					</article>
+
+					<!-- Item 22: JOHN Beef Steaks -->
+					<article class="project-card branding"
+						data-title="JOHN Beef Steaks"
+						data-category="Branding & Logo"
+						data-concept="Created a bold steakhouse brand poster for 'John Beef Steaks' featuring a prominent letter 'J' framing custom typography against a deep blue backdrop."
+						data-tools="Adobe Illustrator"
+						data-image="images/fulls/22.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/22.webp" alt="JOHN Beef Steaks">
+					</article>
+
+					<!-- Item 23: LUMIÈRE Skincare -->
+					<article class="project-card marketing"
+						data-title="LUMIÈRE Skincare"
+						data-category="Marketing & Social Media"
+						data-concept="Designed a luxury social media campaign banner for 'LUMIÈRE Skincare' displaying the serum bottle on a stone pedestal surrounded by water ripples and lush foliage."
+						data-tools="Adobe Photoshop, Figma"
+						data-image="images/fulls/23.webp">
+						<span class="category-badge">Marketing</span>
+						<img src="images/thumbs/23.webp" alt="LUMIÈRE Skincare">
+					</article>
+
+					<!-- Item 24: Galaxy Born Esports -->
+					<article class="project-card marketing"
+						data-title="Galaxy Born Esports"
+						data-category="Marketing & Print"
+						data-concept="Crafted a PUBG Mobile Esports tournament roster reveal graphic for 'Galaxy Born' featuring sci-fi neon frames, player portraits, and stat overlays."
+						data-tools="Adobe Photoshop, Illustrator"
+						data-image="images/fulls/24.webp">
+						<span class="category-badge">Marketing</span>
+						<img src="images/thumbs/24.webp" alt="Galaxy Born Esports">
+					</article>
+
+					<!-- Item 25: BLOOM Cafe & Bistro -->
+					<article class="project-card marketing"
+						data-title="BLOOM Cafe & Bistro"
+						data-category="Print & Menu Design"
+						data-concept="Designed an elegant tabletop printed menu stand for 'BLOOM Cafe & Bistro' showcasing coffee, beverages, and food items with clean typography and clear pricing."
+						data-tools="Adobe InDesign, Illustrator"
+						data-image="images/fulls/25.webp">
+						<span class="category-badge">Print & Menu</span>
+						<img src="images/thumbs/25.webp" alt="BLOOM Cafe & Bistro">
+					</article>
+
+					<!-- Item 26: Nyein Chan Hotel -->
+					<article class="project-card branding"
+						data-title="Nyein Chan Hotel"
+						data-category="Branding & Stationery"
+						data-concept="Created a complete hospitality corporate stationery kit for 'Nyein Chan Hotel' in Taunggyi, including a golden flying-bird logo, green letterheads, envelopes, and business cards."
+						data-tools="Adobe Illustrator, Photoshop"
+						data-image="images/fulls/26.webp">
+						<span class="category-badge">Branding</span>
+						<img src="images/thumbs/26.webp" alt="Nyein Chan Hotel">
+					</article>
+
+					<!-- Item 27: Crimson Profile -->
+					<article class="project-card digital-art"
+						data-title="Crimson Profile"
+						data-category="Digital Art & Illustration"
+						data-concept="Executed a fine art side-profile digital portrait study focusing on dramatic crimson color palettes and soft ambient shadows."
+						data-tools="Procreate, Photoshop"
+						data-image="images/fulls/27.webp">
+						<span class="category-badge">Digital Art</span>
+						<img src="images/thumbs/27.webp" alt="Crimson Profile">
+					</article>
+
+					<!-- Item 28: Golden Hour -->
+					<article class="project-card digital-art"
+						data-title="Golden Hour"
+						data-category="Digital Art & Illustration"
+						data-concept="Painted a digital portrait exploring backlit rim lighting and warm sunset atmospheric glow."
+						data-tools="Procreate, Photoshop"
+						data-image="images/fulls/28.webp">
+						<span class="category-badge">Digital Art</span>
+						<img src="images/thumbs/28.webp" alt="Golden Hour">
+					</article>
+
+					<!-- Item 29: Cosmic Ballerina -->
+					<article class="project-card digital-art"
+						data-title="Cosmic Ballerina"
+						data-category="Digital Art & Illustration"
+						data-concept="Created a surreal fine art digital painting titled 'Cosmic Ballerina', depicting a dancer floating among cosmic nebula particles for an art exhibition."
+						data-tools="Procreate, Photoshop"
+						data-image="images/fulls/29.webp">
+						<span class="category-badge">Digital Art</span>
+						<img src="images/thumbs/29.webp" alt="Cosmic Ballerina">
+					</article>
+
+					<!-- Item 30: Nebula Reverie -->
+					<article class="project-card digital-art"
+						data-title="Nebula Reverie"
+						data-category="Digital Art & Illustration"
+						data-concept="Crafted a retro pop surrealism painting combining psychedelic color blending with digital fine art brushwork."
+						data-tools="Procreate, Photoshop"
+						data-image="images/fulls/30.webp">
+						<span class="category-badge">Digital Art</span>
+						<img src="images/thumbs/30.webp" alt="Nebula Reverie">
+					</article>
+
+				</div>
+			</section>
+
+			<!-- 3. Detailed CV & About Me Section -->
+			<section id="about-cv" class="section-container">
+				<div class="section-header">
+					<span class="section-badge">Professional Background</span>
+					<h2 class="section-title">Curriculum Vitae & About Me</h2>
+					<p class="section-subtitle">A detailed overview of design expertise, software proficiencies, and work background.</p>
+				</div>
+
+				<div class="cv-grid">
+					
+					<!-- Left Card: Bio & Core Specializations -->
+					<div class="cv-card">
+						<h3 class="cv-card-title">👤 About & Background</h3>
+						<p style="color: var(--text-sub); margin-bottom: 20px;">
+							I am <strong>Thet Htet Myat Noe</strong>, a Graphic Designer and Digital Artist with a passion for transforming ideas into memorable brand identities and commercial visuals. I blend strategic design principles with creative digital artistry to craft clean, effective visual solutions.
+						</p>
+
+						<h3 class="cv-card-title" style="margin-top: 30px;">🛠️ Software & Technical Mastery</h3>
+						<div class="skills-list">
+							<span class="skill-pill">Adobe Illustrator</span>
+							<span class="skill-pill">Adobe Photoshop</span>
+							<span class="skill-pill">Adobe InDesign</span>
+							<span class="skill-pill">Procreate</span>
+							<span class="skill-pill">Figma</span>
+							<span class="skill-pill">Brand Identity Systems</span>
+							<span class="skill-pill">Product Packaging</span>
+							<span class="skill-pill">Vector Illustration</span>
+							<span class="skill-pill">Digital Fine Art</span>
+						</div>
+					</div>
+
+					<!-- Right Card: Experience & Core Competencies -->
+					<div class="cv-card">
+						<h3 class="cv-card-title">💼 Professional Services</h3>
+						
+						<div class="timeline-item">
+							<div class="timeline-period">CORE SPECIALIZATION 01</div>
+							<div class="timeline-role">Brand Identity & Logo Design</div>
+							<div class="timeline-company">Visual strategy, logo mark creation, brand guidelines, and corporate stationery systems.</div>
+						</div>
+
+						<div class="timeline-item">
+							<div class="timeline-period">CORE SPECIALIZATION 02</div>
+							<div class="timeline-role">Commercial Packaging Design</div>
+							<div class="timeline-company">Flexible pouches, bottle labels, retail boxes, dielines, and 3D product mockups.</div>
+						</div>
+
+						<div class="timeline-item">
+							<div class="timeline-period">CORE SPECIALIZATION 03</div>
+							<div class="timeline-role">Marketing Graphics & Digital Art</div>
+							<div class="timeline-company">Social media campaign assets, printed menus, esports rosters, and original digital portraiture.</div>
+						</div>
+
+						<div style="margin-top: 25px; text-align: center;">
+							<a href="Thet_Htet_Myat_Noe_Resume.pdf" class="btn-primary" download target="_blank">
+								📄 Download Full PDF CV / Resume
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- 4. Bottom Contact / Hire Me Section -->
+			<section id="contact" class="hire-section">
+				<div class="hire-header">
+					<h2>Services & Project Inquiries</h2>
+					<p>Have a project in mind? Let’s collaborate and bring your brand vision to life with strategic design.</p>
+				</div>
+
+				<div class="services-grid">
+					<div class="service-card">
+						<span class="service-icon">🎨</span>
+						<h3>Brand Identity</h3>
+						<p>Logo systems, brand guidelines, stationery, and visual strategy.</p>
+					</div>
+					<div class="service-card">
+						<span class="service-icon">📦</span>
+						<h3>Packaging Design</h3>
+						<p>Commercial pouch, bottle labels, boxes, and shelf-ready products.</p>
+					</div>
+					<div class="service-card">
+						<span class="service-icon">📱</span>
+						<h3>Marketing & Print</h3>
+						<p>Social media campaigns, print menus, rosters, and posters.</p>
+					</div>
+					<div class="service-card">
+						<span class="service-icon">🖌️</span>
+						<h3>Digital Fine Art</h3>
+						<p>Custom portraiture, character illustration, and album artwork.</p>
+					</div>
+				</div>
+
+				<form class="hire-form" id="hireForm" action="https://formspree.io/f/thethtetmyatnoe2026@gmail.com" method="POST">
+					<div class="form-group">
+						<label for="clientName">Your Name *</label>
+						<input type="text" id="clientName" name="name" class="form-control" placeholder="John Doe" required>
+					</div>
+
+					<div class="form-group">
+						<label for="clientEmail">Your Email *</label>
+						<input type="email" id="clientEmail" name="email" class="form-control" placeholder="name@example.com" required>
+					</div>
+
+					<div class="form-group">
+						<label for="serviceType">Service Required *</label>
+						<select id="serviceType" name="service" class="form-control" required>
+							<option value="" disabled selected>Select a service...</option>
+							<option value="Brand Identity & Logo">Brand Identity & Logo Design</option>
+							<option value="Packaging Design">Product Packaging Design</option>
+							<option value="Marketing & Print">Marketing & Print Graphics</option>
+							<option value="Digital Illustration">Digital Art & Album Cover</option>
+							<option value="Other Design Work">Other Custom Design</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="projectBudget">Estimated Budget / Timeline</label>
+						<input type="text" id="projectBudget" name="budget" class="form-control" placeholder="e.g. $300-$500 / 2 Weeks">
+					</div>
+
+					<div class="form-group full-width">
+						<label for="projectDetails">Project Details & Requirements *</label>
+						<textarea id="projectDetails" name="message" class="form-control" placeholder="Briefly describe your brand, objectives, and specific deliverables needed..." required></textarea>
+					</div>
+
+					<div id="formSuccessMsg" class="form-success-msg">
+						✨ Thank you! Your project inquiry has been sent successfully. I will get back to you within 24 hours.
+					</div>
+
+					<button type="submit" class="btn-submit">🚀 Send Project Inquiry / Hire Me</button>
+				</form>
+			</section>
+
+			<!-- Footer Section -->
+			<footer id="footer">
+				<p>Hi, I'm <strong>Thet Htet Myat Noe</strong> — Graphic Designer & Digital Artist dedicated to creating impactful visuals.</p>
+				
+				<ul class="footer-icons">
+					<li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a></li>
+					<li><a href="#" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i></a></li>
+					<li><a href="https://www.linkedin.com/in/thet-htet-myat-noe-7b1914414/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a></li>
+					<li><a href="mailto:thethtetmyatnoe2026@gmail.com"><i class="fa-solid fa-envelope"></i></a></li>
+				</ul>
+
+				<p style="font-size: 0.82rem; color: var(--text-sub); margin-top: 15px;">&copy; 2026 Thet Htet Myat Noe. All rights reserved.</p>
+			</footer>
+
+		</div>
+
+		<!-- Interactive Project Details Modal -->
+		<div id="projectModal" class="project-modal">
+			<div class="modal-content">
+				<button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+				<div class="modal-image-container">
+					<img id="modalImg" src="" alt="Project Image">
+				</div>
+				<div class="modal-details">
+					<div id="modalCategory" class="modal-category">CATEGORY</div>
+					<h2 id="modalTitle" class="modal-title">Project Title</h2>
+					
+					<div class="modal-section-title">💡 Client Requirement & Solution</div>
+					<p id="modalConcept" class="modal-description">Project concept description goes here...</p>
+
+					<div class="modal-section-title">🛠️ Software & Tools</div>
+					<div id="modalTools" class="tools-list">
+						<!-- Dynamic Tool Badges -->
+					</div>
+
+					<div id="modalCaseStudyContainer" class="case-study-link-container" style="display: none;">
+						<a id="modalCaseStudyLink" href="#" class="btn-case-study-link" target="_blank">
+							📖 Read Dedicated Case Study →
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Interactive Logic Scripts -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				// Category Filtering
+				const filterButtons = document.querySelectorAll('.filter-btn');
+				const items = document.querySelectorAll('.project-card');
+
+				filterButtons.forEach(button => {
+					button.addEventListener('click', function() {
+						filterButtons.forEach(btn => btn.classList.remove('active'));
+						this.classList.add('active');
+
+						const filterValue = this.getAttribute('data-filter');
+
+						items.forEach(item => {
+							if (filterValue === 'all' || item.classList.contains(filterValue)) {
+								item.classList.remove('category-hidden');
+							} else {
+								item.classList.add('category-hidden');
+							}
+						});
+					});
+				});
+
+				// Interactive Modal Pop-up Logic
+				const modal = document.getElementById('projectModal');
+				const modalImg = document.getElementById('modalImg');
+				const modalCategory = document.getElementById('modalCategory');
+				const modalTitle = document.getElementById('modalTitle');
+				const modalConcept = document.getElementById('modalConcept');
+				const modalTools = document.getElementById('modalTools');
+				const modalClose = document.getElementById('modalClose');
+				const modalCaseStudyContainer = document.getElementById('modalCaseStudyContainer');
+				const modalCaseStudyLink = document.getElementById('modalCaseStudyLink');
+
+				items.forEach(item => {
+					item.addEventListener('click', function(e) {
+						e.preventDefault();
+
+						const title = this.getAttribute('data-title') || 'Project Details';
+						const category = this.getAttribute('data-category') || 'Design';
+						const concept = this.getAttribute('data-concept') || 'No concept description provided.';
+						const tools = (this.getAttribute('data-tools') || 'Adobe Illustrator').split(',');
+						const imageSrc = this.getAttribute('data-image') || 'images/fulls/01.webp';
+						const caseStudyUrl = this.getAttribute('data-casestudy');
+
+						modalImg.src = imageSrc;
+						modalCategory.textContent = category;
+						modalTitle.textContent = title;
+						modalConcept.textContent = concept;
+
+						modalTools.innerHTML = '';
+						tools.forEach(tool => {
+							const badge = document.createElement('span');
+							badge.className = 'tool-badge';
+							badge.textContent = tool.trim();
+							modalTools.appendChild(badge);
+						});
+
+						if (caseStudyUrl) {
+							modalCaseStudyLink.href = caseStudyUrl;
+							modalCaseStudyContainer.style.display = 'block';
+						} else {
+							modalCaseStudyContainer.style.display = 'none';
+						}
+
+						modal.classList.add('active');
+					});
+				});
+
+				// Modal Close Handlers
+				modalClose.addEventListener('click', () => modal.classList.remove('active'));
+				modal.addEventListener('click', (e) => {
+					if (e.target === modal) modal.classList.remove('active');
+				});
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape' && modal.classList.contains('active')) {
+						modal.classList.remove('active');
+					}
+				});
+
+				// Form Submission Handling
+				const hireForm = document.getElementById('hireForm');
+				const formSuccessMsg = document.getElementById('formSuccessMsg');
+
+				if (hireForm) {
+					hireForm.addEventListener('submit', function(e) {
+						setTimeout(() => {
+							formSuccessMsg.style.display = 'block';
+							hireForm.reset();
+						}, 300);
+					});
+				}
+			});
+		</script>
+
+	</body>
 </html>
