@@ -16,18 +16,18 @@
 
   <style>
     :root {
-      /* Luxury Palette */
-      --bg-main: #0a0a0c;
-      --bg-elevated: #121216;
-      --bg-card: #16161b;
-      --text-primary: #f5f3ef;
-      --text-secondary: #9ca0ab;
-      --accent-gold: #c6a868;
-      --accent-gold-soft: rgba(198, 168, 104, 0.14);
-      --accent-emerald: #2e8b6e;
-      --accent-rose: #d96b43;
-      --border-line: rgba(245, 243, 239, 0.09);
-      --border-gold: rgba(198, 168, 104, 0.45);
+      /* New Palette Based on Resume (Navy Black & Emerald Green) */
+      --bg-main: #0B1015; /* Deep Navy Black from Resume Background */
+      --bg-elevated: #111820; /* Slightly lighter Navy Black */
+      --bg-card: #151d26; /* Card Background */
+      --text-primary: #F0F4F8; /* Soft White */
+      --text-secondary: #A0ABC0; /* Muted Slate */
+      
+      --accent-gold: #00A86B; /* Replaced Gold with Emerald Green */
+      --accent-gold-soft: rgba(0, 168, 107, 0.15); /* Soft Emerald */
+      --accent-emerald: #00A86B; /* Emerald Green */
+      --border-line: rgba(240, 244, 248, 0.1); 
+      --border-gold: rgba(0, 168, 107, 0.4); /* Emerald Border */
 
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -35,17 +35,16 @@
     }
 
     [data-theme="light"] {
-      --bg-main: #f8f6f2;
-      --bg-elevated: #efece6;
-      --bg-card: #ffffff;
-      --text-primary: #141416;
-      --text-secondary: #5a5d65;
-      --accent-gold: #9e7f3e;
-      --accent-gold-soft: rgba(158, 127, 62, 0.12);
-      --accent-emerald: #1f6b53;
-      --accent-rose: #c2552d;
-      --border-line: rgba(20, 20, 22, 0.1);
-      --border-gold: rgba(158, 127, 62, 0.45);
+      --bg-main: #F4F7F6;
+      --bg-elevated: #E9ECEF;
+      --bg-card: #FFFFFF;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --accent-gold: #00875A; /* Darker Emerald for Light Mode */
+      --accent-gold-soft: rgba(0, 135, 90, 0.12);
+      --accent-emerald: #00875A;
+      --border-line: rgba(15, 23, 42, 0.12);
+      --border-gold: rgba(0, 135, 90, 0.4);
     }
 
     * {
@@ -74,13 +73,13 @@
       position: sticky;
       top: 0;
       z-index: 90;
-      background: rgba(10, 10, 12, 0.85);
+      background: rgba(11, 16, 21, 0.85); /* Navy Black transparent */
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-line);
     }
     [data-theme="light"] header {
-      background: rgba(248, 246, 242, 0.88);
+      background: rgba(244, 247, 246, 0.88);
     }
 
     .nav-bar {
@@ -187,7 +186,7 @@
     /* Buttons */
     .btn-gold {
       background-color: var(--accent-gold);
-      color: #0a0a0c;
+      color: #FFFFFF; /* White text on Emerald button */
       font-family: var(--font-sans);
       font-weight: 600;
       font-size: 0.85rem;
@@ -205,7 +204,7 @@
 
     .btn-gold:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px -6px rgba(198, 168, 104, 0.45);
+      box-shadow: 0 10px 24px -6px rgba(0, 168, 107, 0.45);
     }
 
     .btn-ghost {
@@ -250,9 +249,9 @@
       gap: 0.55rem;
       padding: 0.35rem 0.95rem;
       border-radius: 999px;
-      background: rgba(46, 139, 110, 0.12);
-      border: 1px solid rgba(46, 139, 110, 0.35);
-      color: #4ade80;
+      background: rgba(0, 168, 107, 0.12); /* Emerald background */
+      border: 1px solid rgba(0, 168, 107, 0.35); /* Emerald border */
+      color: #00C880; /* Lighter Emerald Text */
       font-size: 0.76rem;
       font-weight: 500;
       letter-spacing: 0.04em;
@@ -263,7 +262,7 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #4ade80;
+      background: #00C880;
     }
 
     .hero-eyebrow {
@@ -460,7 +459,7 @@
     .filter-tab.active {
       background: var(--accent-gold);
       border-color: var(--accent-gold);
-      color: #0a0a0c;
+      color: #FFFFFF;
       font-weight: 600;
     }
 
@@ -549,7 +548,7 @@
       position: absolute;
       top: 0.85rem;
       left: 0.85rem;
-      background: rgba(10, 10, 12, 0.8);
+      background: rgba(11, 16, 21, 0.8);
       backdrop-filter: blur(8px);
       color: var(--accent-gold);
       border: 1px solid var(--border-gold);
@@ -613,11 +612,11 @@
     /* About & CV Section */
     .cv-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 2rem;
     }
-    @media (max-width: 820px) {
-      .cv-grid { grid-template-columns: 1fr; }
+    @media (min-width: 992px) {
+      .cv-grid { grid-template-columns: 1fr 1.5fr; }
     }
 
     .info-card {
@@ -649,6 +648,42 @@
       background: var(--bg-elevated);
       border: 1px solid var(--border-line);
       color: var(--text-primary);
+    }
+
+    /* Resume Timeline Styles */
+    .timeline-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-line);
+    }
+    .timeline-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .timeline-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-meta {
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .timeline-desc ul {
+      margin-top: 0.5rem;
+      padding-left: 1.25rem;
+    }
+    .timeline-desc li {
+      margin-bottom: 0.25rem;
     }
 
     /* Contact Channels Grid */
@@ -709,7 +744,7 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(6, 6, 8, 0.86);
+      background: rgba(11, 16, 21, 0.86);
       backdrop-filter: blur(10px);
       display: none;
       align-items: center;
@@ -764,7 +799,7 @@
     }
 
     .cs-image-side {
-      background: #050507;
+      background: #0B1015;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1051,51 +1086,109 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="section-tag">02 // Capabilities &amp; Background</span>
-          <h2 class="section-title">About &amp; CV</h2>
+          <span class="section-tag">02 // Capabilities &amp; Professional Experience</span>
+          <h2 class="section-title">About &amp; Resume</h2>
         </div>
       </div>
 
       <div class="cv-grid">
         <div class="info-card">
           <h3>Thet Htet Myat Noe</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-            I am a creative graphic designer and digital artist dedicated to turning strategic concepts into memorable visual stories.
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.92rem;">
+            Versatile creative professional with extensive experience in graphic design, visual storytelling, and business operations. Proven ability to manage end-to-end design projects, oversee marketing and sales operations, and deliver high-quality media content. A detail-oriented artist and strategic communicator with a strong background in corporate environments and freelance creative production.
           </p>
-          <p style="color: var(--text-secondary);">
-            From commercial food &amp; beverage packaging and corporate brand identities to social media ad campaigns and original digital portraiture, every project is crafted with precision, clarity, and market impact.
-          </p>
-          <h3 style="margin-top: 1.75rem; font-size: 1.35rem;">Software &amp; Technical Mastery</h3>
-          <div class="tag-list">
-            <span class="tag-chip">Adobe Illustrator</span>
-            <span class="tag-chip">Adobe Photoshop</span>
-            <span class="tag-chip">Adobe InDesign</span>
-            <span class="tag-chip">Procreate</span>
-            <span class="tag-chip">Figma</span>
-            <span class="tag-chip">Brand Identity Systems</span>
-            <span class="tag-chip">Packaging Dielines</span>
-            <span class="tag-chip">Print Prepress</span>
-            <span class="tag-chip">Digital Fine Art</span>
+
+          <h3 style="font-size: 1.35rem; margin-top: 2rem;">Technical Skills</h3>
+          <div style="margin-top: 1rem;">
+            <p style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 600; margin-bottom: 0.3rem;">Design &amp; Creative Suite</p>
+            <div class="tag-list" style="margin-top: 0; margin-bottom: 1rem;">
+              <span class="tag-chip">Adobe Photoshop</span>
+              <span class="tag-chip">Adobe Illustrator</span>
+              <span class="tag-chip">Affinity Designer</span>
+              <span class="tag-chip">Adobe Dimension (3D)</span>
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 600; margin-bottom: 0.3rem;">Video &amp; Media Production</p>
+            <div class="tag-list" style="margin-top: 0; margin-bottom: 1rem;">
+              <span class="tag-chip">Adobe Premiere Pro</span>
+              <span class="tag-chip">CapCut</span>
+              <span class="tag-chip">Adobe Lightroom</span>
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--accent-gold); font-weight: 600; margin-bottom: 0.3rem;">AI &amp; Operations</p>
+            <div class="tag-list" style="margin-top: 0;">
+              <span class="tag-chip">AI Asset Generation</span>
+              <span class="tag-chip">Workflow Automation</span>
+              <span class="tag-chip">Microsoft Office Suite</span>
+            </div>
           </div>
         </div>
 
         <div class="info-card">
-          <h3>Core Services</h3>
-          <div style="margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--border-line);">
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">01 // BRAND IDENTITY &amp; LOGO DESIGN</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Visual Strategy &amp; Complete Brand Systems</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Bespoke logomarks, bilingual Burmese/English typography lockups, color systems, and corporate stationery.</p>
+          <h3>Professional Experience</h3>
+          
+          <div class="timeline-item">
+            <div class="timeline-title">Freelance Graphic Designer, Videographer &amp; Photographer</div>
+            <div class="timeline-meta">2016 - Present</div>
+            <div class="timeline-desc">
+              <ul>
+                <li>Deliver end-to-end branding solutions including logos, social media assets, and large-scale signage/billboard installations.</li>
+                <li>Manage event production, including wedding backdrops, pre-wedding photography, and event coverage.</li>
+                <li>Produce high-quality video content (Music Videos, Vlogs) and provide professional image retouching services.</li>
+                <li>Provide computer science training and skill-based instruction.</li>
+              </ul>
+            </div>
           </div>
-          <div style="margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--border-line);">
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">02 // COMMERCIAL PACKAGING DESIGN</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Retail Pouches, Labels &amp; Dielines</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">Print-ready coffee pouches, agricultural seed bags, bottle labels, nutrition layouts, and 3D product mockups.</p>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Graphic Designer &amp; Video Editor</div>
+            <div class="timeline-meta">STUN Media, Yangon | 06/2022 - 01/2023</div>
+            <div class="timeline-desc">
+              <ul>
+                <li>Conceptualized and produced engaging visual content and video edits for diverse client campaigns.</li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">03 // MARKETING, PRINT &amp; DIGITAL ART</div>
-            <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Social Media Ads, Menus &amp; Custom Illustration</div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem;">High-converting social media campaigns, esports graphics, bistro menus, album art, and digital paintings.</p>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Shop Manager, Graphic Designer &amp; Photographer</div>
+            <div class="timeline-meta">Tachileik | 09/2021 - 05/2022</div>
+            <div class="timeline-desc">
+              <ul>
+                <li>Oversaw daily shop operations while providing end-to-end design, photography, and printing services.</li>
+              </ul>
+            </div>
           </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Supervisor of Sales and Marketing</div>
+            <div class="timeline-meta">Telenor Business Myanmar, Taunggyi | 09/2017 - 05/2019</div>
+            <div class="timeline-desc">
+              <ul>
+                <li>Managed sales strategies and marketing initiatives to drive growth and operational excellence.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Earlier Roles</div>
+            <div class="timeline-meta">2008 - 2017</div>
+            <div class="timeline-desc">
+              <ul>
+                <li><strong>Graphic Designer &amp; Printing Operator:</strong> Savana Advertising, Taunggyi (03/2017 - 06/2017)</li>
+                <li><strong>Volunteer Computer Tutor:</strong> Savana Advertising, Taunggyi (09/2014 - 05/2016)</li>
+                <li><strong>Supervisor of Merchandising &amp; HR:</strong> Telenor Myanmar, Loikaw (07/2013 - 07/2014)</li>
+                <li><strong>Cyber Cafe Manager:</strong> GlobalLink Group, Taunggyi (09/2008 - 05/2013)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <a href="assets/Thet_Htet_Myat_Noe_Resume.pdf" target="_blank" class="btn-gold">
+              <i class="fa-solid fa-file-pdf"></i> Download Full Resume (PDF)
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
