@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sankita Studio — Graphic Design, Packaging & Digital Art | Thet Htet Myat Noe</title>
-  <meta name="description" content="Sankita Studio by Thet Htet Myat Noe — Graphic Designer & Digital Artist specializing in strategic brand identity systems, commercial product packaging, and digital illustration." />
+  <title>Thet Htet Myat Noe — Graphic Design, Packaging & Digital Art</title>
+  <meta name="description" content="Portfolio of Thet Htet Myat Noe — Graphic Designer & Digital Artist specializing in strategic brand identity systems, commercial product packaging, and digital illustration." />
 
   <!-- Minimal Luxury Fonts: Cormorant Garamond (Editorial Display) + Plus Jakarta Sans (Clean UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 
   <style>
     :root {
-      /* Sankita Studio Logo-Inspired Luxury Palette */
+      /* Luxury Palette */
       --bg-main: #0a0a0c;
       --bg-elevated: #121216;
       --bg-card: #16161b;
@@ -235,16 +235,13 @@
     .hero {
       padding: 5.5rem 0 4.5rem;
       border-bottom: 1px solid var(--border-line);
-      text-align: center;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1.3fr 0.7fr;
       gap: 3.5rem;
       align-items: center;
-      max-width: 900px;
-      margin: 0 auto;
     }
 
     .availability-pill {
@@ -296,13 +293,12 @@
       font-size: 1.04rem;
       color: var(--text-secondary);
       max-width: 610px;
-      margin: 0 auto 2rem;
+      margin-bottom: 2rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 0.85rem;
       margin-bottom: 2rem;
     }
@@ -311,7 +307,6 @@
     .hero-social-strip {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       align-items: center;
       gap: 0.65rem;
       margin-bottom: 2.5rem;
@@ -345,7 +340,6 @@
       padding-top: 1.75rem;
       border-top: 1px solid var(--border-line);
       max-width: 520px;
-      margin: 0 auto;
     }
 
     .metric-val {
@@ -362,6 +356,39 @@
       margin-top: 0.2rem;
     }
 
+    .portrait-frame {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 0.9rem;
+      max-width: 360px;
+      margin-left: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .portrait-img-box {
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4 / 4.7;
+      background: var(--bg-elevated);
+    }
+
+    .portrait-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portrait-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      padding: 0.75rem 0.25rem 0.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
 
     /* Section Headings */
     .section-wrap {
@@ -475,6 +502,8 @@
 
     @media (max-width: 992px) {
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid { grid-template-columns: 1fr; }
+      .portrait-frame { margin: 0 auto; }
       .nav-links { display: none; }
     }
     @media (max-width: 640px) {
@@ -869,31 +898,30 @@
   <header>
     <div class="container nav-bar">
       <a href="#" class="brand-identity">
-        <div class="brand-logo-mark" title="Sankita Studio">
-          <img src="images/Logo.png" alt="Sankita Studio Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='S';" />
+        <div class="brand-logo-mark" title="Thet Htet Myat Noe">
+          <img src="images/Logo.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='T';" />
         </div>
         <div class="brand-text-wrap">
-          <div class="brand-name">SANKITA <span>STUDIO.</span></div>
-          <div class="brand-sub">By Thet Htet Myat Noe</div>
+          <div class="brand-name">THET HTET <span>MYAT NOE.</span></div>
+          <div class="brand-sub">Graphic Designer &amp; Digital Artist</div>
         </div>
       </a>
 
       <ul class="nav-links">
         <li><a href="#welcome">Home</a></li>
         <li><a href="#portfolio">Selected Works (30)</a></li>
-        <li><a href="#about-cv">About Studio &amp; CV</a></li>
+        <li><a href="#about-cv">About &amp; CV</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="icon-btn" title="Sankita Studio Facebook Page">
+        <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="icon-btn" title="Facebook Page">
           <i class="fa-brands fa-facebook-f"></i>
         </a>
-        <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="icon-btn" title="Sankita Studio Telegram">
+        <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="icon-btn" title="Telegram">
           <i class="fa-brands fa-telegram"></i>
         </a>
-        <!-- TikTok Added in Header -->
-        <a href="https://www.tiktok.com/@sanketastudio" target="_blank" rel="noopener" class="icon-btn" title="Sankita Studio TikTok">
+        <a href="https://www.tiktok.com/@sanketastudio" target="_blank" rel="noopener" class="icon-btn" title="TikTok">
           <i class="fa-brands fa-tiktok"></i>
         </a>
         <button class="icon-btn" id="themeBtn" title="Toggle Dark/Light Theme">
@@ -913,12 +941,12 @@
       <div>
         <div class="availability-pill">
           <span class="availability-dot"></span>
-          <span>SANKITA STUDIO — ACCEPTING NEW COMMISSIONS FOR 2026</span>
+          <span>ACCEPTING NEW COMMISSIONS FOR 2026</span>
         </div>
         <div class="hero-eyebrow">Thet Htet Myat Noe // Graphic Designer &amp; Digital Artist</div>
         <h1>Elevating Brands Through <em>Strategic Design</em> &amp; Visual Craft.</h1>
         <p class="hero-lead">
-          Welcome to <strong>Sankita Studio</strong>, the creative practice of <strong>Thet Htet Myat Noe</strong>. We transform business concepts into distinctive brand identities, commercial product packaging, and expressive digital illustrations.
+          Hi, I'm <strong>Thet Htet Myat Noe</strong>. I transform business concepts into distinctive brand identities, commercial product packaging, and expressive digital illustrations.
         </p>
 
         <div class="hero-actions">
@@ -933,17 +961,16 @@
           </a>
         </div>
 
-        <!-- Direct Studio Channels -->
+        <!-- Direct Channels -->
         <div class="hero-social-strip">
           <a href="https://www.facebook.com/sanketastudio/" target="_blank" rel="noopener" class="social-chip">
             <i class="fa-brands fa-facebook" style="color: var(--accent-gold);"></i> Facebook Page
           </a>
-          <!-- TikTok Link Added -->
           <a href="https://www.tiktok.com/@sanketastudio" target="_blank" rel="noopener" class="social-chip">
             <i class="fa-brands fa-tiktok" style="color: var(--accent-gold);"></i> TikTok
           </a>
           <a href="https://t.me/sanketastudio" target="_blank" rel="noopener" class="social-chip">
-            <i class="fa-brands fa-telegram" style="color: var(--accent-gold);"></i> @sanketastudio
+            <i class="fa-brands fa-telegram" style="color: var(--accent-gold);"></i> Telegram
           </a>
           <a href="viber://chat?number=%2B959780008874" class="social-chip">
             <i class="fa-brands fa-viber" style="color: var(--accent-gold);"></i> Viber: +959 780008874
@@ -960,11 +987,25 @@
           </div>
           <div>
             <div class="metric-val">4</div>
-            <div class="metric-lbl">Studio Specializations</div>
+            <div class="metric-lbl">Core Specializations</div>
           </div>
           <div>
             <div class="metric-val">100%</div>
             <div class="metric-lbl">Original Bespoke Craft</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="portrait-frame">
+          <div class="portrait-img-box">
+            <img src="images/designer-photo.webp"
+                 onerror="this.onerror=null; this.src='https://thethtetmyatnoe2026-creator.github.io/thethtetmyatnoe-design.github.io/images/designer-photo.webp';"
+                 alt="Thet Htet Myat Noe" />
+          </div>
+          <div class="portrait-meta">
+            <span>Portfolio</span>
+            <span>Thet Htet Myat Noe</span>
           </div>
         </div>
       </div>
@@ -976,7 +1017,7 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="section-tag">01 // Sankita Studio Archive (01 — 30)</span>
+          <span class="section-tag">01 // Archive (01 — 30)</span>
           <h2 class="section-title">Selected Works &amp; Case Studies</h2>
         </div>
         <p style="color: var(--text-secondary); max-width: 420px; font-size: 0.9rem;">
@@ -1002,21 +1043,21 @@
     </div>
   </section>
 
-  <!-- About Studio & CV Section -->
+  <!-- About & CV Section -->
   <section class="section-wrap" id="about-cv" style="border-top: 1px solid var(--border-line);">
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="section-tag">02 // Studio Capabilities &amp; Lead Designer</span>
-          <h2 class="section-title">About Sankita Studio &amp; CV</h2>
+          <span class="section-tag">02 // Capabilities &amp; Background</span>
+          <h2 class="section-title">About &amp; CV</h2>
         </div>
       </div>
 
       <div class="cv-grid">
         <div class="info-card">
-          <h3>Sankita Studio &amp; Lead Designer</h3>
+          <h3>Thet Htet Myat Noe</h3>
           <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-            Founded and led by <strong>Thet Htet Myat Noe</strong>, <strong>Sankita Studio</strong> is a creative graphic design and digital art practice dedicated to turning strategic concepts into memorable visual stories.
+            I am a creative graphic designer and digital artist dedicated to turning strategic concepts into memorable visual stories.
           </p>
           <p style="color: var(--text-secondary);">
             From commercial food &amp; beverage packaging and corporate brand identities to social media ad campaigns and original digital portraiture, every project is crafted with precision, clarity, and market impact.
@@ -1036,7 +1077,7 @@
         </div>
 
         <div class="info-card">
-          <h3>Core Studio Services</h3>
+          <h3>Core Services</h3>
           <div style="margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--border-line);">
             <div style="color: var(--accent-gold); font-size: 0.75rem; font-weight: 600;">01 // BRAND IDENTITY &amp; LOGO DESIGN</div>
             <div style="font-weight: 600; font-size: 1.05rem; margin: 0.2rem 0;">Visual Strategy &amp; Complete Brand Systems</div>
@@ -1060,10 +1101,10 @@
   <!-- Contact Section -->
   <section class="section-wrap" id="contact" style="border-top: 1px solid var(--border-line);">
     <div class="container" style="text-align: center; max-width: 1080px;">
-      <span class="section-tag">03 // Connect With Sankita Studio</span>
-      <h2 class="section-title" style="margin-bottom: 0.85rem;">Start a Project With Sankita Studio</h2>
+      <span class="section-tag">03 // Connect</span>
+      <h2 class="section-title" style="margin-bottom: 0.85rem;">Start a Project</h2>
       <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 1.75rem;">
-        Choose your project type, budget range, and deadline using our interactive brief builder, or reach out directly through any of our official studio channels below.
+        Choose your project type, budget range, and deadline using our interactive brief builder, or reach out directly through any of the official channels below.
       </p>
 
       <button class="btn-gold" onclick="openCommissionModal()" style="padding: 0.85rem 1.85rem; font-size: 0.92rem;">
@@ -1076,11 +1117,10 @@
           <div class="channel-icon"><i class="fa-brands fa-facebook-f"></i></div>
           <div>
             <div class="channel-label">Facebook Page</div>
-            <div class="channel-val">Sankita Studio</div>
+            <div class="channel-val">Page</div>
           </div>
         </a>
 
-        <!-- TikTok Card added to Contact Section -->
         <a href="https://www.tiktok.com/@sanketastudio" target="_blank" rel="noopener" class="channel-card">
           <div class="channel-icon"><i class="fa-brands fa-tiktok"></i></div>
           <div>
@@ -1126,7 +1166,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 <strong>Sankita Studio</strong> (Thet Htet Myat Noe). All showcased artworks and designs are original property.</p>
+      <p>&copy; 2026 <strong>Thet Htet Myat Noe</strong>. All showcased artworks and designs are original property.</p>
     </div>
   </footer>
 
@@ -1152,7 +1192,7 @@
             </div>
 
             <div class="cs-block">
-              <h4>Ownership &amp; Deliverables (Sankita Studio)</h4>
+              <h4>Ownership &amp; Deliverables</h4>
               <p id="csModalOwnership" style="font-size: 0.88rem; color: var(--text-primary);"></p>
             </div>
 
@@ -1180,17 +1220,17 @@
     </div>
   </div>
 
-  <!-- MODAL 2: Interactive Commission a Project Modal (1. Project Type, 2. Budget Range, 3. Project Deadline) -->
+  <!-- MODAL 2: Interactive Commission a Project Modal -->
   <div class="modal-overlay" id="commissionModal">
     <div class="modal-box commission-box">
       <button class="modal-close-btn" onclick="closeCommissionModal()" aria-label="Close">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <span class="section-tag">Sankita Studio — Project Brief Builder</span>
+      <span class="section-tag">Project Brief Builder</span>
       <h2 style="font-family: var(--font-serif); font-size: 2.1rem; font-weight: 600; margin-bottom: 0.35rem;">Commission a Project</h2>
       <p style="color: var(--text-secondary); font-size: 0.9rem;">
-        Select your options below to send your project brief directly to <strong>Sankita Studio</strong> via Email, Telegram, or Viber.
+        Select your options below to send your project brief directly to <strong>Thet Htet Myat Noe</strong> via Email, Telegram, or Viber.
       </p>
 
       <form id="commissionForm" onsubmit="submitCommissionForm(event)">
@@ -1228,7 +1268,7 @@
           <input type="text" id="clientName" class="form-input" placeholder="Your Name or Business Name *" required />
           <input type="text" id="clientEmail" class="form-input" placeholder="Your Phone / Viber / Email *" required />
         </div>
-        <textarea id="clientNotes" class="form-textarea" rows="3" style="margin-top: 0.85rem;" placeholder="Tell us briefly about your brand, product, or design requirements..."></textarea>
+        <textarea id="clientNotes" class="form-textarea" rows="3" style="margin-top: 0.85rem;" placeholder="Tell me briefly about your brand, product, or design requirements..."></textarea>
 
         <div style="display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem;">
           <button type="submit" class="btn-gold">
@@ -1450,9 +1490,9 @@
       const notes = document.getElementById("clientNotes").value.trim() || "No additional notes.";
 
       return {
-        subject: `Sankita Studio Commission: ${pType} (${name})`,
+        subject: `Project Commission: ${pType} (${name})`,
         body:
-`Hello Sankita Studio (Thet Htet Myat Noe),
+`Hello Thet Htet Myat Noe,
 
 I would like to commission a project with the following brief:
 
